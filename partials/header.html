@@ -274,31 +274,38 @@
     justify-content: center;
 }
 
-.babixgo-mobile-drawer__nav,
-.babixgo-mobile-drawer__grid {
+.babixgo-mobile-drawer__nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
-    margin-bottom: 14px;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.babixgo-mobile-drawer__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 10px;
 }
 
 .babixgo-mobile-drawer__nav a,
 .babixgo-mobile-drawer__grid a {
     background: #073156;
-    border: 1.2px solid #199edb;
-    border-radius: 8px;
+    border: 1px solid #199edb;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 6px 0 4px 0;
+    padding: 4px 2px;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
     color: #00CFFF;
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     transition: background 0.13s, border-color 0.13s;
-    min-height: 50px;
+    min-height: 40px;
+    max-width: 100%;
 }
 
 .babixgo-mobile-drawer__nav a:hover,
@@ -309,19 +316,22 @@
 
 .babixgo-mobile-drawer__nav svg,
 .babixgo-mobile-drawer__grid svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     margin-bottom: 1px;
+    flex-shrink: 0;
 }
 
 .babixgo-mobile-drawer__nav span,
 .babixgo-mobile-drawer__grid span {
     color: #EAF8FC;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     font-weight: 600;
     margin-top: 1px;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.0;
+    word-break: break-word;
+    hyphens: auto;
 }
 
 .babixgo-mobile-drawer__section-label {
@@ -342,6 +352,31 @@
     opacity: 0.95;
     font-family: 'Nunito Sans', sans-serif;
     padding: 4px 0;
+}
+
+/* Force compact mobile layout */
+@media (max-width: 767px) {
+    .babixgo-mobile-drawer {
+        width: 280px !important;
+        max-width: 280px !important;
+    }
+    
+    .babixgo-mobile-drawer__nav a,
+    .babixgo-mobile-drawer__grid a {
+        font-size: 0.55rem !important;
+        min-height: 35px !important;
+        padding: 3px 1px !important;
+    }
+    
+    .babixgo-mobile-drawer__nav svg,
+    .babixgo-mobile-drawer__grid svg {
+        width: 12px !important;
+        height: 12px !important;
+    }
+    
+    .babixgo-mobile-drawer__grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
 }
 
 @media (min-width: 1024px) {
