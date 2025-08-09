@@ -17,12 +17,10 @@ The website is built using vanilla HTML, CSS, and JavaScript with no frameworks 
 - **Progressive Enhancement**: Core functionality works without JavaScript, with JavaScript enhancing user experience
 
 ## Backend Architecture (Added August 2025)
-The project now includes an Express.js server for handling PayPal payment processing:
+The project includes a simple Express.js server for serving static files:
 
-- **Express Server**: Node.js server (server.js) handling PayPal API integration and serving static files
-- **PayPal Server SDK**: Secure server-side payment processing with @paypal/paypal-server-sdk
-- **Client-Side Payment Components**: JavaScript PayPal button component for seamless payment experience
-- **RESTful API Endpoints**: `/paypal/setup`, `/paypal/order`, `/paypal/order/:orderID/capture` for payment processing
+- **Express Server**: Node.js server (server.js) serving static website files
+- **Static File Serving**: All HTML, CSS, JavaScript, and assets served via Express middleware
 
 ## Styling System
 - **CSS Custom Properties**: Consistent color palette and spacing using CSS variables (--primary: #0A3A68, --accent: #FF4C00, --cyan: #00CFFF)
@@ -41,11 +39,9 @@ The project now includes an Express.js server for handling PayPal payment proces
 
 # External Dependencies
 
-## Payment Integration
-- **PayPal Server SDK**: Fully integrated modern PayPal payment system (@paypal/paypal-server-sdk v1.1.0)
-- **Secure Payment Processing**: Server-side order creation and capture with environment-based sandbox/production switching
-- **Modern Payment UX**: Client-side PayPal button component with seamless checkout flow
-- **Express.js Backend**: RESTful API endpoints for secure payment processing
+## Order Processing
+- **Simple Order Forms**: HTML-based order forms directing users to complete manual processing
+- **Contact-Based Processing**: Orders processed manually through WhatsApp and email communication
 
 ## Font Services
 - **Google Fonts**: Nunito Sans and Baloo 2 font families loaded from Google Fonts CDN
@@ -58,15 +54,14 @@ The project now includes an Express.js server for handling PayPal payment proces
 
 ## Third-Party Services
 The architecture includes active integrations for:
-- **PayPal Payment Processing**: Complete server-side integration with secure payment handling
-- **Order Management System**: bestellformular.html order form with PayPal integration for payment confirmation
+- **Order Management System**: bestellformular.html order form for collecting customer orders
 - **Customer Communication**: Multiple messaging platforms (WhatsApp, Facebook Messenger, Email)
 
 ## Recent Changes (August 2025)
-- **Modern PayPal Integration**: Upgraded from legacy hosted buttons to full server-side PayPal SDK integration
-- **Express.js Backend**: Added Node.js/Express server for handling payment processing
-- **Component Architecture**: Created reusable PayPal button component for consistent payment experience
-- **API Endpoints**: Implemented secure REST API for payment creation and capture
-- **Enhanced UX**: Seamless payment flow with proper error handling and success redirects
+- **PayPal Integration Removed**: Removed all PayPal payment processing components and dependencies at user request
+- **Simplified Order Flow**: Replaced PayPal buttons with simple order form links directing to bestellformular.html
+- **Cleaned Codebase**: Removed server/paypal.js, server/paypal-simple.js, and client/src/components/PayPalButton.js
+- **Updated Navigation**: All product pages now use direct links to order form instead of payment integration
+- **Express.js Server**: Simplified server.js to only handle static file serving
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.

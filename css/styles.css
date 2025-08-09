@@ -715,29 +715,8 @@ h3.babix-info-header::after,
     transform: translateY(-2px);
 }
 
-/* PayPal Button Styles */
-.paypal-container {
-    margin: 2rem 0;
-    text-align: center;
-}
 
-.paypal-button {
-    background: #ffc439;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-weight: bold;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    color: #003087;
-    text-decoration: none;
-    display: inline-block;
-}
 
-.paypal-button:hover {
-    background: #ffb700;
-}
 
 /* FAQ Styles */
 .faq-item {

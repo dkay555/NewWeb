@@ -200,44 +200,9 @@ function showMessage(text, type) {
     }
 }
 
-// Modern PayPal integration helper
-function createPayPalButton(container, productName, price, currency = 'EUR') {
-    // Create PayPal button instance
-    const paypalButton = new window.PayPalButton(container, {
-        amount: price.toString(),
-        currency: currency,
-        intent: 'CAPTURE',
-        onSuccess: function(orderData) {
-            // Redirect to success page with order details
-            window.location.href = `/bestellformular.html?product=${encodeURIComponent(productName)}&price=${price}&status=success&orderId=${orderData.id}`;
-        },
-        onError: function(error) {
-            console.error('PayPal Error:', error);
-            showMessage('Es gab einen Fehler bei der Zahlung. Bitte versuchen Sie es erneut.', 'error');
-        },
-        onCancel: function(data) {
-            showMessage('Zahlung wurde abgebrochen.', 'error');
-        }
-    });
-    
-    return paypalButton;
-}
 
-// Initialize PayPal buttons on product pages
-function initPayPalButtons() {
-    // Check if we're on a product page and PayPal component is available
-    if (typeof window.PayPalButton !== 'undefined') {
-        const paypalContainers = document.querySelectorAll('.paypal-container');
-        
-        paypalContainers.forEach(container => {
-            const productName = container.dataset.product || 'Monopoly GO Service';
-            const price = container.dataset.price || '10.00';
-            const currency = container.dataset.currency || 'EUR';
-            
-            createPayPalButton(container, productName, price, currency);
-        });
-    }
-}
+
+
 
 // Get URL parameters
 function getURLParams() {
@@ -268,18 +233,9 @@ function initPage() {
         
         initOrderForm();
     }
-    
-    // Initialize PayPal buttons
-    initPayPalButtons();
 }
 
-// Load PayPal component and initialize page
+// Initialize page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    // Load PayPal Button component
-    const script = document.createElement('script');
-    script.src = '/client/src/components/PayPalButton.js';
-    script.onload = function() {
-        initPage();
-    };
-    document.head.appendChild(script);
+    initPage();
 });
