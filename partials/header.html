@@ -214,8 +214,8 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 50vw;
-    max-width: 390px;
+    width: 85vw;
+    max-width: 320px;
     height: 100vh;
     z-index: 3500;
     box-shadow: 4px 0 26px 0 rgba(0,0,0,0.18);
@@ -236,7 +236,7 @@
 }
 
 .babixgo-mobile-drawer__content {
-    padding: 18px 10px 8px 18px;
+    padding: 12px 8px 8px 12px;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -246,12 +246,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .babixgo-mobile-drawer__logo {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     color: #fff;
     font-weight: bold;
     letter-spacing: 0.01rem;
@@ -278,26 +278,27 @@
 .babixgo-mobile-drawer__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 20px;
+    gap: 6px;
+    margin-bottom: 14px;
 }
 
 .babixgo-mobile-drawer__nav a,
 .babixgo-mobile-drawer__grid a {
     background: #073156;
     border: 1.2px solid #199edb;
-    border-radius: 10px;
+    border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    padding: 10px 0 5px 0;
+    padding: 6px 0 4px 0;
     font-family: 'Nunito Sans', sans-serif;
-    font-weight: 700;
+    font-weight: 600;
     color: #00CFFF;
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     transition: background 0.13s, border-color 0.13s;
+    min-height: 50px;
 }
 
 .babixgo-mobile-drawer__nav a:hover,
@@ -308,36 +309,39 @@
 
 .babixgo-mobile-drawer__nav svg,
 .babixgo-mobile-drawer__grid svg {
-    width: 24px;
-    height: 24px;
-    margin-bottom: 2px;
+    width: 18px;
+    height: 18px;
+    margin-bottom: 1px;
 }
 
 .babixgo-mobile-drawer__nav span,
 .babixgo-mobile-drawer__grid span {
     color: #EAF8FC;
-    font-size: 1.06rem;
-    font-weight: 700;
-    margin-top: 2px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 1px;
+    text-align: center;
+    line-height: 1.1;
 }
 
 .babixgo-mobile-drawer__section-label {
     text-align: left;
-    margin: 12px 0 5px 2px;
+    margin: 8px 0 4px 2px;
     color: #a9c6dd;
-    font-size: 0.99rem;
+    font-size: 0.8rem;
     font-weight: bold;
-    letter-spacing: 0.10rem;
+    letter-spacing: 0.08rem;
     font-family: 'Nunito Sans', sans-serif;
 }
 
 .babixgo-mobile-drawer__footer {
     margin-top: auto;
-    font-size: 0.97rem;
+    font-size: 0.7rem;
     color: #c7e3f5;
     text-align: left;
     opacity: 0.95;
     font-family: 'Nunito Sans', sans-serif;
+    padding: 4px 0;
 }
 
 @media (min-width: 1024px) {
