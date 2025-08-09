@@ -111,6 +111,20 @@
       .hero-wrap{grid-template-columns:1fr;gap:18px}
       header .nav{flex-wrap:wrap}
       .contact-grid{grid-template-columns:1fr}
+      
+      /* Mobile: Bild über Text */
+      .hero .container {
+        display: flex;
+        flex-direction: column;
+      }
+      .hero .hero-card {
+        order: 2;
+        margin-bottom: 0;
+        margin-top: 2rem;
+      }
+      .hero .hero-image {
+        order: 1;
+      }
     }
   </style>
 </head>
@@ -130,7 +144,7 @@
       </div>
 
       <!-- Hero-Bild zentral unter dem Text -->
-      <div style="text-align: center;">
+      <div class="hero-image" style="text-align: center;">
         <img
           src="sticker-hero.png"
           alt="Sticker Packs – Blau, Lila & Regenbogen (Hero)"
