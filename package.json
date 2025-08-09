@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@paypal/paypal-server-sdk": "^1.1.0"
+    "@paypal/paypal-server-sdk": "^1.1.0",
+    "@replit/vite-plugin-cartographer": "^0.2.8"
   }
 }
