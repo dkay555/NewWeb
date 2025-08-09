@@ -587,7 +587,8 @@ body {
 
 /* New Header Styling for H2 & H3 */
 h2.babix-info-header,
-h3.babix-info-header {
+h3.babix-info-header,
+.section-title {
     display: inline-block;
     font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
@@ -599,7 +600,8 @@ h3.babix-info-header {
 }
 
 h2.babix-info-header::after,
-h3.babix-info-header::after {
+h3.babix-info-header::after,
+.section-title::after {
     content: "";
     display: block;
     width: 100%;
@@ -790,7 +792,7 @@ h3.babix-info-header::after {
     padding: 2rem 1rem;
 }
 
-.section-title {
+.seection-title {
     font-family: 'Baloo 2', cursive;
     font-size: 2rem;
     font-weight: 700;
@@ -801,7 +803,7 @@ h3.babix-info-header::after {
     padding-bottom: 0.75rem;
 }
 
-.section-title::after {
+.seection-title::after {
     content: '';
     position: absolute;
     left: 50%;
