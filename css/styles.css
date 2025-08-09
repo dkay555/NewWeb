@@ -592,7 +592,7 @@ h3.babix-info-header {
     font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--accent);
+    color: #FF4C00;
     position: relative;
     padding-bottom: 0.4rem;
     margin: 0 0 1rem 0;
@@ -615,7 +615,7 @@ h3.babix-info-header::after {
     font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--accent);
+    color: #FF4C00;
     position: relative;
     padding-bottom: 0.4rem;
     margin: 0 0 1rem 0;
