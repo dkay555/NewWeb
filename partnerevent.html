@@ -12,6 +12,13 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        nav a:hover {
+            background: var(--primary) !important;
+            color: white !important;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -26,14 +33,14 @@
     </section>
 
     <!-- Navigation -->
-    <nav class="sticky">
-        <div class="wrap">
-            <a href="#ueberblick">Überblick</a>
-            <a href="#ablauf">Ablauf</a>
-            <a href="#pricing">Preise</a>
-            <a href="#rewards">Belohnungen</a>
-            <a href="#faq">FAQ</a>
-        </div>
+    <nav style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem; position: sticky; top: 0; z-index: 999; border-bottom: 1px solid #eaeaea;">
+        <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none; flex-wrap: wrap; margin: 0; padding: 0;">
+            <li><a href="#ueberblick" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">📋 Überblick</a></li>
+            <li><a href="#ablauf" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">👥 Ablauf</a></li>
+            <li><a href="#pricing" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">💰 Preise</a></li>
+            <li><a href="#rewards" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">🏆 Belohnungen</a></li>
+            <li><a href="#faq" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">❓ FAQ</a></li>
+        </ul>
     </nav>
 
     <!-- Main Content -->
@@ -168,7 +175,7 @@
 
         <!-- Rewards -->
         <section id="rewards" style="margin-top: 3rem;">
-            <h2 class="section-title">Belohnungen im Partnerevent</h2>
+            <h2 class="babix-info-header">Belohnungen im Partnerevent</h2>
             <div class="card">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
                     <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #FF4C00, #FF8033); color: white; border-radius: 1rem;">
@@ -199,7 +206,7 @@
 
         <!-- FAQ -->
         <section id="faq" style="margin-top: 3rem;">
-            <h2 class="section-title">Häufig gestellte Fragen</h2>
+            <h2 class="babix-info-header">Häufig gestellte Fragen</h2>
             
             <div class="faq-item">
                 <div class="faq-question">
