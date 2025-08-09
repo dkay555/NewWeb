@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
-const { createPaypalOrder, capturePaypalOrder, loadPaypalDefault } = require('./server/paypal');
+// Use simplified PayPal routes for now to avoid authentication issues
+const paypalRoutes = require('./server/paypal-simple');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -11,18 +12,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('.'));
 
 // PayPal routes
-app.get('/paypal/setup', async (req, res) => {
-    await loadPaypalDefault(req, res);
-});
-
-app.post('/paypal/order', async (req, res) => {
-    // Request body should contain: { intent, amount, currency }
-    await createPaypalOrder(req, res);
-});
-
-app.post('/paypal/order/:orderID/capture', async (req, res) => {
-    await capturePaypalOrder(req, res);
-});
+app.get('/paypal/setup', paypalRoutes.setup);
+app.post('/paypal/order', paypalRoutes.createOrder);
+app.post('/paypal/order/:orderID/capture', paypalRoutes.captureOrder);
 
 // Serve static files
 app.get('/', (req, res) => {

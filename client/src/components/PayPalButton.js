@@ -93,51 +93,61 @@ class PayPalButton {
     }
 
     return new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = process.env.NODE_ENV === 'production' 
-        ? 'https://www.paypal.com/web-sdk/v6/core'
-        : 'https://www.sandbox.paypal.com/web-sdk/v6/core';
-      script.async = true;
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error('Failed to load PayPal SDK'));
-      document.body.appendChild(script);
+      // Get client ID from server for proper PayPal SDK loading
+      fetch('/paypal/setup')
+        .then(res => res.json())
+        .then(data => {
+          const script = document.createElement('script');
+          script.src = `https://www.paypal.com/sdk/js?client-id=${data.clientId || 'demo_client_id'}&currency=EUR&intent=capture`;
+          script.async = true;
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error('Failed to load PayPal SDK'));
+          document.body.appendChild(script);
+        })
+        .catch(err => reject(err));
     });
   }
 
   async initPayPal() {
     try {
-      const clientToken = await fetch('/paypal/setup')
-        .then((res) => res.json())
-        .then((data) => data.clientToken);
-
-      const sdkInstance = await (window).paypal.createInstance({
-        clientToken,
-        components: ['paypal-payments'],
-      });
-
-      const paypalCheckout = sdkInstance.createPayPalOneTimePaymentSession({
-        onApprove: (data) => this.onApprove(data),
-        onCancel: (data) => this.onCancelHandler(data),
-        onError: (error) => this.onErrorHandler(error),
-      });
-
-      const onClick = async () => {
-        try {
-          const checkoutOptionsPromise = this.createOrder();
-          await paypalCheckout.start(
-            { paymentFlow: 'auto' },
-            checkoutOptionsPromise,
-          );
-        } catch (error) {
-          this.onError(error);
-        }
-      };
-
-      if (this.container) {
+      if (this.container && (window).paypal) {
+        // Clear container
+        this.container.innerHTML = '';
+        
+        // Create PayPal button using the standard SDK
+        (window).paypal.Buttons({
+          createOrder: async () => {
+            const orderData = await this.createOrder();
+            return orderData.orderId;
+          },
+          onApprove: async (data) => {
+            return this.onApprove(data);
+          },
+          onCancel: (data) => {
+            this.onCancelHandler(data);
+          },
+          onError: (error) => {
+            this.onErrorHandler(error);
+          },
+          style: {
+            color: 'blue',
+            shape: 'rect',
+            label: 'pay'
+          }
+        }).render(this.container);
+      } else {
+        // Fallback button if PayPal SDK fails
         this.container.innerHTML = '<button id="paypal-button" class="paypal-button">Mit PayPal bezahlen</button>';
         const paypalButton = this.container.querySelector('#paypal-button');
         if (paypalButton) {
-          paypalButton.addEventListener('click', onClick);
+          paypalButton.addEventListener('click', async () => {
+            try {
+              const orderData = await this.createOrder();
+              await this.onApprove({ orderId: orderData.orderId });
+            } catch (error) {
+              this.onError(error);
+            }
+          });
         }
       }
     } catch (error) {
