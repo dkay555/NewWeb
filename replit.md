@@ -16,6 +16,14 @@ The website is built using vanilla HTML, CSS, and JavaScript with no frameworks 
 - **Mobile-First Responsive Design**: CSS uses modern techniques like CSS Grid and Flexbox with media queries for responsive behavior
 - **Progressive Enhancement**: Core functionality works without JavaScript, with JavaScript enhancing user experience
 
+## Backend Architecture (Added August 2025)
+The project now includes an Express.js server for handling PayPal payment processing:
+
+- **Express Server**: Node.js server (server.js) handling PayPal API integration and serving static files
+- **PayPal Server SDK**: Secure server-side payment processing with @paypal/paypal-server-sdk
+- **Client-Side Payment Components**: JavaScript PayPal button component for seamless payment experience
+- **RESTful API Endpoints**: `/paypal/setup`, `/paypal/order`, `/paypal/order/:orderID/capture` for payment processing
+
 ## Styling System
 - **CSS Custom Properties**: Consistent color palette and spacing using CSS variables (--primary: #0A3A68, --accent: #FF4C00, --cyan: #00CFFF)
 - **Typography**: Google Fonts integration with Nunito Sans for body text and Baloo 2 for headings
@@ -34,7 +42,10 @@ The website is built using vanilla HTML, CSS, and JavaScript with no frameworks 
 # External Dependencies
 
 ## Payment Integration
-- **PayPal Server SDK**: Integrated for payment processing (@paypal/paypal-server-sdk v1.1.0) suggesting e-commerce functionality
+- **PayPal Server SDK**: Fully integrated modern PayPal payment system (@paypal/paypal-server-sdk v1.1.0)
+- **Secure Payment Processing**: Server-side order creation and capture with environment-based sandbox/production switching
+- **Modern Payment UX**: Client-side PayPal button component with seamless checkout flow
+- **Express.js Backend**: RESTful API endpoints for secure payment processing
 
 ## Font Services
 - **Google Fonts**: Nunito Sans and Baloo 2 font families loaded from Google Fonts CDN
@@ -46,9 +57,16 @@ The website is built using vanilla HTML, CSS, and JavaScript with no frameworks 
 - **Email**: Standard email contact (info@babixgo.de)
 
 ## Third-Party Services
-The architecture suggests integration points for:
-- Payment processing through PayPal
-- Potential order management system (evidenced by bestellformular.html order form)
-- Customer communication through multiple messaging platforms
+The architecture includes active integrations for:
+- **PayPal Payment Processing**: Complete server-side integration with secure payment handling
+- **Order Management System**: bestellformular.html order form with PayPal integration for payment confirmation
+- **Customer Communication**: Multiple messaging platforms (WhatsApp, Facebook Messenger, Email)
+
+## Recent Changes (August 2025)
+- **Modern PayPal Integration**: Upgraded from legacy hosted buttons to full server-side PayPal SDK integration
+- **Express.js Backend**: Added Node.js/Express server for handling payment processing
+- **Component Architecture**: Created reusable PayPal button component for consistent payment experience
+- **API Endpoints**: Implemented secure REST API for payment creation and capture
+- **Enhanced UX**: Seamless payment flow with proper error handling and success redirects
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.

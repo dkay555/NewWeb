@@ -200,19 +200,43 @@ function showMessage(text, type) {
     }
 }
 
-// PayPal integration helper
-function createPayPalButton(productName, price, currency = 'EUR') {
-    return `
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID">
-            <input type="hidden" name="custom" value="${productName}">
-            <input type="hidden" name="return" value="${window.location.origin}/bestellformular.html?product=${encodeURIComponent(productName)}&price=${price}">
-            <input type="hidden" name="cancel_return" value="${window.location.href}">
-            <input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal.">
-            <img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1">
-        </form>
-    `;
+// Modern PayPal integration helper
+function createPayPalButton(container, productName, price, currency = 'EUR') {
+    // Create PayPal button instance
+    const paypalButton = new window.PayPalButton(container, {
+        amount: price.toString(),
+        currency: currency,
+        intent: 'CAPTURE',
+        onSuccess: function(orderData) {
+            // Redirect to success page with order details
+            window.location.href = `/bestellformular.html?product=${encodeURIComponent(productName)}&price=${price}&status=success&orderId=${orderData.id}`;
+        },
+        onError: function(error) {
+            console.error('PayPal Error:', error);
+            showMessage('Es gab einen Fehler bei der Zahlung. Bitte versuchen Sie es erneut.', 'error');
+        },
+        onCancel: function(data) {
+            showMessage('Zahlung wurde abgebrochen.', 'error');
+        }
+    });
+    
+    return paypalButton;
+}
+
+// Initialize PayPal buttons on product pages
+function initPayPalButtons() {
+    // Check if we're on a product page and PayPal component is available
+    if (typeof window.PayPalButton !== 'undefined') {
+        const paypalContainers = document.querySelectorAll('.paypal-container');
+        
+        paypalContainers.forEach(container => {
+            const productName = container.dataset.product || 'Monopoly GO Service';
+            const price = container.dataset.price || '10.00';
+            const currency = container.dataset.currency || 'EUR';
+            
+            createPayPalButton(container, productName, price, currency);
+        });
+    }
 }
 
 // Get URL parameters
@@ -244,7 +268,18 @@ function initPage() {
         
         initOrderForm();
     }
+    
+    // Initialize PayPal buttons
+    initPayPalButtons();
 }
 
-// Call initPage when DOM is loaded
-document.addEventListener('DOMContentLoaded', initPage);
+// Load PayPal component and initialize page
+document.addEventListener('DOMContentLoaded', function() {
+    // Load PayPal Button component
+    const script = document.createElement('script');
+    script.src = '/client/src/components/PayPalButton.js';
+    script.onload = function() {
+        initPage();
+    };
+    document.head.appendChild(script);
+});

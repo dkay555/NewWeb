@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@paypal/paypal-server-sdk": "^1.1.0",
-    "@replit/vite-plugin-cartographer": "^0.2.8"
+    "@replit/vite-plugin-cartographer": "^0.2.8",
+    "express": "^5.1.0"
   }
 }
