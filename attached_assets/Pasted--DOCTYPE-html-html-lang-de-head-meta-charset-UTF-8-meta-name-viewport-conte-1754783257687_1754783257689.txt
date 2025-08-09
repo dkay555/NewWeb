@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Würfel für deinen Monopoly GO-Account | babixGO</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cyan:#00CFFF;
+      --blue:#0A3A68;
+      --orange:#FF4C00;
+      --bg:#e9f8ff;
+      --card:#ffffff;
+      --muted:#5c7a99;
+      --success:#16a34a;
+      --warning-bg:#ffe7e7;
+      --warning-text:#9b1c1c;
+      --warning-border:#b91c1c;
+      --info-bg:#dff7ff;
+      --info-text:#0a3a68;
+      --info-border:#00cfff;
+      --radius:18px;
+      --shadow:0 10px 24px rgba(10,58,104,.12);
+    }
+
+    * { box-sizing:border-box; }
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      font-family:'Nunito Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--blue);
+      line-height:1.55;
+    }
+
+    /* Header */
+    header{ background:var(--blue); color:#fff; }
+    .wrap{ max-width:1000px; margin:0 auto; padding:0 18px; }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+    .brand{ font-family:'Baloo 2',cursive; font-size:1.4rem; letter-spacing:.4px; }
+    .nav a{ color:#fff; text-decoration:none; opacity:.9; }
+    .nav a:hover{ opacity:1; text-decoration:underline; }
+
+    /* Hero */
+    .hero{ background:linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); padding:34px 0 22px; }
+    h1,h2,h3{ font-family:'Baloo 2',cursive; margin:0 0 10px; color:var(--blue); }
+    h1{ font-size:2.1rem; }
+    h2{ font-size:1.55rem; margin-top:24px; }
+    p.lead{ font-size:1.05rem; color:var(--muted); margin:8px 0 18px; }
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:700; border:0; cursor:pointer; transition:transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease; box-shadow:var(--shadow); }
+    .btn:active{ transform:translateY(1px); }
+    .btn-primary{ background:var(--orange); color:#fff; }
+    .btn-outline{ background:#fff; color:var(--blue); border:2px solid var(--cyan); }
+    .btn-primary:hover{ filter:brightness(.98); }
+    .btn-outline:hover{ background:var(--cyan); color:#00324f; }
+
+    /* Sections */
+    section{ padding:22px 0; }
+    .card{ background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px; }
+
+    .info, .warning{ border-radius:14px; padding:14px 16px; margin:10px 0 0; border:2px solid transparent; }
+    .info{ background:var(--info-bg); color:var(--info-text); border-color:var(--info-border); }
+    .warning{ background:var(--warning-bg); color:var(--warning-text); border-color:var(--warning-border); }
+
+    /* Grid */
+    .grid{ display:grid; gap:16px; grid-template-columns:repeat(12,1fr); }
+    .col-12{ grid-column:span 12; }
+    @media (min-width: 820px){ .col-6{ grid-column:span 6; } .col-4{ grid-column:span 4; } }
+
+    /* Methods */
+    .method{ display:flex; flex-direction:column; gap:10px; }
+    .price{ font-weight:800; font-size:1.2rem; color:var(--orange); }
+    .muted{ color:var(--muted); font-size:.95rem; }
+    .badge{ display:inline-block; font-size:.8rem; font-weight:800; background:var(--cyan); color:#00324f; padding:4px 10px; border-radius:999px; }
+    .list{ margin:0; padding-left:18px; }
+    .list li{ margin:4px 0; }
+
+    footer{ padding:32px 0; color:#376089; text-align:center; }
+    footer a{ color:#376089; }
+    .foot-note{ font-size:.85rem; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">babixGO</div>
+      <nav>
+        <a href="#ablauf">Ablauf</a> &nbsp;·&nbsp;
+        <a href="#methoden">Methoden im Überblick</a> &nbsp;·&nbsp;
+        <a href="#mehrinfos">Mehr Infos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="wrap">
+        <h1>Würfel für deinen Monopoly GO-Account</h1>
+        <p class="lead">
+          Ohne Würfel läuft in Monopoly GO (MoGo) nichts – sie sind das wichtigste Werkzeug, um Events erfolgreich
+          abzuschließen und Alben zu vervollständigen. Hier erfährst du, welche Möglichkeiten es derzeit gibt,
+          damit dir deine Würfel nicht ausgehen.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#ablauf">Jetzt kaufen</a>
+          <a class="btn btn-outline" href="#ablauf">Ablauf</a>
+          <a class="btn btn-outline" href="#methoden">Methoden im Überblick</a>
+          <a class="btn btn-outline" href="#mehrinfos">Mehr Infos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- VORAUSSETZUNGEN -->
+    <section id="voraussetzungen">
+      <div class="wrap">
+        <div class="card">
+          <h2>Voraussetzungen</h2>
+          <p><strong>Für alle Methoden gilt:</strong></p>
+          <ul class="list">
+            <li>Dein Account muss mit <strong>Facebook</strong> oder <strong>Google Play Games</strong> verknüpft sein <strong>&amp; wir müssen uns in diesen Account einloggen</strong>.</li>
+
+          </ul>
+          <div class="info">📌 <strong>Hinweis:</strong> Facebook-Zugangsdaten sind <em>nicht zwingend</em> erforderlich. Mehr dazu findest du <a href="#mehrinfos"><strong>hier</strong></a>.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODEN -->
+    <section id="methoden">
+      <div class="wrap">
+        <h2>Methoden im Überblick</h2>
+        <div class="grid" style="margin-top:10px">
+          <div class="col-12 col-4">
+            <div class="card method">
+              <h3>1) Schnell & günstig</h3>
+              <div class="price">ab 25€</div>
+              <ul class="list">
+                <li><strong>Dauer:</strong> ca. 30 Minuten</li>
+                <li><strong>Menge:</strong> 25k / 50k / 75k Würfel</li>
+                <li><strong>Preisstaffel:</strong> 1€ pro 1.000 Würfel (ab 25k)</li>
+                <li><strong>Besonderheit:</strong> Suspendierung <u>garantiert</u> – geeignet für Accounts, die bisher nie oder nur einmal gesperrt waren</li>
+                <li><strong>Voraussetzung:</strong> High Roller aktiv + ≥ 400 Würfel vorhanden</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-4">
+            <div class="card method">
+              <h3>2) Mittelweg</h3>
+              <div class="price">25€</div>
+              <ul class="list">
+                <li><strong>Dauer:</strong> 60–90 Minuten</li>
+                <li><strong>Menge:</strong> 10k–12k Würfel</li>
+                <li><strong>Risiko:</strong> ca. 7% Suspendierung</li>
+                <li><strong>Zielgruppe:</strong> Spieler, die schnelle Ergebnisse wünschen</li>
+                <li class="muted">Ab dem 2. Kauf: 20€ pro Account</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-12 col-4">
+            <div class="card method">
+              <h3>3) Sicherste Methode</h3>
+              <div class="price">30€</div>
+              <ul class="list">
+                <li><strong>Dauer:</strong> mind. 36 Stunden</li>
+                <li><strong>Menge:</strong> 10k Würfel garantiert; bei wiederholten Boosts mehr möglich</li>
+                <li><strong>Besonderheit:</strong> Keine bekannte Sperre; alle Ingame-Aufgaben werden von uns übernommen</li>
+                <li class="muted">Ab dem 2. Kauf: 25€ pro Account</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="risiko" class="warning" style="margin-top:16px">
+          ⚠️ <strong>Achtung:</strong> Das <strong>Risiko einer Suspendierung</strong> variiert je nach Methode und kann sich kurzfristig ändern. Mehr Infos haben wir dazu <a href="#risiko">hier</a> zusammengefasst.
+        </div>
+      </div>
+    </section>
+
+    <!-- ABLAUF -->
+    <section id="ablauf">
+      <div class="wrap grid">
+        <div class="col-12 col-6">
+          <div class="card">
+            <h2>Ablauf</h2>
+            <h3 style="margin-top:8px">1) Vorbereitung einer „ungenutzten, sicheren Umgebung“</h3>
+            <p>Dein Account wird so eingerichtet, dass es für Scopely wirkt, als würdest du auf einem neuen Gerät spielen. Dadurch vermeiden wir unnötige Multi-Account-Flags.</p>
+            <h3>2) Login</h3>
+            <ul class="list">
+              <li><strong>Facebook/Google-Login:</strong> Einfach und schnell; ggf. mit Bestätigung.</li>
+              <li><strong>Facebook-Authtoken:</strong> Anleitung folgt; nur 4 einfache Schritte. Unterstützung inklusive.</li>
+            </ul>
+            <h3>3) Durchführung</h3>
+            <p>Wir erspielen für dich Würfel, Eventwährung, Tagesaufgaben und weitere Belohnungen.</p>
+          </div>
+        </div>
+        <div class="col-12 col-6">
+          <div id="mehrinfos" class="card">
+            <h2>Mehr Infos</h2>
+            <ul class="list">
+              <li><a href="#" title="Infobox – Login ohne Zugangsdaten">Infobox: Login ohne direkte Zugangsdaten</a></li>
+              <li><a href="#risiko" title="Risiko &amp; Sicherheit">Mehr zum Thema Suspendierung &amp; Sicherheit</a></li>
+              <li><a href="#" title="Kontakt">Kontakt aufnehmen</a></li>
+              <li><a href="#" title="AGB/FAQ">AGB / FAQ</a></li>
+              <li><a href="#" title="Datenschutz">Datenschutz</a></li>
+            </ul>
+            <div class="info">Tipp: Nach dem Kauf erhältst du eine kurze Checkliste, damit wir direkt loslegen können.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p class="foot-note">© <span id="year"></span> babixGO · Inoffizieller Service für Monopoly GO</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
