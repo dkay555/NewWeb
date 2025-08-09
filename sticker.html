@@ -1,250 +1,288 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Shop - babixGO</title>
-    <meta name="description" content="Exklusive Monopoly GO Sticker-Sammlungen für deine Alben. Seltene und wertvolle Sticker bei babixGO.">
-    
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sticker | babixGO</title>
+  <meta name="description" content="Sticker für Monopoly GO – 1 bis 6 Sterne, Normal & Gold. Schnell bestellen über babixGO." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* babixGO Styleguide - adapted from existing project */
+      --primary:#0A3A68;
+      --accent:#FF4C00;
+      --cyan:#00CFFF;
+      --bg:#e0f7ff;
+      --card:#ffffff;
+      --text:#0A3A68;
+      --muted:#6b89a8;
+      --ring:rgba(10,58,104,.12);
+      --radius:18px;
+      --shadow:0 10px 24px rgba(10,58,104,.12);
+      --shadow-lg:0 18px 40px rgba(10,58,104,.18);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:'Nunito Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.55;
+    }
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{position:sticky;top:0;z-index:10;background:linear-gradient(0deg,rgba(224,247,255,.6),rgba(224,247,255,.9));backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--ring)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-family:'Baloo 2',cursive;font-size:1.25rem}
+    .nav a{color:var(--text);text-decoration:none;font-weight:700}
+    .btn{appearance:none;border:0;border-radius:999px;padding:12px 18px;font-weight:800;cursor:pointer;transition:.2s transform,.2s box-shadow;text-decoration:none;display:inline-flex;align-items:center;gap:10px}
+    .btn:active{transform:translateY(1px)}
+    .btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 20px rgba(255,76,0,.35)}
+    .btn-primary:hover{box-shadow:0 10px 26px rgba(255,76,0,.5)}
+    .btn-outline{background:#fff;color:var(--text);border:2px solid var(--text)}
+    .badge{display:inline-block;background:var(--cyan);color:#00324f;padding:6px 12px;border-radius:999px;font-weight:800}
+
+    /* Hero */
+    .hero{position:relative;isolation:isolate}
+    .hero-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:center}
+    .hero-card{
+      background:linear-gradient(180deg,#fff, #f7fcff);
+      border-radius:calc(var(--radius) + 6px);
+      box-shadow:var(--shadow-lg); padding:28px;
+      border:1px solid var(--ring);
+    }
+    .hero h1{
+      font-family:'Baloo 2',cursive; font-size: clamp(1.9rem, 1.1rem + 2.5vw, 3rem);
+      line-height:1.1; margin:0 0 8px;
+    }
+    .hero p{margin:8px 0 18px;color:#09406e}
+    .hero img{
+      width:100%; height:auto; display:block;
+      border-radius:calc(var(--radius) + 10px);
+      box-shadow:var(--shadow-lg); border:1px solid var(--ring);
+    }
+
+    /* Section */
+    section{padding:38px 0}
+    h2{font-family:'Baloo 2',cursive;font-size:clamp(1.4rem,1.1rem + 1.2vw,2rem);margin:0 0 14px}
+    .lead{color:#083458}
+
+    /* Preise */
+    .prices{background:radial-gradient(1200px 400px at 10% -20%, rgba(0,207,255,.25), transparent), radial-gradient(900px 380px at 110% -25%, rgba(255,76,0,.17), transparent);}
+    .table-wrap{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--ring);overflow:hidden}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:14px 14px;text-align:left}
+    thead th{background:#f3fbff;color:#06375e;font-weight:800}
+    tbody tr{border-top:1px solid #e9f2f9}
+    tbody tr:hover{background:#f9fdff}
+    .col-stars{font-weight:800}
+    .note{margin-top:10px;color:var(--muted);font-size:.95rem}
+
+    /* Info / Hinweis */
+    .callout{
+      margin-top:18px;background:#fff4f2;color:#6a1a00;border:2px solid #ffb5a2;
+      border-radius:var(--radius);padding:14px 16px;font-weight:700;
+    }
+
+    /* Kontakt */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--ring);padding:18px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+    .btn-whatsapp{background:#25D366;color:#063a11;font-weight:900}
+    .btn-messenger{background:#0084FF;color:#fff;font-weight:900}
+
+    /* Formular */
+    form{display:grid;gap:12px;margin-top:8px}
+    label{font-weight:700}
+    input, textarea{
+      width:100%;padding:12px 14px;border-radius:14px;border:1.8px solid #cfe8f6;background:#fff;outline:none;
+      font:inherit
+    }
+    input:focus, textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 4px rgba(0,207,255,.18)}
+    .help{color:var(--muted);font-size:.92rem}
+
+    /* Footer */
+    footer{padding:40px 0 24px;color:#0a355e;text-align:center}
+
+    @media (max-width: 920px){
+      .hero-wrap{grid-template-columns:1fr;gap:18px}
+      header .nav{flex-wrap:wrap}
+      .contact-grid{grid-template-columns:1fr}
+    }
+  </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>babixGO Sticker Shop</h1>
-        <p>Exklusive Sticker-Sammlungen für deine Monopoly GO Alben. Seltene und wertvolle Sticker für Sammler und Strategiespieler.</p>
-        <a href="#pricing" class="btn-primary">Sticker entdecken</a>
-    </section>
-
-    <!-- Navigation -->
-    <nav class="sticky">
-        <div class="wrap">
-            <a href="#product">Produkt</a>
-            <a href="#description">Beschreibung</a>
-            <a href="#rewards">Belohnungen</a>
-            <a href="#pricing">Preise</a>
-            <a href="#faq">FAQ</a>
+  
+  <div id="header-placeholder"></div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-wrap">
+      <div class="hero-card">
+        
+        <h1>Sticker für deinen Set Abschluss!</h1>
+        <p class="lead">Egal ob <strong>1 Stern</strong> oder <strong>6 Sterne</strong>, ob <strong>Normal</strong> oder <strong>Gold</strong> – <strong>wir haben sie alle!</strong></p>
+        <div class="cta-row">
+          <a href="#preise" class="btn btn-primary">Jetzt kaufen</a>
         </div>
-    </nav>
+      </div>
 
-    <!-- Main Content -->
-    <main class="product-section">
-        <!-- Product Overview -->
-        <section id="product" class="split" style="margin-bottom: 3rem;">
+      <!-- Hero-Bild – ersetze src durch deinen finalen Pfad -->
+      <img
+        src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?q=80&w=600&auto=format&fit=crop"
+        alt="Sticker Packs – Blau, Lila & Regenbogen (Hero)"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <!-- Preise -->
+  <section id="preise" class="prices">
+    <div class="container">
+      <h2>Preise</h2>
+      <p class="lead"><strong>Bitte beachten:</strong> Gold Sticker können nur während des <em>Goldenen Blitz</em> verschickt werden.</p>
+
+      <div class="table-wrap">
+        <table aria-describedby="price-note">
+          <thead>
+            <tr>
+              <th class="col-stars">Sterne</th>
+              <th>Preis Normal</th>
+              <th>Preis Gold</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-stars">1–3</td>
+              <td>3&nbsp;€</td>
+              <td>–</td>
+            </tr>
+            <tr>
+              <td class="col-stars">4</td>
+              <td>4&nbsp;€</td>
+              <td>6&nbsp;€</td>
+            </tr>
+            <tr>
+              <td class="col-stars">5</td>
+              <td>5&nbsp;€</td>
+              <td>7,50&nbsp;€</td>
+            </tr>
+            <tr>
+              <td class="col-stars">6</td>
+              <td>6&nbsp;€</td>
+              <td>9&nbsp;€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt">
+    <div class="container">
+      <h2>Kontakt & Bestellung</h2>
+      <div class="contact-grid">
+            <div class="callout">
+        Um einen reibungslosen Ablauf zu gewährleisten und Problemen mit dem täglichen Sendelimit zu umgehen schick uns bitte eine Nachricht mit dem Namen + Set des Stickers den du benötigst. <br>
+         Über folgende Wege kannst du uns kontaktieren: 
+        </div>
+        <!-- Direkt-Kontakt -->
+        <div class="card">
+          <h3 style="margin-top:0">Direktchat</h3>
+          <p class="help"></p>
+          <div class="cta-row">
+            <a class="btn btn-whatsapp" target="_blank" rel="noopener"
+               href="https://wa.me/4915237250453?text=Hi%20babixGO%2C%20ich%20brauche%20folgenden%20Sticker%3A%20%5BName%5D%20–%20Set%3A%20%5BSet-Nummer%2FName%5D.%20Sterne%3A%20%5B1-6%5D%20%7C%20Normal%2FGold.">
+              WhatsApp
+            </a>
+            <a class="btn btn-messenger" target="_blank" rel="noopener"
+               href="https://m.me/babixGO">
+              Messenger
+            </a>
+          </div>
+        </div>
+
+        <!-- Formular -->
+        <div class="card">
+          <h3 style="margin-top:0">Kontaktformular</h3>
+          <form id="contactForm" novalidate>
             <div>
-                <h2 class="babix-info-header">Premium Sticker-Sammlungen</h2>
-                <p>Vervollständige deine Monopoly GO Alben mit unseren exklusiven Sticker-Paketen:</p>
-                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
-                    <li>🌟 Seltene und legendäre Sticker</li>
-                    <li>📚 Komplette Album-Sets verfügbar</li>
-                    <li>🎁 Bonus-Sticker bei größeren Paketen</li>
-                    <li>⚡ Sofortige Lieferung nach Zahlung</li>
-                    <li>🔒 100% sichere Übertragung</li>
-                </ul>
-                <div class="info-box">
-                    <strong>💎 Besonderes Angebot:</strong> Bei Bestellung von 3 oder mehr Sticker-Paketen erhältst du automatisch 2 Bonus-Sticker gratis!
-                </div>
+              <label for="email">E-Mail</label>
+              <input id="email" name="email" type="email" placeholder="dein.name@mail.de" required />
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?q=80&w=600&auto=format&fit=crop" alt="Monopoly GO Sticker" style="width: 100%; border-radius: 1rem;">
+              <label for="ign">Ingame-Name</label>
+              <input id="ign" name="ign" type="text" placeholder="Dein Ingame-Name" required />
             </div>
-        </section>
+            <div>
+              <label for="friend">Freundschaftslink</label>
+              <input id="friend" name="friend" type="url" placeholder="https://link.monopolygo.com/..." required />
+            </div>
+            <div>
+              <label for="details">Sticker (Name & Set)</label>
+              <textarea id="details" name="details" rows="3" placeholder="z. B. Starfish – Set 7, 5-Sterne Gold"></textarea>
+            </div>
+            <div class="cta-row">
+              <button class="btn btn-primary" type="submit">Anfrage senden</button>
+              <span class="help" id="formHelp" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Description -->
-        <section id="description" style="margin-bottom: 3rem;">
-            <h2 class="babix-info-header">So funktioniert der Sticker-Service</h2>
-            <div class="card">
-                <div class="info-box">
-                    <h3 class="babix-info-header">📋 Einfacher Ablauf</h3>
-                    <ol style="margin: 1rem 0; padding-left: 1.5rem;">
-                        <li>Wähle dein gewünschtes Sticker-Paket</li>
-                        <li>Bezahle sicher über PayPal</li>
-                        <li>Teile uns mit, welche Sticker du benötigst</li>
-                        <li>Wir senden dir die Sticker direkt im Spiel</li>
-                        <li>Vervollständige deine Alben und kassiere Belohnungen!</li>
-                    </ol>
-                </div>
-                
-                <p>Unsere Sticker-Experten kennen alle aktuellen Alben und können dir <span class="highlight">gezielt die fehlenden Sticker</span> für deine Sammlungen liefern. Egal ob du komplette Sets oder nur einzelne seltene Sticker suchst.</p>
-                
-                <div class="warning-box">
-                    <strong>⚠️ Hinweis:</strong> Bitte gib im Bestellformular genau an, welche Sticker du benötigst. Je genauer deine Angaben, desto schneller können wir liefern.
-                </div>
-            </div>
-        </section>
+  <footer>
+    <div class="container">
+      <small>© <span id="y"></span> babixGO – Monopoly GO Service</small>
+    </div>
+  </footer>
 
-        <!-- Rewards Section -->
-        <section id="rewards" style="margin-bottom: 3rem;">
-            <h2 class="babix-info-header">Vorteile kompletter Sticker-Alben</h2>
-            <div class="card">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #FF4C00; margin-bottom: 0.5rem;">🏆 Album-Belohnungen</h3>
-                        <p>Erhalte wertvolle Belohnungen wie Würfel, Geld und exklusive Items für jedes vervollständigte Album.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #00CFFF; margin-bottom: 0.5rem;">⭐ Sterne-System</h3>
-                        <p>Sammle Sterne für vervollständigte Alben und steige in den Ranglisten auf für noch bessere Belohnungen.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #0A3A68; margin-bottom: 0.5rem;">🎁 Bonus-Events</h3>
-                        <p>Zugang zu exklusiven Events und Aktionen, die nur für Spieler mit vervollständigten Alben verfügbar sind.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <script>
+    // Jahr
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-        <!-- Pricing -->
-        <section id="pricing" class="pricing-table">
-            <h2 class="babix-info-header">Unsere Sticker-Pakete</h2>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Paket</th>
-                            <th>Sticker-Anzahl</th>
-                            <th>Seltene Sticker</th>
-                            <th>Preis</th>
-                            <th>Aktion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Basis Paket</strong></td>
-                            <td>10 Sticker</td>
-                            <td>2-3 seltene</td>
-                            <td><strong>€12.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="STICKER_BASIS_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Sticker Basis Paket (10 Sticker)">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Sticker%20Basis%20Paket&price=12.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/sticker.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Premium Paket</strong></td>
-                            <td>25 Sticker</td>
-                            <td>8-10 seltene</td>
-                            <td><strong>€24.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="STICKER_PREMIUM_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Sticker Premium Paket (25 Sticker)">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Sticker%20Premium%20Paket&price=24.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/sticker.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Ultimate Paket</strong></td>
-                            <td>50 Sticker</td>
-                            <td>20+ seltene</td>
-                            <td><strong>€39.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="STICKER_ULTIMATE_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Sticker Ultimate Paket (50 Sticker)">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Sticker%20Ultimate%20Paket&price=39.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/sticker.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Komplett-Album</strong></td>
-                            <td>Vollständiges Album</td>
-                            <td>Alle seltenen</td>
-                            <td><strong>€69.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="STICKER_KOMPLETT_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Sticker Komplett-Album">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Sticker%20Komplett-Album&price=69.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/sticker.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="info-box" style="margin-top: 1rem;">
-                <strong>🎁 Bonus-Angebot:</strong> Bei 3+ Paketen bekommst du 2 Bonus-Sticker gratis dazu!
-            </div>
-        </section>
+    // Formular – öffnet vorgefüllte WhatsApp, fällt auf Mailto zurück
+    const form = document.getElementById('contactForm');
+    const help = document.getElementById('formHelp');
 
-        <!-- FAQ -->
-        <section id="faq" style="margin-top: 3rem;">
-            <h2 class="section-title">Häufig gestellte Fragen</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    Kann ich spezifische Sticker anfordern?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Ja! Im Bestellformular kannst du genau angeben, welche Sticker du benötigst. Wir haben Zugang zu fast allen verfügbaren Stickern und können gezielt liefern.</p>
-                </div>
-            </div>
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = new FormData(form);
+      const email = (data.get('email') || '').trim();
+      const ign = (data.get('ign') || '').trim();
+      const friend = (data.get('friend') || '').trim();
+      const details = (data.get('details') || '').trim();
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    Wie werden die Sticker übertragen?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Die Sticker werden direkt über das Freundschaftssystem im Spiel gesendet. Du erhältst sie als Geschenke von unseren Service-Accounts.</p>
-                </div>
-            </div>
+      if(!email || !ign || !friend){
+        help.textContent = 'Bitte fülle E-Mail, Ingame-Name und Freundschaftslink aus.';
+        return;
+      }
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    Sind alle Sticker garantiert verfügbar?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Wir haben Zugang zu über 95% aller Sticker. In seltenen Fällen, wo bestimmte Sticker nicht verfügbar sind, bieten wir gleichwertige Alternativen oder eine Rückerstattung an.</p>
-                </div>
-            </div>
+      const msg = `Neue Sticker-Anfrage:%0A` +
+                  `E-Mail: ${encodeURIComponent(email)}%0A` +
+                  `IGN: ${encodeURIComponent(ign)}%0A` +
+                  `Link: ${encodeURIComponent(friend)}%0A` +
+                  `Sticker: ${encodeURIComponent(details || '-')}`;
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    Wie lange dauert die Lieferung?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Die meisten Sticker-Lieferungen erfolgen innerhalb von 2-6 Stunden nach Zahlungseingang. Größere Pakete können bis zu 24 Stunden dauern.</p>
-                </div>
-            </div>
+      // Versuch WhatsApp
+      const wa = `https://wa.me/4915237250453?text=${msg}`;
+      window.open(wa, '_blank', 'noopener');
 
-            <div class="faq-item">
-                <div class="faq-question">
-                    Was ist mit doppelten Stickern?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Wir vermeiden doppelte Sticker, soweit möglich. Falls du trotzdem Duplikate erhältst, kannst du diese für Sterne tauschen oder an Freunde weitergeben.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+      // Optional: Fallback Mailto (Passe Empfänger an)
+      const mail = `mailto:service@babixgo.de?subject=Sticker%20Bestellung&body=${msg}`;
+      setTimeout(()=>window.location.href = mail, 400);
 
-    <div id="footer-placeholder"></div>
-    <script src="js/main.js"></script>
+      help.textContent = 'Danke! WhatsApp/Mail wird geöffnet…';
+      form.reset();
+    }, {passive:false});
+  </script>
+  
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
 </body>
 </html>
