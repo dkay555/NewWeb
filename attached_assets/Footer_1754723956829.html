@@ -1,0 +1,144 @@
+<footer class="babixgo-footer">
+  <div class="babixgo-footer__content">
+    <!-- Kontakt-Buttons -->
+    <div class="babixgo-footer__contactrow">
+      <a href="https://wa.me/4915237250453" target="_blank" class="babixgo-footer__btn whatsapp">
+        <span class="babixgo-footer__icon" style="display:inline-flex;align-items:center;">
+          <!-- WhatsApp SVG (weiß) -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#fff" viewBox="0 0 256 256">
+            <path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.61-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"/>
+          </svg>
+        </span>
+        WhatsApp
+      </a>
+      <a href="https://m.me/babixgo" target="_blank" class="babixgo-footer__btn facebook">
+        <span class="babixgo-footer__icon material-icons">facebook</span>
+        Messenger
+      </a>
+      <a href="mailto:info@babixgo.de" class="babixgo-footer__btn mail">
+        <span class="babixgo-footer__icon material-icons">mail</span>
+        E-Mail
+      </a>
+    </div>
+    <!-- Footer-Links + Sitemap auf einer Linie -->
+    <nav class="babixgo-footer__links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+      <a href="agb.html">AGB</a>
+      <a href="widerruf.html">Widerruf</a>
+      <a href="sitemap.html">Sitemap</a>
+    </nav>
+    <p class="babixgo-footer__copyright">
+      &copy; 2025 babixGO – Alle Rechte vorbehalten.
+    </p>
+  </div>
+</footer>
+
+<style>
+.babixgo-footer {
+  background: #0A3A68;
+  color: #fff;
+  padding: 2.2em 0 1em 0;
+  margin-top: 3em;
+  font-family: 'Nunito Sans', Arial, sans-serif;
+}
+.babixgo-footer__content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+  text-align: center;
+}
+.babixgo-footer__contactrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2em;
+  margin-bottom: 1.1em;
+  flex-wrap: wrap;
+}
+.babixgo-footer__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65em;
+  border-radius: 8px;
+  padding: 0.5em 2em;
+  font-weight: 700;
+  font-size: 1.09em;
+  min-width: 150px;
+  max-width: 320px;
+  height: 44px;
+  background: #fff0;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, box-shadow 0.18s;
+  border: none;
+  box-shadow: none;
+  justify-content: center;
+  position: relative;
+}
+.babixgo-footer__btn.whatsapp { background: #25D366; }
+.babixgo-footer__btn.facebook { background: #1877F3; }
+.babixgo-footer__btn.mail     { background: #FF4C00; }
+.babixgo-footer__btn:hover,
+.babixgo-footer__btn:focus {
+  filter: brightness(0.95);
+  color: #fff;
+}
+.babixgo-footer__icon.material-icons {
+  font-size: 1.35em;
+  margin-right: 0.3em;
+}
+.babixgo-footer__links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  margin: 1.3em auto 0.7em auto;
+  max-width: 650px;
+  font-size: 1.08em;
+  font-weight: 700;
+  width: 100%;
+}
+.babixgo-footer__links a {
+  flex: 1 1 0;
+  text-align: center;
+  color: #FF4C00;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.18s;
+  padding: 0 0.2em;
+}
+.babixgo-footer__links a:hover {
+  color: #fff;
+}
+.babixgo-footer__copyright {
+  color: #fff;
+  opacity: 0.94;
+  font-size: 0.98em;
+  margin: 0;
+  padding-bottom: 0.5em;
+  margin-top: 1.2em;
+}
+@media (max-width: 700px) {
+  .babixgo-footer__contactrow {
+    gap: 0.6em;
+  }
+  .babixgo-footer__btn {
+    min-width: 110px;
+    font-size: 0.99em;
+    padding: 0.5em 1.2em;
+    height: 42px;
+  }
+  .babixgo-footer__links {
+    flex-direction: column;
+    gap: 0.2em;
+    max-width: 100%;
+    font-size: 1em;
+  }
+  .babixgo-footer__links a {
+    padding: 0.3em 0;
+  }
+}
+</style>
+<!-- Material Icons (nur falls Messenger/Mail noch als Material Icon benutzt): -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

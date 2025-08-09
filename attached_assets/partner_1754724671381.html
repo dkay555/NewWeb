@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partnerevent in Monopoly GO | babixGO</title>
+  <meta name="description" content="Partnerevent in Monopoly GO: Bis zu 11.400 Würfel, Sticker & Hauptpreise. Wähle Partner-Optionen (Normal, Eilig, Zuverlässig), sieh dir Preise an, erfahre den Ablauf und reserviere deinen Platz bei babixGO." />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =======================
+       babixGO Partnerevent Page
+       Palette & Typografie
+       ======================= */
+    :root{
+      --primary:#0A3A68;      /* Dunkelblau */
+      --accent:#FF4C00;       /* Orange */
+      --cyan:#00CFFF;         /* Cyan */
+      --ink:#0A3A68;          /* Text Haupt */
+      --bg:#e0f7ff;           /* Helles Cyan-Blue für Seite */
+      --paper:#ffffff;        /* Karten-Hintergrund */
+      --muted:#6b7b8c;        /* Sekundärtext */
+      --line:#e5eef5;         /* Linienfarbe */
+      --warn-bg:#ffeaea;      /* Warnbox hellrot */
+      --warn-border:#a40000;  /* Warnbox Rahmen */
+      --info-bg:#e8f8ff;      /* Infobox hellblau */
+      --info-border:#00A8E8;  /* Infobox Rahmen */
+      --faq-bg:#ddf9ff;       /* FAQ-Header helles Cyan */
+      --faq-text:#0A3A68;     /* FAQ-Header Text dunkelblau */
+      --shadow:0 8px 24px rgba(10,58,104,.12);
+      --radius:16px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:'Nunito Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      line-height:1.6;
+    }
+    h1,h2,h3,h4{font-family:'Baloo 2',cursive; margin:0 0 .6rem 0; color:var(--primary)}
+    h1{font-size:clamp(2rem,3vw,3rem); color:#fff}
+    h2{font-size:clamp(1.6rem,2.2vw,2rem)}
+    h3{font-size:clamp(1.2rem,1.8vw,1.4rem)}
+
+    /* Underline gradient for section headings */
+    .underlined{position:relative; display:inline-block; padding-bottom:.75rem; margin-bottom:1.25rem}
+    .underlined::after{content:""; position:absolute; left:50%; transform:translateX(-50%); bottom:0; height:4px; width:calc(100% + 24px); border-radius:2px; background:linear-gradient(90deg,var(--cyan),#7be3ff)}
+
+    /* Header / Hero */
+    header.hero{
+      background: radial-gradient(1200px 400px at 10% -10%, rgba(0,207,255,.25), transparent 70%),
+                  radial-gradient(1000px 380px at 90% 0%, rgba(255,76,0,.18), transparent 60%),
+                  linear-gradient(180deg, #0a3a68 0%, #0a3158 100%);
+      color:#fff; text-align:center; padding:64px 16px 40px; position:relative; overflow:hidden;
+    }
+    header .kicker{letter-spacing:.08em; text-transform:uppercase; font-weight:800; color:#bfe9ff; font-size:.9rem}
+    header p{max-width:850px; margin:12px auto 0; font-size:1.05rem; color:#e8f6ff}
+    .btn{display:inline-block; background:var(--accent); color:#fff; text-decoration:none; padding:12px 22px; border-radius:999px; margin-top:18px; font-weight:700; box-shadow:var(--shadow); transition:transform .06s ease, filter .15s ease}
+    .btn:hover{transform:translateY(-1px); filter:brightness(1.02)}
+
+    /* Nav */
+    nav.sticky{
+      position:sticky; top:0; z-index:50; background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.05);
+    }
+    nav .wrap{max-width:1100px; margin:0 auto; padding:.6rem 1rem; display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:center}
+    nav a{color:var(--primary); font-weight:700; text-decoration:none; padding:.4rem .8rem; border-radius:999px}
+    nav a:hover{background:rgba(0,207,255,.15)}
+
+    /* Main */
+    main{max-width:1100px; margin:0 auto; padding:32px 16px}
+
+    /* Grid Sections */
+    .split{display:grid; grid-template-columns: 1.05fr .95fr; gap:28px; align-items:center}
+    .card{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:18px}
+    .media{border-radius:var(--radius); overflow:hidden; background:#dff6ff}
+    .media img{display:block; width:100%; height:auto}
+
+    /* Info & Warning Boxes */
+    .info-box,.warning-box{border-radius:12px; padding:16px 18px; margin:14px 0}
+    .info-box{background:var(--info-bg); border:4px solid var(--info-border)}
+    .warning-box{background:var(--warn-bg); border:4px solid var(--warn-border); color:var(--warn-border)}
+    .highlight{background:#fff3a3; padding:.12rem .35rem; border-radius:.3rem}
+
+    /* Pricing */
+    .pricing{background:#f6fbff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px}
+    .pricing table{width:100%; border-collapse:collapse;}
+    .pricing th, .pricing td{padding:14px 10px; text-align:center; border-bottom:1px solid var(--line)}
+    .pricing thead th{background:var(--cyan); color:#06324e; font-weight:800}
+    .pricing tbody tr:nth-child(2n){background:#ffffff}
+    .pricing tbody tr:nth-child(2n+1){background:#f9fdff}
+
+    /* Steps List */
+    .steps{list-style:none; padding:0; margin:0}
+    .steps li{display:grid; grid-template-columns: 28px 1fr; gap:10px; align-items:start; margin:10px 0}
+    .bullet{height:28px; width:28px; display:inline-grid; place-items:center; background:var(--cyan); color:#06324e; font-weight:800; border-radius:999px}
+
+    /* FAQ */
+.faq-item {
+  background: var(--faq-bg);
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.faq-question {
+  background: var(--faq-bg);
+  color: var(--faq-text);
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+}
+.faq-question:hover { background: #d0f0f0; }
+.faq-answer {
+  padding: 0 1rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  color: var(--faq-text);
+}
+.faq-answer.active { padding: 1rem; max-height: 200px; }
+.faq-icon { transition: transform 0.3s ease; }
+.faq-icon.active { transform: rotate(180deg); }
+
+
+    /* CTA band */
+    .cta{
+      background:linear-gradient(90deg, rgba(0,207,255,.25), rgba(255,76,0,.18));
+      border:1px dashed rgba(10,58,104,.25); border-radius:16px; padding:18px; display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .cta strong{font-family:'Baloo 2',cursive}
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .contact a.badge{display:inline-flex; gap:8px; align-items:center; text-decoration:none; background:#fff; padding:10px 14px; border:1px solid var(--line); border-radius:999px; box-shadow:var(--shadow); font-weight:700; color:var(--primary)}
+    .contact a.badge:hover{background:#f8feff}
+    .contact form{display:grid; gap:10px}
+    .contact input,.contact textarea{padding:12px; border-radius:10px; border:1px solid var(--line); font:inherit; background:#fff}
+    .contact button{justify-self:start}
+
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(3, 1fr); gap:10px}
+    .gallery img{width:100%; height:180px; object-fit:cover; border-radius:12px; border:1px solid var(--line)}
+
+    /* Footer */
+    footer{padding:36px 16px; text-align:center; color:#3c5773}
+
+    /* Responsive */
+    @media (max-width: 960px){
+      .split{grid-template-columns:1fr}
+      .contact{grid-template-columns:1fr}
+      .gallery{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:560px){
+      header.hero{padding:48px 14px 28px}
+      .gallery{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- ================= HEADER / HERO ================= -->
+  <header class="hero">
+    <div class="kicker">babixGO Service</div>
+    <h1>Partnerevent in Monopoly GO</h1>
+    <p>
+      Sammle bis zu <strong>11.400 Würfel</strong>, sichere dir exklusive Sticker und schließe deine Türme stressfrei ab.
+      Mit babixGO bekommst du zuverlässige Partner oder Eventwährung – maßgeschneidert für deinen Fortschritt.
+    </p>
+    <a class="btn" href="#preise">Jetzt Platz reservieren</a>
+  </header>
+
+  <!-- ================= NAV ================= -->
+  <nav class="sticky" aria-label="Seitennavigation">
+    <div class="wrap">
+      <a href="#ueberblick">Überblick</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#preise">Preise</a>
+      <a href="#belohnungen">Belohnungen</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+    <!-- Überblick / Intro -->
+    <section id="ueberblick" class="split" style="margin-bottom:28px;">
+      <div class="card">
+        <h2 class="underlined">Dein Vorteil mit babixGO</h2>
+        <p>
+          Das Partnerevent bietet dir die Chance, über <span class="highlight">11.000 Würfel</span> sowie exklusive Sticker zu sammeln – ideal, um für kommende Events bestens vorbereitet zu sein.
+          Mit <strong>babixGO</strong> hast du die Wahl: Wir helfen dir beim Abschluss des Events – entweder mit zuverlässigen Partnern oder durch gezielte <em>Eventwährung</em>.
+        </p>
+        <div class="info-box">
+          <strong>So nutzt du das Event optimal:</strong>
+          <ul>
+            <li>Eventwährung über Pickups, Topevent, Bahnhofsturnier, tägliche Logins & Aufgaben sammeln.</li>
+            <li>Teamwork zahlt sich aus: 4 Türme × 5 Etappen = starke Etappenpreise + Hauptpreis.</li>
+            <li>Buche frühzeitig – wir arbeiten <b>First Come, First Serve</b>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="media">
+        <!-- Bildplatzhalter austauschen -->
+        <img src="https://images.unsplash.com/photo-1601582585289-95a08f2f84f4?q=80&w=1200&auto=format&fit=crop" alt="Monopoly GO Würfel & Event" />
+      </div>
+    </section>
+
+    <!-- Ablauf -->
+    <section id="ablauf" class="card" style="margin-bottom:28px;">
+      <h2 class="underlined">Ablauf in 5 Schritten</h2>
+      <ol class="steps">
+        <li><span class="bullet">1</span><span>Du sendest uns deinen Freundschaftslink/-code und deinen Ingame-Namen.</span></li>
+        <li><span class="bullet">2</span><span>Wir nennen dir den Partner-Account, der dich als Freund hinzufügt.</span></li>
+        <li><span class="bullet">3</span><span>Du schickst diesem eine Einladung für das Partnerevent.</span></li>
+        <li><span class="bullet">4</span><span>Wir sammeln Eventwährung, nehmen die Einladung an & erledigen die Punkte.</span></li>
+        <li><span class="bullet">5</span><span>Du kassierst entspannt die Belohnungen ein! 🎉</span></li>
+      </ol>
+      <div class="warning-box"><strong>Hinweis:</strong> Abschluss der Türme nach dem <b>„First Come, First Serve“</b>-Prinzip.</div>
+    </section>
+
+    <!-- Preise / Partner-Optionen -->
+    <section id="preise" class="pricing" aria-labelledby="preise-title" style="margin-bottom:28px;">
+      <h2 id="preise-title" class="underlined">Partner-Optionen & Preise</h2>
+      <p style="margin:0 0 12px 2px; color:var(--muted)">Wähle die Option, die zu deinem Tempo passt – alle Preise gelten pro Account/Platz.</p>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Partner-Option</th>
+              <th>Punkte</th>
+              <th>Abschlusszeit</th>
+              <th>Preis pro Turm</th>
+              <th>Preis für 4 Türme</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1️⃣ Der Normale</td>
+              <td>80.000</td>
+              <td>Vor Eventende</td>
+              <td>8&nbsp;€</td>
+              <td>30&nbsp;€</td>
+            </tr>
+            <tr>
+              <td>2️⃣ Der Eilige</td>
+              <td>80.000</td>
+              <td>24&nbsp;h</td>
+              <td>13&nbsp;€</td>
+              <td>45&nbsp;€</td>
+            </tr>
+            <tr>
+              <td>3️⃣ Der Zuverlässige</td>
+              <td>mind. 40.000</td>
+              <td>Vor Eventende</td>
+              <td>5&nbsp;€</td>
+              <td>17&nbsp;€</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cta" style="margin-top:14px">
+        <strong>Früh buchen lohnt sich!</strong>
+        <a class="btn" href="#kontakt">Platz sichern</a>
+      </div>
+    </section>
+
+    <!-- Belohnungen -->
+    <section id="belohnungen" class="card" style="margin-bottom:28px;">
+      <h2 class="underlined">Belohnungen im Überblick</h2>
+      <div class="split" style="align-items:start">
+        <div>
+          <h3>Etappenpreise (pro Turm, 5 Etappen)</h3>
+          <ul>
+            <li>Bis zu <strong>6.400 Würfel</strong> insgesamt</li>
+            <li><strong>4 Sticker Packs</strong> inkl. garantierter 4⭐ Sticker</li>
+            <li>Booster, Ingame-Cash & weitere Boni</li>
+          </ul>
+          <h3>Hauptpreis (alle 4 Türme)</h3>
+          <ul>
+            <li><strong>5.000 zusätzliche Würfel</strong></li>
+            <li>Exklusives Tausch-Sticker-Pack / Wild Card</li>
+            <li>Neuer Token und <strong>3 Emojis</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="gallery">
+            <!-- Platzhalterbilder, gern austauschen -->
+            <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=800&auto=format&fit=crop" alt="Sticker Pack"/>
+            <img src="https://images.unsplash.com/photo-1520975916090-f8e1b0f0e3f1?q=80&w=800&auto=format&fit=crop" alt="Event Belohnungen"/>
+            <img src="https://images.unsplash.com/photo-1520975902541-8b1a9b735812?q=80&w=800&auto=format&fit=crop" alt="Würfel Bonus"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="mb-12 fade-in">
+  <div class="card">
+    <h2 class="underlined" style="text-align:center">❓ Häufig gestellte Fragen</h2>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Wie reserviere ich meinen Platz?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sende uns eine Nachricht über WhatsApp/Facebook/E-Mail (siehe Kontakt). Wir bestätigen dir den Platz und nennen dir die Accountnamen.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Kann ich mehrere Plätze auf einmal buchen?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Ja. Gib bei der Anfrage an, wie viele Plätze du brauchst. Wir koordinieren die Accounts entsprechend.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Wie funktioniert die Bezahlung?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Die Bezahlung erfolgt sicher über deine bevorzugten Methoden. Details klären wir bei der Buchung über die Kontaktkanäle.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Ich brauche zusätzlich Eventwährung – geht das?</span>
+          <span class="faq-icon">▼</span>
+        </div>
+        <div class="faq-answer">
+          <p>Klar! Wir können zusätzlich Top- & Bahnhofsevent spielen und Würfel in Eventwährung umwandeln – ideal in Kombination mit einer Partner-Option.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="card">
+      <h2 class="underlined">Kontakt & Reservierung</h2>
+      <div class="contact">
+        <div>
+          <p>Fragen? Platz reservieren? Schreib uns direkt:</p>
+          <p style="display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 18px">
+            <a class="badge" href="https://wa.me/4915237250453" target="_blank" rel="noopener">💬 WhatsApp</a>
+            <a class="badge" href="#" aria-disabled="true">📘 Facebook</a>
+            <a class="badge" href="mailto:service@babixgo.de">✉️ E‑Mail</a>
+          </p>
+          <div class="info-box"><strong>Service-Hinweis:</strong> Bitte nenne immer deinen Ingame‑Namen und sende den Freundschaftslink/-code direkt mit. So geht die Freigabe am schnellsten.</div>
+        </div>
+        <form action="#" method="post" aria-label="Kontaktformular">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" required />
+          <label for="contact">E‑Mail oder WhatsApp</label>
+          <input id="contact" name="contact" type="text" required />
+          <label for="msg">Nachricht</label>
+          <textarea id="msg" name="msg" rows="5" placeholder="Ich möchte Option ‚Der Eilige‘ für 4 Türme reservieren…" required></textarea>
+          <button class="btn" type="submit">Nachricht senden</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="y"></span> babixGO – Partnerevent Service. Alle Marken sind Eigentum der jeweiligen Rechteinhaber.</p>
+  </footer>
+
+<script>
+  function toggleFAQ(element) {
+    const answer = element.nextElementSibling;
+    const icon = element.querySelector('.faq-icon');
+
+    // alle anderen schließen
+    document.querySelectorAll('.faq-answer').forEach(a => {
+      if (a !== answer) {
+        a.classList.remove('active');
+        const i = a.previousElementSibling?.querySelector('.faq-icon');
+        if (i) i.classList.remove('active');
+      }
+    });
+
+    // aktuelle öffnen/schließen
+    answer.classList.toggle('active');
+    if (icon) icon.classList.toggle('active');
+  }
+
+  // Footer-Jahr (falls vorhanden)
+  const y = document.getElementById('y');
+  if (y) y.textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

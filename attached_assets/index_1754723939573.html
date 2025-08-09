@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>babixGO - Monopoly GO Services</title>
+    <meta name="description" content="Würfel, Events, Sticker & mehr – alles für dein Monopoly GO Abenteuer">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Nunito Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: #0A3A68;
+            background: #e0f7ff;
+            line-height: 1.6;
+        }
+        
+        /* Header styles removed in favor of partial */
+        
+        /* Main content */
+        .main {
+            flex-grow: 1;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, #78c6f7 0%, #5ba3d9 50%, #e0f7ff 100%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            max-width: 32rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .logo-container {
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto 0.75rem;
+            margin-top: 0.5rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .logo-image {
+            width: 8rem;
+            height: 8rem;
+            object-fit: contain;
+        }
+        
+        @media (min-width: 768px) {
+            .logo-image {
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+        
+        .welcome-box {
+            background: #b0d6f5;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 1rem 0.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (min-width: 640px) {
+            .welcome-box {
+                padding: 1rem 1.5rem 0.5rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .welcome-box {
+                padding: 1rem 2rem 0.5rem;
+            }
+        }
+        
+        .welcome-title {
+            color: #FF4C00;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        @media (min-width: 640px) {
+            .welcome-title {
+                font-size: 1.875rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .welcome-title {
+                font-size: 2.25rem;
+            }
+        }
+        
+        .welcome-subtitle {
+            color: #0A3A68;
+            font-size: 1rem;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        @media (min-width: 640px) {
+            .welcome-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .welcome-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* Navigation Buttons */
+        .nav-buttons {
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto 1.25rem;
+        }
+        
+        .button-row-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .button-row-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .button {
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            height: 2.5rem;
+            width: 100%;
+            font-size: 0.875rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 640px) {
+            .button {
+                height: 3rem;
+                font-size: 1rem;
+            }
+        }
+        
+        .button-darkblue {
+            background-color: #0A3A68;
+            color: white;
+        }
+        
+        .button-darkblue:hover {
+            background-color: #083052;
+        }
+        
+        .button-orange {
+            background-color: #FF4C00;
+            color: white;
+        }
+        
+        .button-orange:hover {
+            background-color: #e63e00;
+        }
+        
+        .button-cyan {
+            background-color: #00CFFF;
+            color: white;
+        }
+        
+        .button-cyan:hover {
+            background-color: #00b8e6;
+        }
+        
+        .material-icons {
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 640px) {
+            .material-icons {
+                font-size: 1rem;
+            }
+        }
+        
+        /* News Section */
+        .news-section {
+            padding: 0 0 1.5rem;
+            background: #e0f7ff;
+        }
+        
+        .news-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .news-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0A3A68;
+            text-align: center;
+            margin: 0 auto 0.75rem;
+            background: linear-gradient(135deg, #0A3A68 0%, #00CFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .news-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 0.75rem 1rem;
+        }
+        
+        .news-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.25rem;
+        }
+        
+        .news-card-title {
+            font-weight: bold;
+            color: #0A3A68;
+            font-size: 1.25rem;
+            margin: 0;
+        }
+        
+        .news-button {
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            height: auto;
+            white-space: nowrap;
+            margin-left: 0.5rem;
+        }
+        
+        .news-content {
+            color: rgba(10, 58, 104, 0.8);
+            margin-bottom: 0.75rem;
+        }
+        
+        /* Spacer */
+        .spacer {
+            height: 0.5rem;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 2rem 0;
+            scroll-margin-top: 5rem;
+            background: #e0f7ff;
+        }
+        
+        .products-container {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .products-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0A3A68;
+            text-align: center;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, #0A3A68 0%, #00CFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 768px) {
+            .products-grid {
+                gap: 1.5rem;
+            }
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .product-card {
+                padding: 1.25rem;
+            }
+        }
+        
+        .product-icon {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .product-icon {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        .product-icon-container {
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        @media (min-width: 768px) {
+            .product-icon-container {
+                width: 6rem;
+                height: 6rem;
+            }
+        }
+        
+        .product-icon-image {
+            height: 4rem;
+            object-fit: contain;
+        }
+        
+        @media (min-width: 768px) {
+            .product-icon-image {
+                height: 6rem;
+            }
+        }
+        
+        .product-title {
+            color: #0A3A68;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin: 0 0 0.25rem;
+        }
+        
+        @media (min-width: 768px) {
+            .product-title {
+                font-size: 1.5rem;
+                margin-bottom: 0.5rem;
+            }
+        }
+        
+        .product-description {
+            color: #374151;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .product-description {
+                margin-bottom: 1rem;
+                font-size: 1rem;
+            }
+        }
+        
+        .product-button {
+            width: 100%;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .product-button {
+                font-size: 1rem;
+            }
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 2rem 0;
+            background: #e0f7ff;
+            margin: 3rem 0;
+            border-radius: 0.75rem;
+            scroll-margin-top: 5rem;
+        }
+        
+        .about-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0A3A68;
+            text-align: center;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #0A3A68 0%, #00CFFF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .about-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-intro {
+            margin-bottom: 1rem;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .about-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .about-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .about-item h3 {
+            font-weight: bold;
+            color: #0A3A68;
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .about-item .material-icons {
+            color: #FF4C00;
+            margin-right: 0.5rem;
+        }
+        
+        .about-item p {
+            margin-left: 2rem;
+            color: rgba(10, 58, 104, 0.8);
+        }
+        
+        .about-section-title {
+            font-weight: bold;
+            color: #0A3A68;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer styles removed in favor of partial */
+        
+        /* Responsive adjustments */
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="main" id="top">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            
+            <div class="hero-content">
+                <!-- babixGO Logo -->
+                <div class="logo-container">
+                    <img src="/images/babixgo-logo-trans.png" alt="babixGO Logo" class="logo-image">
+                </div>
+
+                <!-- Welcome Text Box -->
+                <div class="welcome-box">
+                    <h1 class="welcome-title">Willkommen bei babixGO</h1>
+                    <p class="welcome-subtitle">Würfel, Events, Sticker & mehr – alles für dein Monopoly GO Abenteuer</p>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="nav-buttons">
+                    <!-- Erste Reihe: 3 Buttons -->
+                    <div class="button-row-3">
+                        <a href="authtoken-news.html" class="button button-darkblue">
+                            <span class="material-icons">feed</span>
+                            News
+                        </a>
+                        <a href="#angebote" class="button button-orange">
+                            <span class="material-icons">shopping_cart</span>
+                            Shop
+                        </a>
+                        <a href="#" class="button button-cyan">
+                            <span class="material-icons">login</span>
+                            Login
+                        </a>
+                    </div>
+
+                    <!-- Zweite Reihe: 2 Buttons -->
+                    <div class="button-row-2">
+                        <a href="login-hilfe.html" class="button button-darkblue">
+                            <span class="material-icons">help_outline</span>
+                            <span>Hilfe</span>
+                        </a>
+                        <a href="#kontakt" class="button button-cyan">
+                            <span class="material-icons">contact_support</span>
+                            <span>Kontakt</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- News Section -->
+        <section class="news-section">
+            <div class="news-container">
+                <h2 class="news-title">News</h2>
+                
+                <div class="news-card">
+                    <div class="news-header">
+                        <h3 class="news-card-title">In letzter Zeit war es still um babixGO</h3>
+                        <a href="authtoken-news.html" class="button button-darkblue news-button">
+                            weiterlesen →
+                        </a>
+                    </div>
+                    <p class="news-content">
+                        Dafür haben wir nun was für euch: <span style="font-weight: bold;">Niedrigere Preise, High Roller weg & kleinere Würfelpakete!</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="angebote" class="products-section">
+            <div class="products-container">
+                <h2 class="products-title">Was wir dir bieten:</h2>
+                
+                <div class="products-grid">
+                    <!-- Würfelboost Karte -->
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <div class="product-icon-container">
+                                <img src="/images/Shop-Kategorien/kategorie_wuerfel_trans.png" alt="Würfelboosts" class="product-icon-image">
+                            </div>
+                        </div>
+                        <h3 class="product-title">Würfelboost</h3>
+                        <p class="product-description">Sichere dir Würfel für deinen Account!</p>
+                        <a href="wuerfel-hilfe.html" class="button button-orange product-button">Jetzt entdecken</a>
+                    </div>
+
+                    <!-- Sticker Karte -->
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <div class="product-icon-container">
+                                <img src="/images/Shop-Kategorien/kategorie_sticker_trans.png" alt="Sticker" class="product-icon-image">
+                            </div>
+                        </div>
+                        <h3 class="product-title">Sticker</h3>
+                        <p class="product-description">Wir haben sie selbstverständlich alle!</p>
+                        <a href="#" class="button button-orange product-button">Jetzt entdecken</a>
+                    </div>
+
+                    <!-- Partner Event Karte -->
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <div class="product-icon-container">
+                                <img src="/images/Shop-Kategorien/kategorie_partner_trans.png" alt="Partnerevents" class="product-icon-image">
+                            </div>
+                        </div>
+                        <h3 class="product-title">Partnerevent</h3>
+                        <p class="product-description">Zuverlässige Partner gesucht?</p>
+                        <a href="partner-hilfe.html" class="button button-orange product-button">Jetzt entdecken</a>
+                    </div>
+                    
+                    <!-- Tycoon Racers Karte -->
+                    <div class="product-card">
+                        <div class="product-icon">
+                            <div class="product-icon-container">
+                                <img src="/images/Shop-Kategorien/kategorie_racers_trans.png" alt="Tycoon Racers" class="product-icon-image">
+                            </div>
+                        </div>
+                        <h3 class="product-title">Tycoon Racers</h3>
+                        <p class="product-description">Nimm Platz! Teamplätze zu vergeben.</p>
+                        <a href="race-hilfe.html" class="button button-orange product-button">Jetzt entdecken</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="ueber" class="about-section">
+            <div class="about-container">
+                <h2 class="about-title">Warum du babixGO wählen solltest</h2>
+                
+                <div class="about-content">
+                    <p class="about-intro">Es ist kein Geheimnis: Am Ende gewinnt immer die Bank. Daran können wir auch nichts ändern. Was wir allerdings können: Den Wert der Würfel soweit verschieben, dass Event-, Set- und Albumabschlüsse für jeden möglich sind.</p>
+
+                    <div class="about-grid">
+                        <div class="about-column">
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Alles aus einer Hand
+                                </h3>
+                                <p>Würfelboosts, Sticker, Solo-, Team- und Partnerevents sowie komplette Accounts – und das alles an einem Ort.</p>
+                            </div>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Persönlicher Service über WhatsApp
+                                </h3>
+                                <p>Direkter Kontakt, individuelle Betreuung und schnelle Antworten. Bei babixGO bekommst du den Service, den du verdienst.</p>
+                            </div>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Technisches Verständnis & Accountsicherheit
+                                </h3>
+                                <p>Mit fundiertem Wissen über die Spielmechaniken, Sicherheitsmaßnahmen und Tracking-Funktionen sorgen wir dafür, dass dein Account in sicheren Händen bleibt.</p>
+                            </div>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Kontinuität und Erfahrung
+                                </h3>
+                                <p>Seit dem Release von Monopoly Go ist babixGO am Puls der Zeit und bringt fast zwei Jahre Erfahrung und Leidenschaft für das Spiel mit.</p>
+                            </div>
+                        </div>
+
+                        <div class="about-column">
+                            <h3 class="about-section-title">Dein Vorteil:</h3>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Faire Preise
+                                </h3>
+                                <p>Wir legen großen Wert darauf, dir einen fairen und erschwinglichen Preis anzubieten - für jedes Budget ist etwas passendes dabei. Durch Gewinnspiele können wir auch an die etwas geben, die kein Geld für Monopoly Go ausgeben möchten.</p>
+                            </div>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Zuverlässige Leistungen
+                                </h3>
+                                <p>Wir reagieren schnell auf Änderungen im Spiel. Durch unser inzwischen großes Netzwerk bemerken wir Änderungen früh und können dadurch schon Lösungen präsentieren bevor überhaupt alle Accounts betroffen sind.</p>
+                            </div>
+
+                            <div class="about-item">
+                                <h3>
+                                    <span class="material-icons">check_circle</span>
+                                    Transparente Kommunikation
+                                </h3>
+                                <p>Egal, ob es unsere Angebote und Preise betrifft, Änderungen an der Spielmechanik die Dich und deinen Account betreffen könnten oder es sich um dein Feedback handelt. Je offener wir miteinander sprechen, desto unkomplizierter Dein Erlebnis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        async function loadPartial(url, targetId) {
+            const resp = await fetch(url);
+            const text = await resp.text();
+            const doc = new DOMParser().parseFromString(text, 'text/html');
+            doc.head.querySelectorAll('link, style, meta').forEach(node => {
+                document.head.appendChild(node);
+            });
+            const fragment = document.createElement('div');
+            fragment.innerHTML = doc.body.innerHTML;
+            fragment.querySelectorAll('script').forEach(s => s.remove());
+            document.getElementById(targetId).innerHTML = fragment.innerHTML;
+            if (targetId === 'header-placeholder') initHeaderMenu();
+        }
+
+        function initHeaderMenu() {
+            const drawer = document.getElementById('babixgo-mobile-drawer');
+            const btn = document.getElementById('babixgo-menu-btn');
+            const closeBtn = document.getElementById('drawer-close');
+            if (btn) btn.onclick = () => { drawer.style.display = 'flex'; };
+            if (closeBtn) closeBtn.onclick = () => { drawer.style.display = 'none'; };
+            window.addEventListener('click', function(e) {
+                if (drawer.style.display === 'flex' && !drawer.contains(e.target) && !btn.contains(e.target)) {
+                    drawer.style.display = 'none';
+                }
+            });
+        }
+
+        loadPartial('partials/Header_menu.html', 'header-placeholder');
+        loadPartial('partials/Footer.html', 'footer-placeholder');
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading state to buttons
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (!this.href.startsWith('#')) {
+                    this.style.opacity = '0.7';
+                    this.style.transform = 'scale(0.98)';
+                }
+            });
+        });
+
+        // Add fade-in animation for cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in to cards
+        document.querySelectorAll('.product-card, .news-card, .about-content').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
