@@ -7,35 +7,100 @@
     <meta name="description" content="Monopoly GO Tycoon Racers Events mit Top-Performance und garantierten Belohnungen bei babixGO.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    
+    <style>
+        /* Page-specific styles using consistent color scheme */
+        .hero-tycoon { 
+            background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
+            padding: 34px 0 22px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-image {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 120px;
+            height: 120px;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 18px;
+        }
+        
+        h1,h2,h3{ 
+            font-family: 'Baloo 2'; 
+            margin: 0 0 10px; 
+            color: var(--accent);
+        }
+        h1{ font-size: 2.0rem; }
+        h2{ font-size: 1.6rem; margin-top: 24px; }
+        h3{ font-size: 1.2rem; margin-top: 12px; }
+        
+        p.lead{ 
+            font-size: 1.1rem; 
+            color: var(--muted); 
+            font-weight: 700;
+            margin: 8px 0 18px; 
+        }
+       
+        /* Desktop: alles nebeneinander */
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+        .actions .btn {
+            white-space: nowrap;
+        }
+
+        /* Mobile: zweizeiliges Layout wie beschrieben */
+        @media (max-width: 768px) {
+            .actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                margin-top: 16px;
+            }
+            .actions .btn:first-child {
+                grid-column: 1 / -1;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
     
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>babixGO Tycoon Racers</h1>
-        <p>Racing-Events mit Top-Performance und garantierten Belohnungen. Sichere dir die besten Plätze und maximale Gewinne bei allen Tycoon Racers Events.</p>
-        <a href="#pricing" class="btn-primary">Jetzt durchstarten</a>
+    <section class="hero-tycoon">
+        <div class="hero-content">
+            <h1>babixGO Tycoon Racers</h1>
+            <p class="lead">Racing-Events mit Top-Performance und garantierten Belohnungen. Sichere dir die besten Plätze und maximale Gewinne bei allen Tycoon Racers Events.</p>
+            <div class="actions">
+                <a href="#pricing" class="btn-primary">Jetzt durchstarten</a>
+            </div>
+        </div>
     </section>
 
-    <!-- Navigation -->
-    <nav class="sticky">
-        <div class="wrap">
-            <a href="#product">Produkt</a>
-            <a href="#description">Beschreibung</a>
-            <a href="#rewards">Belohnungen</a>
-            <a href="#pricing">Preise</a>
-            <a href="#faq">FAQ</a>
-        </div>
-    </nav>
-
     <!-- Main Content -->
-    <main class="product-section">
+    <div class="main-content">
         <!-- Product Overview -->
         <section id="product" class="split" style="margin-bottom: 3rem;">
             <div>
@@ -252,7 +317,7 @@
                 </div>
             </div>
         </section>
-    </main>
+    </div>
 
     <div id="footer-placeholder"></div>
     <script src="js/main.js"></script>

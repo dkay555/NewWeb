@@ -19,7 +19,7 @@
       padding: 34px 0 22px;
       position: relative;
       overflow: hidden;
-      margin-top: 60px; /* Account for fixed header */
+      
     }
     .hero-image {
       position: absolute;
@@ -45,32 +45,65 @@
     }
     
     h1,h2,h3{ 
-      font-family: 'Baloo 2', cursive; 
+      font-family: 'Baloo 2'; 
       margin: 0 0 10px; 
-      color: var(--primary);
+      color: var(--accent);
     }
-    h1{ font-size: 2.1rem; }
-    h2{ font-size: 1.55rem; margin-top: 24px; }
+    h1{ font-size: 2.0rem; }
+    h2{ font-size: 1.6rem; margin-top: 24px; }
+    h3{ font-size: 1.2rem; margin-top: 12px; }
     
     p.lead{ 
-      font-size: 1.05rem; 
+      font-size: 1.1rem; 
       color: var(--muted); 
+      font-weight: 700;
       margin: 8px 0 18px; 
     }
-    
-    .actions{ 
-      display: flex; 
-      gap: 12px; 
-      flex-wrap: wrap; 
+   
+ /* Desktop: alles nebeneinander */
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .actions .btn {
+      white-space: nowrap;
+    }
+
+    /* Mobile: zweizeiliges Layout wie beschrieben */
+    @media (max-width: 2000px) {
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(2, 50%); /* 3 pro Reihe, je 30% */
+        column-gap: 5%;                       /* 2.5% Lücke zwischen den Spalten */
+        row-gap: 10px;
+        justify-content: center;                 /* restliche 5% zentrieren */
+      }
+
+      /* Buttons füllen ihre Grid-Zelle */
+      .actions .btn {
+        width: 100%;
+      }
+
+      /* Erster Button (Primary): eigene Reihe, zentriert, 50% Breite, 50px hoch */
+      .actions .btn:first-child {
+        grid-column: 1 / -1;     /* über alle Spalten */
+        margin: 5px 10px 0 0;
+        justify-self: center;    /* zentrieren */
+        width: 60%;
+        height: 40px;
+        line-height: 40px;       /* nur nötig, falls kein flex genutzt wird */
+      }
     }
     
     .btn{ 
       display: inline-flex; 
       align-items: center; 
       justify-content: center; 
-      gap: 8px; 
-      padding: 12px 18px; 
-      border-radius: 999px; 
+      gap: 10px; 
+      padding: 8px 12px; 
+      border-radius: 5px; 
       text-decoration: none; 
       font-weight: 700; 
       border: 0; 
@@ -80,7 +113,7 @@
     }
     .btn:active{ transform: translateY(1px); }
     .btn-primary{ background: var(--accent); color: #fff; }
-    .btn-outline{ background: #fff; color: var(--primary); border: 2px solid var(--cyan); }
+    .btn-outline{ background: #fff; color: var(--primary); font-size: 0.9rem; border: 2px solid var(--cyan); height: 40px;  padding: 8px 12px; align-items: center; margin: 5px 0;}
     .btn-primary:hover{ filter: brightness(.98); }
     .btn-outline:hover{ background: var(--cyan); color: #00324f; }
 
@@ -94,22 +127,25 @@
     }
 
     .info, .warning{ 
+      font-weight: 500 ;
+      font-size: 0.9rem ;
+      padding: 6px 14px ;
       border-radius: 14px; 
-      padding: 14px 16px; 
-      margin: 10px 0 0; 
+      margin: 1.5rem 0 0 0; 
       border: 2px solid transparent; 
     }
+    
     .info{ 
-      background: #dff7ff; 
+      background: linear-gradient(to right bottom, #d5edf7, #b8daf6);
       color: var(--primary); 
-      border-color: var(--cyan); 
+      border-color: var(--cyan);
     }
+    
     .warning{ 
-      background: #ffe7e7; 
+      background: linear-gradient(to right bottom, #ffe7e7, #f8a496);
       color: #9b1c1c; 
-      border-color: #b91c1c; 
-    }
-
+      border-color: #b91c1c;
+       }
     /* Grid */
     .grid{ 
       display: grid; 
@@ -139,12 +175,12 @@
     }
     .price{ 
       font-weight: 800; 
-      font-size: 1.2rem; 
+      font-size: 1.1rem; 
       color: var(--accent); 
     }
     .muted{ 
       color: var(--muted); 
-      font-size: .95rem; 
+      font-size: 1rem; 
     }
     .list{ 
       margin: 0; 
@@ -176,7 +212,6 @@
   <main>
     <!-- HERO -->
     <div class="hero-wuerfel">
-      <img src="icon_wuerfelfigur_boost_1024_1024_1754783358120.webp" alt="Würfel Boost" class="hero-image">
       <div class="hero-content">
         <h1>Würfel für deinen Monopoly GO-Account</h1>
         <p class="lead">
@@ -186,10 +221,12 @@
         </p>
         <div class="actions">
           <a class="btn btn-primary" href="#ablauf">Jetzt kaufen</a>
-          <a class="btn btn-outline" href="#ablauf">Ablauf</a>
-          <a class="btn btn-outline" href="#methoden">Methoden im Überblick</a>
-          <a class="btn btn-outline" href="#mehrinfos">Mehr Infos</a>
-        </div>
+          <a class="btn btn-outline" href="#voraussetzungen" >Voraussetzungen</a>
+          <a class="btn btn-outline" href="#ablauf" >Ablauf</a>
+          <a class="btn btn-outline" href="#methoden" >Methoden im Überblick</a>
+          <a class="btn btn-outline" href="#mehrinfos" >Mehr Infos</a>
+            </div>
+          </div>
       </div>
     </div>
 
@@ -198,12 +235,11 @@
       <div class="main-content">
         <div class="card">
           <h2 class="babix-info-header">Voraussetzungen</h2>
-          <p><strong>Für alle Methoden gilt:</strong></p>
-          <ul class="list">
-            <li>Dein Account muss mit <strong>Facebook</strong> oder <strong>Google Play Games</strong> verknüpft sein <strong>&amp; wir müssen uns in diesen Account einloggen</strong>.</li>
+          <p><strong>Für alle Methoden gilt:</strong><br>
+          Dein Account muss mit <strong>Facebook</strong> oder <strong>Google Play Games</strong> verknüpft sein <strong>&amp; wir müssen uns in diesen Account einloggen</strong>.</p>
 
           </ul>
-          <div class="info">📌 <strong>Hinweis:</strong> Facebook-Zugangsdaten sind <em>nicht zwingend</em> erforderlich. Mehr dazu findest du <a href="#mehrinfos"><strong>hier</strong></a>.</div>
+          <div class="info"><strong>Hinweis:</strong> Facebook-Zugangsdaten sind <em>nicht zwingend</em> erforderlich. Mehr dazu findest du <a href="#mehrinfos"><strong>hier</strong></a>.</div>
         </div>
       </div>
     </section>
@@ -215,7 +251,7 @@
         <div class="grid" style="margin-top:10px">
           <div class="col-12 col-4">
             <div class="card method">
-              <img src="icon_wuerfelfigur_boost_1024_1024_1754783358120.webp" alt="Schnell & günstig" class="method-icon">
+              
               <h3>1) Schnell & günstig</h3>
               <div class="price">ab 25€</div>
               <ul class="list">
@@ -229,7 +265,7 @@
           </div>
           <div class="col-12 col-4">
             <div class="card method">
-              <img src="icon_wuerfelfigur_boost_1024_1024_1754783358120.webp" alt="Mittelweg" class="method-icon">
+             
               <h3>2) Mittelweg</h3>
               <div class="price">25€</div>
               <ul class="list">
@@ -243,7 +279,7 @@
           </div>
           <div class="col-12 col-4">
             <div class="card method">
-              <img src="icon_wuerfelfigur_news_1024_1024_1754783358121.webp" alt="Sicherste Methode" class="method-icon">
+              
               <h3>3) Sicherste Methode</h3>
               <div class="price">30€</div>
               <ul class="list">
@@ -256,7 +292,7 @@
           </div>
         </div>
         <div id="risiko" class="warning" style="margin-top:16px">
-          ⚠️ <strong>Achtung:</strong> Das <strong>Risiko einer Suspendierung</strong> variiert je nach Methode und kann sich kurzfristig ändern. Mehr Infos haben wir dazu <a href="#risiko">hier</a> zusammengefasst.
+           <strong>Achtung:</strong> Das Risiko einer Suspendierung variiert je nach Methode und kann sich kurzfristig ändern. Mehr Infos findest du hier: Link
         </div>
       </div>
     </section>
@@ -267,8 +303,8 @@
         <div class="col-12 col-6">
           <div class="card">
             <h2 class="babix-info-header">Ablauf</h2>
-            <h3 style="margin-top:8px">1) Vorbereitung einer „ungenutzten, sicheren Umgebung"</h3>
-            <p>Dein Account wird so eingerichtet, dass es für Scopely wirkt, als würdest du auf einem neuen Gerät spielen. Dadurch vermeiden wir unnötige Multi-Account-Flags.</p>
+            <h3 style="margin-top:8px">1) Vorbereitung </h3>
+            <p>Wir erstellen eine „ungenutzte, sichere mgebung" für deinen Account, sodass es für Scopely wirkt, als würdest du auf einem neuen Gerät spielen. Dadurch vermeiden wir unnötige Multi-Account-Flags. Dieses Enviromnemt sichern wir mit dein Einverständniss um folgende Boosts noch sicherer zu machen.</p>
             <h3>2) Login</h3>
             <ul class="list">
               <li><strong>Facebook/Google-Login:</strong> Einfach und schnell; ggf. mit Bestätigung.</li>
