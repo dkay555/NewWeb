@@ -119,4 +119,29 @@ h3.babix-info-header::after {
 - Änderungen an den Regeln müssen in dieser Datei dokumentiert werden
 - Neue Hero-Sections sollten die bestehenden CSS-Klassen wiederverwenden
 
+## Implementierungsstatus (10. August 2025)
+
+### ✅ Vollständig umgesetzt auf folgenden Seiten:
+- index.html (Startseite) - Referenz-Implementierung
+- wuerfelshop.html - Würfel Shop mit Service-Icons
+- sticker.html - Sticker Service mit Preistabelle
+- partnerevent.html - Partner-Events mit Event-Funktionen
+- accounts.html - Premium Accounts mit Account-Features
+- tycoonracers.html - Tycoon Racers Racing-Events
+- freundschaftsbalken.html - Freundschaftsbalken Service
+
+### Angepasste Navigation pro Seite:
+Jede Seite nutzt die standardisierten Button-Klassen mit seitenspezifischen Icons und Links:
+- **button-orange**: Hauptaktion (Kaufen/Bestellen)
+- **button-darkblue**: Primäre Navigation (Infos/Support)  
+- **button-cyan**: Sekundäre Navigation (Details/Features)
+
+### Einheitliche Struktur:
+1. **hero-section** mit **hero-background**
+2. **hero-content** mit **logo-container**
+3. **welcome-box** mit **welcome-title** und **welcome-subtitle**
+4. **nav-buttons** mit **button-row-3** und **button-row-2**
+
+Alle Seiten verwenden jetzt das gleiche Hero-Design wie die Startseite mit seitenspezifischen Inhalten.
+
 Letzte Aktualisierung: 10. August 2025

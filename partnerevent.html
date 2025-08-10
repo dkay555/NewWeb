@@ -14,19 +14,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <style>
         /* Page-specific styles using consistent color scheme */
-        .hero-partner { 
-          background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
-          padding: 34px 0 22px;
-          position: relative;
-          overflow: hidden;
-        }
-        .hero-content {
-          position: relative;
-          z-index: 1;
-          max-width: 1000px;
-          margin: 0 auto;
-          padding: 0 18px;
-        }
         
         .main-content {
           max-width: 1000px;
@@ -166,27 +153,42 @@
     <div id="header-placeholder"></div>
     
     <!-- Hero Section -->
-    <section class="hero-partner">
+    <section class="hero-section">
+        <div class="hero-background"></div>
         <div class="hero-content">
-            <div class="card">
-                <h1 class="babix-info-header">Das Partnerevent in Monopoly GO</h1>
-                <div class="split" style="margin: 1rem 0;">
-                    <div>
-                        <img src="attached_assets/pe-breit - bearbeitet_1754827210169.png" alt="Mr. Monopoly beim Partner-Event" class="partner-hero-image">
-                    </div>
-                    <div>
-                        <p class="lead">Sammle bis zu <strong>11.400 Würfel</strong>, sichere dir exklusive Sticker und schließe deine Türme stressfrei ab. Mit babixGO bekommst du zuverlässige Partner oder Eventwährung – maßgeschneidert für deinen Fortschritt.</p>
-                    </div>
-                </div>
-                <div class="actions">
-                    <a href="#pricing" class="btn btn-primary">
+            <div class="logo-container">
+                <img src="attached_assets/pe-breit - bearbeitet_1754827210169.png" alt="Partner-Event in Monopoly GO" class="logo-image">
+            </div>
+            
+            <div class="welcome-box">
+                <h1 class="welcome-title">Partnerevent in Monopoly GO</h1>
+                <p class="welcome-subtitle">Sammle bis zu 11.400 Würfel, sichere dir exklusive Sticker und schließe deine Türme stressfrei ab. Mit babixGO bekommst du zuverlässige Partner oder Eventwährung.</p>
+            </div>
+
+            <div class="nav-buttons">
+                <div class="button-row-3">
+                    <a href="#pricing" class="button button-orange">
                         <span class="material-icons">event_seat</span>
-                        Jetzt reservieren
+                        <span>Jetzt reservieren</span>
                     </a>
-                    <a href="#ueberblick" class="btn btn-outline">Überblick</a>
-                    <a href="#ablauf" class="btn btn-outline">Ablauf</a>
-                    <a href="#pricing" class="btn btn-outline">Preise</a>
-                    <a href="#faq" class="btn btn-outline">FAQ</a>
+                    <a href="#ueberblick" class="button button-darkblue">
+                        <span class="material-icons">visibility</span>
+                        <span>Überblick</span>
+                    </a>
+                    <a href="#ablauf" class="button button-cyan">
+                        <span class="material-icons">timeline</span>
+                        <span>Ablauf</span>
+                    </a>
+                </div>
+                <div class="button-row-2">
+                    <a href="#faq" class="button button-darkblue">
+                        <span class="material-icons">help</span>
+                        <span>FAQ</span>
+                    </a>
+                    <a href="kontakt.html" class="button button-orange">
+                        <span class="material-icons">support_agent</span>
+                        <span>Support</span>
+                    </a>
                 </div>
             </div>
         </div>

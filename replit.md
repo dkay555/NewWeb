@@ -68,5 +68,11 @@ The architecture includes active integrations for:
   - Unified header styling with babix-info-header class for H1, H2, H3
   - Documented in DESIGN_RULES.md and CSS comments for maintainability
   - Consolidated duplicate CSS rules for better code organization
+- **Hero Section Standardization (10. August 2025)**: Complete implementation of uniform hero design across all product pages:
+  - All 6 main product pages now use standardized hero-section structure from index.html
+  - Removed page-specific hero CSS styles from individual HTML files
+  - Implemented consistent button layouts with service-specific icons and navigation
+  - Unified color scheme using established brand colors (orange #FF4C00, cyan #00CFFF, dark blue #0A3A68)
+  - Each page maintains its unique content while following the same visual structure and user experience patterns
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.

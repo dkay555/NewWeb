@@ -14,28 +14,6 @@
 
   <style>
     /* Page-specific styles using consistent color scheme */
-    .hero-sticker { 
-      background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
-      padding: 34px 0 22px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-image {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 120px;
-      height: 120px;
-      opacity: 0.1;
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 18px;
-    }
     
     .main-content {
       max-width: 1000px;
@@ -232,17 +210,45 @@
   <div id="header-placeholder"></div>
   
   <!-- Hero Section -->
-  <section class="hero-sticker">
-    <div class="hero-content">
-      <h1>Sticker</h1>
-      <img src="sticker-hero.png" alt="Sticker Packs" class="sticker-hero-image">
-      <p class="lead">Egal ob 1 Stern oder 6 Sterne, ob Normal oder Gold. Wir haben sie alle!</p>
-      <div class="actions">
-        <a href="#kaufen" class="btn btn-primary">Jetzt kaufen</a>
-        <a href="#preise" class="btn btn-outline">Preise</a>
-        <a href="#weiteres" class="btn btn-outline">Weiteres</a>
+  <section class="hero-section">
+      <div class="hero-background"></div>
+      <div class="hero-content">
+          <div class="logo-container">
+              <img src="sticker-hero.png" alt="Sticker Packs für Monopoly GO" class="logo-image">
+          </div>
+          
+          <div class="welcome-box">
+              <h1 class="welcome-title">Sticker für Monopoly GO</h1>
+              <p class="welcome-subtitle">Egal ob 1 Stern oder 6 Sterne, ob Normal oder Gold. Wir haben sie alle!</p>
+          </div>
+
+          <div class="nav-buttons">
+              <div class="button-row-3">
+                  <a href="#kaufen" class="button button-orange">
+                      <span class="material-icons">shopping_cart</span>
+                      <span>Jetzt kaufen</span>
+                  </a>
+                  <a href="#preise" class="button button-darkblue">
+                      <span class="material-icons">euro</span>
+                      <span>Preise</span>
+                  </a>
+                  <a href="#weiteres" class="button button-cyan">
+                      <span class="material-icons">info</span>
+                      <span>Weiteres</span>
+                  </a>
+              </div>
+              <div class="button-row-2">
+                  <a href="kontakt.html" class="button button-darkblue">
+                      <span class="material-icons">support_agent</span>
+                      <span>Support</span>
+                  </a>
+                  <a href="index.html" class="button button-orange">
+                      <span class="material-icons">home</span>
+                      <span>Startseite</span>
+                  </a>
+              </div>
+          </div>
       </div>
-    </div>
   </section>
 
   <!-- Main Content -->

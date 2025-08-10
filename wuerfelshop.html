@@ -14,29 +14,6 @@
 
   <style>
     /* Page-specific styles using consistent color scheme */
-    .hero-wuerfel { 
-      background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
-      padding: 34px 0 22px;
-      position: relative;
-      overflow: hidden;
-      
-    }
-    .hero-image {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      width: 120px;
-      height: 120px;
-      opacity: 0.1;
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 18px;
-    }
     
     .main-content {
       max-width: 1000px;
@@ -209,30 +186,53 @@
 <body>
   <div id="header-placeholder"></div>
 
-  <main>
-    <!-- HERO -->
-    <div class="hero-wuerfel">
+  <!-- Hero Section -->
+  <section class="hero-section">
+      <div class="hero-background"></div>
       <div class="hero-content">
-        <h1>Würfel für deinen Monopoly GO-Account</h1>
-        <p class="lead">
-          Ohne Würfel läuft in Monopoly GO (MoGo) nichts – sie sind das wichtigste Werkzeug, um Events erfolgreich
-          abzuschließen und Alben zu vervollständigen. Hier erfährst du, welche Möglichkeiten es derzeit gibt,
-          damit dir deine Würfel nicht ausgehen.
-        </p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#ablauf">Jetzt kaufen</a>
-          <a class="btn btn-outline" href="#voraussetzungen" >Voraussetzungen</a>
-          <a class="btn btn-outline" href="#ablauf" >Ablauf</a>
-          <a class="btn btn-outline" href="#methoden" >Methoden im Überblick</a>
-          <a class="btn btn-outline" href="#mehrinfos" >Mehr Infos</a>
-            </div>
+          <div class="logo-container">
+              <img src="icon_wuerfelfigur_boost_1024_1024_1754783358120.webp" alt="Würfel für Monopoly GO" class="logo-image">
+          </div>
+          
+          <div class="welcome-box">
+              <h1 class="welcome-title">Würfel für deinen Monopoly GO-Account</h1>
+              <p class="welcome-subtitle">Ohne Würfel läuft in Monopoly GO nichts – sie sind das wichtigste Werkzeug für Events und Alben. Hier erfährst du alles über unsere sicheren Methoden.</p>
+          </div>
+
+          <div class="nav-buttons">
+              <div class="button-row-3">
+                  <a href="#ablauf" class="button button-orange">
+                      <span class="material-icons">shopping_cart</span>
+                      <span>Jetzt kaufen</span>
+                  </a>
+                  <a href="#voraussetzungen" class="button button-darkblue">
+                      <span class="material-icons">rule</span>
+                      <span>Voraussetzungen</span>
+                  </a>
+                  <a href="#methoden" class="button button-cyan">
+                      <span class="material-icons">list</span>
+                      <span>Methoden</span>
+                  </a>
+              </div>
+              <div class="button-row-2">
+                  <a href="#mehrinfos" class="button button-darkblue">
+                      <span class="material-icons">info</span>
+                      <span>Mehr Infos</span>
+                  </a>
+                  <a href="kontakt.html" class="button button-orange">
+                      <span class="material-icons">support_agent</span>
+                      <span>Support</span>
+                  </a>
+              </div>
           </div>
       </div>
-    </div>
+  </section>
+
+  <main>
+    <div class="main-content">
 
     <!-- VORAUSSETZUNGEN -->
     <section id="voraussetzungen">
-      <div class="main-content">
         <div class="card">
           <h2 class="babix-info-header">Voraussetzungen</h2>
           <p><strong>Für alle Methoden gilt:</strong><br>
@@ -241,12 +241,10 @@
           </ul>
           <div class="info"><strong>Hinweis:</strong> Facebook-Zugangsdaten sind <em>nicht zwingend</em> erforderlich. Mehr dazu findest du <a href="#mehrinfos"><strong>hier</strong></a>.</div>
         </div>
-      </div>
     </section>
 
     <!-- METHODEN -->
     <section id="methoden">
-      <div class="main-content">
         <h2 class="babix-info-header">Methoden im Überblick</h2>
         <div class="grid" style="margin-top:10px">
           <div class="col-12 col-4">
@@ -294,7 +292,6 @@
         <div id="risiko" class="warning" style="margin-top:16px">
            <strong>Achtung:</strong> Das Risiko einer Suspendierung variiert je nach Methode und kann sich kurzfristig ändern. Mehr Infos findest du hier: Link
         </div>
-      </div>
     </section>
 
     <!-- ABLAUF -->
