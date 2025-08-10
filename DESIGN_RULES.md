@@ -127,7 +127,6 @@ h3.babix-info-header::after {
 - sticker.html - Sticker Service mit Preistabelle
 - partnerevent.html - Partner-Events mit Event-Funktionen
 - accounts.html - Premium Accounts mit Account-Features
-- tycoonracers.html - Tycoon Racers Racing-Events
 - freundschaftsbalken.html - Freundschaftsbalken Service
 
 ### Angepasste Navigation pro Seite:
@@ -142,6 +141,13 @@ Jede Seite nutzt die standardisierten Button-Klassen mit seitenspezifischen Icon
 3. **welcome-box** mit **welcome-title** und **welcome-subtitle**
 4. **nav-buttons** mit **button-row-3** und **button-row-2**
 
-Alle Seiten verwenden jetzt das gleiche Hero-Design wie die Startseite mit seitenspezifischen Inhalten.
+Alle verbleibenden Seiten verwenden jetzt das gleiche Hero-Design wie die Startseite mit seitenspezifischen Inhalten.
+
+### Entfernte Seiten:
+- tycoonracers.html - Service wurde eingestellt (10. August 2025)
+  - Entfernt aus Navigation (partials/header.html)
+  - Entfernt aus Sitemap (sitemap.html) 
+  - Entfernt aus Produktübersicht (index.html)
+  - Alle Referenzen vollständig bereinigt
 
 Letzte Aktualisierung: 10. August 2025

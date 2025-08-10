@@ -69,10 +69,11 @@ The architecture includes active integrations for:
   - Documented in DESIGN_RULES.md and CSS comments for maintainability
   - Consolidated duplicate CSS rules for better code organization
 - **Hero Section Standardization (10. August 2025)**: Complete implementation of uniform hero design across all product pages:
-  - All 6 main product pages now use standardized hero-section structure from index.html
+  - All 5 main product pages now use standardized hero-section structure from index.html
   - Removed page-specific hero CSS styles from individual HTML files
   - Implemented consistent button layouts with service-specific icons and navigation
   - Unified color scheme using established brand colors (orange #FF4C00, cyan #00CFFF, dark blue #0A3A68)
   - Each page maintains its unique content while following the same visual structure and user experience patterns
+- **Tycoon Racers Service Removal (10. August 2025)**: Removed tycoonracers.html page and updated all documentation references
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
