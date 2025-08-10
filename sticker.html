@@ -336,6 +336,8 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById('header-placeholder').innerHTML = data;
+        // Initialize mobile menu after header is loaded
+        setTimeout(initMobileMenu, 100);
       });
 
     // Load footer
@@ -344,6 +346,36 @@
       .then(data => {
         document.getElementById('footer-placeholder').innerHTML = data;
       });
+
+    // Initialize mobile menu functionality
+    function initMobileMenu() {
+      const drawer = document.getElementById('babixgo-mobile-drawer');
+      const menuBtn = document.getElementById('babixgo-menu-btn');
+      const closeBtn = document.getElementById('drawer-close');
+      
+      if (!drawer || !menuBtn) return;
+      
+      // Open menu
+      menuBtn.addEventListener('click', function() {
+        drawer.style.display = 'flex';
+      });
+      
+      // Close menu
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          drawer.style.display = 'none';
+        });
+      }
+      
+      // Close menu when clicking outside
+      window.addEventListener('click', function(e) {
+        if (drawer.style.display === 'flex' && 
+            !drawer.contains(e.target) && 
+            !menuBtn.contains(e.target)) {
+          drawer.style.display = 'none';
+        }
+      });
+    }
   </script>
 </body>
 </html>
