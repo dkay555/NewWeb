@@ -13,6 +13,148 @@
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <style>
+        /* Page-specific styles using consistent color scheme */
+        .hero-partner { 
+          background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
+          padding: 34px 0 22px;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero-content {
+          position: relative;
+          z-index: 1;
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0 18px;
+        }
+        
+        .main-content {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 0 18px;
+        }
+        
+        h1,h2,h3{ 
+          font-family: 'Baloo 2'; 
+          margin: 0 0 10px; 
+          color: var(--accent);
+        }
+        h1{ font-size: 2.0rem; }
+        h2{ font-size: 1.6rem; margin-top: 24px; }
+        h3{ font-size: 1.2rem; margin-top: 12px; }
+        
+        p.lead{ 
+          font-size: 1.1rem; 
+          color: var(--muted); 
+          font-weight: 700;
+          margin: 8px 0 18px; 
+        }
+       
+        /* Desktop: alles nebeneinander */
+        .actions {
+          display: flex;
+          gap: 12px;
+          flex-wrap: nowrap;
+          align-items: center;
+        }
+        .actions .btn {
+          white-space: nowrap;
+        }
+
+        /* Mobile: zweizeiliges Layout wie beschrieben */
+        @media (max-width: 2000px) {
+          .actions {
+            display: grid;
+            grid-template-columns: repeat(3, 30%); /* 3 pro Reihe, je 30% */
+            column-gap: 5%;                       /* 2.5% Lücke zwischen den Spalten */
+            row-gap: 10px;
+            justify-content: center;                 /* restliche 5% zentrieren */
+          }
+
+          /* Buttons füllen ihre Grid-Zelle */
+          .actions .btn {
+            width: 100%;
+          }
+
+          /* Erster Button (Primary): eigene Reihe, zentriert, 50% Breite, 50px hoch */
+          .actions .btn:first-child {
+            grid-column: 1 / -1;     /* über alle Spalten */
+            margin: 5px 10px 0 0;
+            justify-self: center;    /* zentrieren */
+            width: 60%;
+            height: 40px;
+            line-height: 40px;       /* nur nötig, falls kein flex genutzt wird */
+          }
+        }
+        
+        .btn{ 
+          display: inline-flex; 
+          align-items: center; 
+          justify-content: center; 
+          gap: 10px; 
+          padding: 8px 12px; 
+          border-radius: 5px; 
+          text-decoration: none; 
+          font-weight: 700; 
+          border: 0; 
+          cursor: pointer; 
+          transition: transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease; 
+          box-shadow: var(--shadow);
+        }
+        .btn:active{ transform: translateY(1px); }
+        .btn-primary{ background: var(--accent); color: #fff; }
+        .btn-outline{ background: #fff; color: var(--primary); font-size: 0.9rem; border: 2px solid var(--cyan); height: 40px;  padding: 8px 12px; align-items: center; margin: 5px 0;}
+        .btn-primary:hover{ filter: brightness(.98); }
+        .btn-outline:hover{ background: var(--cyan); color: #00324f; }
+
+        /* Sections */
+        section{ padding: 22px 0; }
+        .card{ 
+          background: var(--paper); 
+          border-radius: var(--radius); 
+          box-shadow: var(--shadow); 
+          padding: 20px; 
+          margin: 20px 0; 
+        }
+        .info-box{ 
+          background: rgba(0,207,255,.1); 
+          border-left: 4px solid var(--cyan); 
+          padding: 16px; 
+          border-radius: 4px; 
+          margin: 16px 0; 
+        }
+        .warning-box{ 
+          background: rgba(255,76,0,.1); 
+          border-left: 4px solid var(--accent); 
+          padding: 16px; 
+          border-radius: 4px; 
+          margin: 16px 0; 
+        }
+        
+        /* Split layout */
+        .split {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          align-items: center;
+        }
+        
+        @media (max-width: 768px) {
+          .split {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
+        }
+
+        /* Hero image styling */
+        .partner-hero-image {
+          width: 100%;
+          max-width: 500px;
+          height: auto;
+          border-radius: 12px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
         nav a:hover {
             background: var(--primary) !important;
             color: white !important;
@@ -24,17 +166,28 @@
     <div id="header-placeholder"></div>
     
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-background"></div>
+    <section class="hero-partner">
         <div class="hero-content">
-            <div class="logo-container">
-                <img src="partnerevent-hero-monopoly.png" alt="Mr. Monopoly beim Partner-Event" class="hero-image" style="max-width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
-            </div>
-            
-            <div class="welcome-box">
-                <h1 class="welcome-title">Partnerevent in Monopoly GO</h1>
-                <p class="welcome-subtitle">Sammle bis zu <strong>11.400 Würfel</strong>, sichere dir exklusive Sticker und schließe deine Türme stressfrei ab. Mit babixGO bekommst du zuverlässige Partner oder Eventwährung – maßgeschneidert für deinen Fortschritt.</p>
-                <a href="#pricing" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Jetzt Platz reservieren</a>
+            <div class="card">
+                <h1 class="babix-info-header">Partnerevent in Monopoly GO</h1>
+                <div class="split" style="margin: 2rem 0;">
+                    <div>
+                        <img src="attached_assets/pe-breit - bearbeitet_1754827210169.png" alt="Mr. Monopoly beim Partner-Event" class="partner-hero-image">
+                    </div>
+                    <div>
+                        <p class="lead">Sammle bis zu <strong>11.400 Würfel</strong>, sichere dir exklusive Sticker und schließe deine Türme stressfrei ab. Mit babixGO bekommst du zuverlässige Partner oder Eventwährung – maßgeschneidert für deinen Fortschritt.</p>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="#pricing" class="btn btn-primary">
+                        <span class="material-icons">event_seat</span>
+                        Jetzt Platz reservieren
+                    </a>
+                    <a href="#ueberblick" class="btn btn-outline">Überblick</a>
+                    <a href="#ablauf" class="btn btn-outline">Ablauf</a>
+                    <a href="#pricing" class="btn btn-outline">Preise</a>
+                    <a href="#faq" class="btn btn-outline">FAQ</a>
+                </div>
             </div>
         </div>
     </section>
@@ -45,7 +198,7 @@
             <li><a href="#ueberblick" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">📋 Überblick</a></li>
             <li><a href="#ablauf" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">👥 Ablauf</a></li>
             <li><a href="#pricing" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">💰 Preise</a></li>
-            <li><a href="#rewards" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">🏆 Belohnungen</a></li>
+
             <li><a href="#faq" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">❓ FAQ</a></li>
         </ul>
     </nav>
@@ -156,36 +309,7 @@
             </div>
         </section>
 
-        <!-- Rewards -->
-        <section id="rewards" style="margin-top: 3rem;">
-            <h2 class="babix-info-header">Belohnungen im Partnerevent</h2>
-            <div class="card">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                    <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #FF4C00, #FF8033); color: white; border-radius: 1rem;">
-                        <h3 style="margin-bottom: 0.5rem; color: white;">🎲 Bis zu 11.400 Würfel</h3>
-                        <p>Sammle eine enorme Anzahl an Würfeln für kommende Events und sichere dir einen großen Vorsprung.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #00CFFF, #7be3ff); color: white; border-radius: 1rem;">
-                        <h3 style="margin-bottom: 0.5rem; color: white;">🌟 Exklusive Sticker</h3>
-                        <p>Erhalte seltene und wertvolle Sticker, die nur durch Partnerevents verfügbar sind.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, #0A3A68, #073156); color: white; border-radius: 1rem;">
-                        <h3 style="margin-bottom: 0.5rem; color: white;">💰 Hauptpreise</h3>
-                        <p>Sichere dir wertvolle Hauptpreise und andere exklusive Belohnungen aus dem Event.</p>
-                    </div>
-                </div>
-                
-                <div class="info-box">
-                    <h4>🏆 Event-Struktur:</h4>
-                    <ul style="margin: 1rem 0; padding-left: 1.5rem;">
-                        <li><strong>4 Türme</strong> mit je 5 Etappen</li>
-                        <li><strong>Etappenpreise</strong> für jeden abgeschlossenen Turm</li>
-                        <li><strong>Hauptpreis</strong> bei Komplettierung aller Türme</li>
-                        <li><strong>Bonus-Belohnungen</strong> je nach gewählter Partner-Option</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+
 
         <!-- FAQ -->
         <section id="faq" style="margin-top: 3rem;">
