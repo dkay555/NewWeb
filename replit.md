@@ -63,5 +63,10 @@ The architecture includes active integrations for:
 - **Cleaned Codebase**: Removed server/paypal.js, server/paypal-simple.js, and client/src/components/PayPalButton.js
 - **Updated Navigation**: All product pages now use direct links to order form instead of payment integration
 - **Express.js Server**: Simplified server.js to only handle static file serving
+- **Design System Established (10. August 2025)**: Comprehensive design rules for Hero Section and Header styling implemented:
+  - 33 detailed rules for consistent Hero Section design
+  - Unified header styling with babix-info-header class for H1, H2, H3
+  - Documented in DESIGN_RULES.md and CSS comments for maintainability
+  - Consolidated duplicate CSS rules for better code organization
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
