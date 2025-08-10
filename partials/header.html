@@ -39,13 +39,7 @@
                 <svg viewBox="0 0 24 24">
                     <path fill="#00CFFF" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
-                <span>Start</span>
-            </a>
-            <a href="#news">
-                <svg viewBox="0 0 24 24">
-                    <path fill="#00CFFF" d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                </svg>
-                <span>News</span>
+                <span>Home</span>
             </a>
             <a href="kontakt.html">
                 <svg viewBox="0 0 24 24">
@@ -53,11 +47,11 @@
                 </svg>
                 <span>Kontakt</span>
             </a>
-            <a href="#about">
+            <a href="impressum.html">
                 <svg viewBox="0 0 24 24">
                     <path fill="#00CFFF" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>
                 </svg>
-                <span>Hilfe</span>
+                <span>Rechtliches</span>
             </a>
         </div>
         
@@ -69,7 +63,13 @@
                 <svg viewBox="0 0 24 24">
                     <path fill="#00CFFF" d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M7,5A2,2 0 0,0 5,7A2,2 0 0,0 7,9A2,2 0 0,0 9,7A2,2 0 0,0 7,5M17,15A2,2 0 0,0 15,17A2,2 0 0,0 17,19A2,2 0 0,0 19,17A2,2 0 0,0 17,15M17,10A2,2 0 0,0 15,12A2,2 0 0,0 17,14A2,2 0 0,0 19,12A2,2 0 0,0 17,10M17,5A2,2 0 0,0 15,7A2,2 0 0,0 17,9A2,2 0 0,0 19,7A2,2 0 0,0 17,5Z"/>
                 </svg>
-                <span>Würfel</span>
+                <span>Würfelboost</span>
+            </a>
+            <a href="partnerevent.html">
+                <svg viewBox="0 0 24 24">
+                    <path fill="#00CFFF" d="M16 4C18.2 4 20 5.8 20 8C20 10.1 18.3 11.9 16.1 12H15.9C17.2 14.6 16.3 17.8 13.7 19.1C11.1 20.4 7.9 19.5 6.6 16.9C5.3 14.3 6.2 11.1 8.8 9.8C9.5 9.4 10.3 9.2 11.1 9.2H11.2C11.1 7 12.9 5.2 15.1 5.2C15.4 5.2 15.7 5.2 16 4M12 6C9.8 6 8 7.8 8 10S9.8 14 12 14 16 12.2 16 10 14.2 6 12 6Z"/>
+                </svg>
+                <span>Partnerevent</span>
             </a>
             <a href="sticker.html">
                 <svg viewBox="0 0 24 24">
@@ -77,17 +77,23 @@
                 </svg>
                 <span>Sticker</span>
             </a>
-            <a href="partnerevent.html">
-                <svg viewBox="0 0 24 24">
-                    <path fill="#00CFFF" d="M16 4C18.2 4 20 5.8 20 8C20 10.1 18.3 11.9 16.1 12H15.9C17.2 14.6 16.3 17.8 13.7 19.1C11.1 20.4 7.9 19.5 6.6 16.9C5.3 14.3 6.2 11.1 8.8 9.8C9.5 9.4 10.3 9.2 11.1 9.2H11.2C11.1 7 12.9 5.2 15.1 5.2C15.4 5.2 15.7 5.2 16 4M12 6C9.8 6 8 7.8 8 10S9.8 14 12 14 16 12.2 16 10 14.2 6 12 6Z"/>
-                </svg>
-                <span>Partnerevents</span>
-            </a>
             <a href="accounts.html">
                 <svg viewBox="0 0 24 24">
                     <path fill="#00CFFF" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z"/>
                 </svg>
                 <span>Accounts</span>
+            </a>
+        </div>
+        
+        <div class="babixgo-mobile-drawer__section-label">BESTELLUNGEN</div>
+        
+        <!-- Bestellungen Section -->
+        <div class="babixgo-mobile-drawer__single">
+            <a href="bestellformular.html">
+                <svg viewBox="0 0 24 24">
+                    <path fill="#00CFFF" d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
+                </svg>
+                <span>Bestellungen</span>
             </a>
         </div>
         
@@ -257,7 +263,7 @@
 
 .babixgo-mobile-drawer__nav {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 4px;
     margin-bottom: 10px;
     width: 100%;
@@ -271,8 +277,17 @@
     width: 100%;
 }
 
+.babixgo-mobile-drawer__single {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
 .babixgo-mobile-drawer__nav a,
-.babixgo-mobile-drawer__grid a {
+.babixgo-mobile-drawer__grid a,
+.babixgo-mobile-drawer__single a {
     background: #073156;
     border: 1px solid #199edb;
     border-radius: 6px;
@@ -295,13 +310,15 @@
 }
 
 .babixgo-mobile-drawer__nav a:hover,
-.babixgo-mobile-drawer__grid a:hover {
+.babixgo-mobile-drawer__grid a:hover,
+.babixgo-mobile-drawer__single a:hover {
     background: rgba(0, 85, 119, 0.13);
     border-color: #00CFFF;
 }
 
 .babixgo-mobile-drawer__nav svg,
-.babixgo-mobile-drawer__grid svg {
+.babixgo-mobile-drawer__grid svg,
+.babixgo-mobile-drawer__single svg {
     width: 22px;
     height: 22px;
     margin-bottom: 2px;
@@ -309,7 +326,8 @@
 }
 
 .babixgo-mobile-drawer__nav span,
-.babixgo-mobile-drawer__grid span {
+.babixgo-mobile-drawer__grid span,
+.babixgo-mobile-drawer__single span {
     color: #EAF8FC;
     font-size: 0.6rem;
     font-weight: 600;
@@ -351,15 +369,26 @@
         padding: 10px !important;
     }
     
-    .babixgo-mobile-drawer__nav,
-    .babixgo-mobile-drawer__grid {
+    .babixgo-mobile-drawer__nav {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 3px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .babixgo-mobile-drawer__grid,
+    .babixgo-mobile-drawer__single {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 3px !important;
         margin-bottom: 8px !important;
     }
     
+    .babixgo-mobile-drawer__single {
+        grid-template-columns: 1fr !important;
+    }
+    
     .babixgo-mobile-drawer__nav a,
-    .babixgo-mobile-drawer__grid a {
+    .babixgo-mobile-drawer__grid a,
+    .babixgo-mobile-drawer__single a {
         font-size: 0.55rem !important;
         min-height: 42px !important;
         padding: 3px 1px !important;
@@ -367,7 +396,8 @@
     }
     
     .babixgo-mobile-drawer__nav svg,
-    .babixgo-mobile-drawer__grid svg {
+    .babixgo-mobile-drawer__grid svg,
+    .babixgo-mobile-drawer__single svg {
         width: 20px !important;
         height: 20px !important;
     }

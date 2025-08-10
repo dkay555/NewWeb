@@ -75,5 +75,10 @@ The architecture includes active integrations for:
   - Unified color scheme using established brand colors (orange #FF4C00, cyan #00CFFF, dark blue #0A3A68)
   - Each page maintains its unique content while following the same visual structure and user experience patterns
 - **Service Removal (10. August 2025)**: Removed tycoonracers.html and freundschaftsbalken.html pages and updated all documentation references
+- **Mobile Menu Restructuring (10. August 2025)**: Reorganized mobile navigation with user-specified structure:
+  - Main Navigation (3-column grid): Home, Kontakt, Rechtliches
+  - Services Section (2-column grid): Würfelboost, Partnerevent, Sticker, Accounts  
+  - Bestellungen Section (single column): Bestellungen
+  - Improved mobile navigation experience with logical grouping and enhanced usability
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
