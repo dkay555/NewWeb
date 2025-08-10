@@ -48,9 +48,9 @@ The project includes a simple Express.js server for serving static files:
 - **Material Icons**: Google's Material Icons library for consistent iconography
 
 ## Communication Channels
-- **WhatsApp Integration**: Direct WhatsApp contact links for customer support (+49 152 37250453)
-- **Facebook Messenger**: Integration for customer communication via Facebook Messenger
-- **Email**: Standard email contact (info@babixgo.de)
+- **WhatsApp Integration**: Direct WhatsApp contact links for customer support (+49 152 23842897)
+- **Facebook Messenger**: Integration for customer communication via Facebook Messenger (m.me/494670617055790)
+- **Email**: Standard email contact (support@babixgo-mail.de)
 
 ## Third-Party Services
 The architecture includes active integrations for:
