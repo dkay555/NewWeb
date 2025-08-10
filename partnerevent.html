@@ -97,59 +97,56 @@
         <!-- Pricing -->
         <section id="pricing" class="pricing-table">
             <h2 class="babix-info-header">Partner-Optionen & Preise</h2>
-            <p style="margin: 0 0 1.5rem; color: #6b7b8c; text-align: center;">Wähle die Option, die zu deinem Tempo passt – alle Preise gelten pro Account/Platz.</p>
+            <p style="margin: 0 0 1.5rem; color: #6b7b8c; text-align: center;">Wähle die Partner, die zu deiner Spielweise passen!</p>
             
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Partner-Option</th>
-                            <th>Punkte</th>
-                            <th>Abschlusszeit</th>
-                            <th>Preis pro Turm</th>
-                            <th>Preis für 4 Türme</th>
-                            <th>Aktion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>1️⃣ Der Normale</strong></td>
-                            <td>80.000</td>
-                            <td>Vor Eventende</td>
-                            <td>€8</td>
-                            <td><strong>€30</strong></td>
-                            <td>
-                                <a href="bestellformular.html?product=Partnerevent Der Normale (4 Türme)&price=30.00" class="cta-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-                                    Jetzt bestellen
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>2️⃣ Der Eilige</strong></td>
-                            <td>80.000</td>
-                            <td>24h</td>
-                            <td>€13</td>
-                            <td><strong>€45</strong></td>
-                            <td>
-                                <a href="bestellformular.html?product=Partnerevent Der Eilige (4 Türme)&price=45.00" class="cta-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-                                    Jetzt bestellen
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>3️⃣ Der Zuverlässige</strong></td>
-                            <td>mind. 40.000</td>
-                            <td>Vor Eventende</td>
-                            <td>€5</td>
-                            <td><strong>€17</strong></td>
-                            <td>
-                                <a href="bestellformular.html?product=Partnerevent Der Zuverlässige (4 Türme)&price=17.00" class="cta-btn" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-                                    Jetzt bestellen
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <!-- Der Normale -->
+                <div class="card" style="border: 2px solid var(--cyan); position: relative;">
+                    <div style="background: var(--cyan); color: var(--primary); padding: 0.5rem; text-align: center; font-weight: bold; margin: -1rem -1rem 1rem -1rem;">
+                        1️⃣ Der Normale
+                    </div>
+                    <div style="display: grid; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between;"><strong>Punkte:</strong> <span>80.000</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Abschlusszeit:</strong> <span>Vor Eventende</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Pro Turm:</strong> <span>€8</span></div>
+                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; color: var(--accent);"><strong>4 Türme:</strong> <span>€30</span></div>
+                    </div>
+                    <a href="bestellformular.html?product=Partnerevent Der Normale (4 Türme)&price=30.00" class="cta-btn" style="width: 100%; text-align: center;">
+                        Jetzt bestellen
+                    </a>
+                </div>
+
+                <!-- Der Eilige -->
+                <div class="card" style="border: 2px solid var(--accent); position: relative;">
+                    <div style="background: var(--accent); color: white; padding: 0.5rem; text-align: center; font-weight: bold; margin: -1rem -1rem 1rem -1rem;">
+                        2️⃣ Der Eilige
+                    </div>
+                    <div style="display: grid; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between;"><strong>Punkte:</strong> <span>80.000</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Abschlusszeit:</strong> <span style="color: var(--accent); font-weight: bold;">24h</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Pro Turm:</strong> <span>€13</span></div>
+                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; color: var(--accent);"><strong>4 Türme:</strong> <span>€45</span></div>
+                    </div>
+                    <a href="bestellformular.html?product=Partnerevent Der Eilige (4 Türme)&price=45.00" class="cta-btn" style="width: 100%; text-align: center;">
+                        Jetzt bestellen
+                    </a>
+                </div>
+
+                <!-- Der Zuverlässige -->
+                <div class="card" style="border: 2px solid var(--primary); position: relative;">
+                    <div style="background: var(--primary); color: white; padding: 0.5rem; text-align: center; font-weight: bold; margin: -1rem -1rem 1rem -1rem;">
+                        3️⃣ Der Zuverlässige
+                    </div>
+                    <div style="display: grid; gap: 0.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between;"><strong>Punkte:</strong> <span style="color: var(--primary); font-weight: bold;">mind. 40.000</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Abschlusszeit:</strong> <span>Vor Eventende</span></div>
+                        <div style="display: flex; justify-content: space-between;"><strong>Pro Turm:</strong> <span>€5</span></div>
+                        <div style="display: flex; justify-content: space-between; font-size: 1.1rem; font-weight: bold; color: var(--accent);"><strong>4 Türme:</strong> <span>€17</span></div>
+                    </div>
+                    <a href="bestellformular.html?product=Partnerevent Der Zuverlässige (4 Türme)&price=17.00" class="cta-btn" style="width: 100%; text-align: center;">
+                        Jetzt bestellen
+                    </a>
+                </div>
             </div>
             
             <div style="background: linear-gradient(90deg, rgba(0,207,255,.25), rgba(255,76,0,.18)); border: 1px dashed rgba(10,58,104,.25); border-radius: 1rem; padding: 1rem; display: flex; gap: 1rem; align-items: center; justify-content: space-between; flex-wrap: wrap; margin-top: 1rem;">
