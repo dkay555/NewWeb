@@ -39,7 +39,7 @@ body {
 .hero-section {
     position: relative;
     overflow: hidden;
-    min-height: 100vh;
+    min-height: 10vh;
     display: flex;
     align-items: center;
 }
@@ -586,9 +586,10 @@ body {
 }
 
 /* New Header Styling for H2 & H3 */
+h1.babix-info-header,
 h2.babix-info-header,
 h3.babix-info-header,
-.section-title {
+ {
     display: inline-block;
     font-family: 'Baloo 2', cursive;
     font-size: 1.5rem;
@@ -600,8 +601,7 @@ h3.babix-info-header,
 }
 
 h2.babix-info-header::after,
-h3.babix-info-header::after,
-.section-title::after {
+h3.babix-info-header::after {
     content: "";
     display: block;
     width: 100%;

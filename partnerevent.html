@@ -62,10 +62,10 @@
         }
 
         /* Mobile: zweizeiliges Layout wie beschrieben */
-        @media (max-width: 2000px) {
+        @media (max-width: 800px) {
           .actions {
             display: grid;
-            grid-template-columns: repeat(3, 30%); /* 3 pro Reihe, je 30% */
+            grid-template-columns: repeat(2, 40%); /* 3 pro Reihe, je 30% */
             column-gap: 5%;                       /* 2.5% Lücke zwischen den Spalten */
             row-gap: 10px;
             justify-content: center;                 /* restliche 5% zentrieren */
@@ -169,8 +169,8 @@
     <section class="hero-partner">
         <div class="hero-content">
             <div class="card">
-                <h1 class="babix-info-header">Partnerevent in Monopoly GO</h1>
-                <div class="split" style="margin: 2rem 0;">
+                <h1 class="babix-info-header">Das Partnerevent in Monopoly GO</h1>
+                <div class="split" style="margin: 1rem 0;">
                     <div>
                         <img src="attached_assets/pe-breit - bearbeitet_1754827210169.png" alt="Mr. Monopoly beim Partner-Event" class="partner-hero-image">
                     </div>
@@ -181,7 +181,7 @@
                 <div class="actions">
                     <a href="#pricing" class="btn btn-primary">
                         <span class="material-icons">event_seat</span>
-                        Jetzt Platz reservieren
+                        Jetzt reservieren
                     </a>
                     <a href="#ueberblick" class="btn btn-outline">Überblick</a>
                     <a href="#ablauf" class="btn btn-outline">Ablauf</a>
@@ -191,17 +191,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Navigation -->
-    <nav style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); padding: 1rem; border-bottom: 1px solid #eaeaea;">
-        <ul style="display: flex; justify-content: center; gap: 1.5rem; list-style: none; flex-wrap: wrap; margin: 0; padding: 0;">
-            <li><a href="#ueberblick" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">📋 Überblick</a></li>
-            <li><a href="#ablauf" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">👥 Ablauf</a></li>
-            <li><a href="#pricing" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">💰 Preise</a></li>
-
-            <li><a href="#faq" style="color: var(--primary); text-decoration: none; font-weight: bold; padding: 0.5rem 1rem; border-radius: 1rem; transition: all 0.3s ease;">❓ FAQ</a></li>
-        </ul>
-    </nav>
 
     <!-- Main Content -->
     <main class="product-section">
