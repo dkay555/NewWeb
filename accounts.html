@@ -1,250 +1,287 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Accounts - babixGO</title>
-    <meta name="description" content="Premium Monopoly GO Accounts mit hohem Level und vielen Sammlungen bei babixGO. Sofort spielbereit!">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accounts - babixGO</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <style>
+    /* Page-specific styles using consistent color scheme */
+    .hero-accounts { 
+      background: linear-gradient(180deg, rgba(0,207,255,.15), rgba(0,207,255,0)); 
+      padding: 34px 0 22px;
+      position: relative;
+      overflow: hidden;
+      
+    }
+    .hero-image {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      width: 120px;
+      height: 120px;
+      opacity: 0.1;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    .main-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
     
-    <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    h1,h2,h3{ 
+      font-family: 'Baloo 2'; 
+      margin: 0 0 10px; 
+      color: var(--accent);
+    }
+    h1{ font-size: 2.0rem; }
+    h2{ font-size: 1.6rem; margin-top: 24px; }
+    h3{ font-size: 1.2rem; margin-top: 12px; }
+    
+    p.lead{ 
+      font-size: 1.1rem; 
+      color: var(--muted); 
+      font-weight: 700;
+      margin: 8px 0 18px; 
+    }
+   
+    /* Desktop: alles nebeneinander */
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap;
+      align-items: center;
+    }
+    .actions .btn {
+      white-space: nowrap;
+    }
+
+    /* Mobile: zweizeiliges Layout wie beschrieben */
+    @media (max-width: 2000px) {
+      .actions {
+        display: grid;
+        grid-template-columns: repeat(2, 50%); /* 2 pro Reihe, je 50% */
+        column-gap: 5%;                       /* 2.5% Lücke zwischen den Spalten */
+        row-gap: 10px;
+        justify-content: center;                 /* restliche 5% zentrieren */
+      }
+
+      /* Buttons füllen ihre Grid-Zelle */
+      .actions .btn {
+        width: 100%;
+      }
+
+      /* Erster Button (Primary): eigene Reihe, zentriert, 50% Breite, 50px hoch */
+      .actions .btn:first-child {
+        grid-column: 1 / -1;     /* über alle Spalten */
+        margin: 5px 10px 0 0;
+        justify-self: center;    /* zentrieren */
+        width: 60%;
+        height: 40px;
+        line-height: 40px;       /* nur nötig, falls kein flex genutzt wird */
+      }
+    }
+    
+    .btn{ 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      gap: 10px; 
+      padding: 8px 12px; 
+      border-radius: 5px; 
+      text-decoration: none; 
+      font-weight: 700; 
+      border: 0; 
+      cursor: pointer; 
+      transition: transform .06s ease, box-shadow .2s ease, background .2s ease, color .2s ease; 
+      box-shadow: var(--shadow);
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{ background: var(--accent); color: #fff; }
+    .btn-outline{ background: #fff; color: var(--primary); font-size: 0.9rem; border: 2px solid var(--cyan); height: 40px;  padding: 8px 12px; align-items: center; margin: 5px 0;}
+    .btn-primary:hover{ filter: brightness(.98); }
+    .btn-outline:hover{ background: var(--cyan); color: #00324f; }
+
+    /* Sections */
+    section{ padding: 22px 0; }
+    .card{ 
+      background: var(--paper); 
+      border-radius: var(--radius); 
+      box-shadow: var(--shadow); 
+      padding: 20px; 
+      margin: 20px 0; 
+    }
+    .info-box{ 
+      background: rgba(0,207,255,.1); 
+      border-left: 4px solid var(--cyan); 
+      padding: 16px; 
+      border-radius: 4px; 
+      margin: 16px 0; 
+    }
+    .warning-box{ 
+      background: rgba(255,76,0,.1); 
+      border-left: 4px solid var(--accent); 
+      padding: 16px; 
+      border-radius: 4px; 
+      margin: 16px 0; 
+    }
+    
+    /* Split layout */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      .split {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    /* Hero image styling */
+    .accounts-hero-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
+  <div id="header-placeholder"></div>
+  
+  <!-- Hero Section -->
+  <section class="hero-accounts">
+    <div class="hero-content">
+      <h1>Accounts</h1>
+      <p class="lead">Du möchtest neu durchstarten oder benötigst einen 2. Account? Willst lieber dein eigener Partner im Event sein? 
+      Egal warum! Bei uns bekommst du einen Account prallgefüllt mit Würfeln!</p>
+      <div class="actions">
+        <a href="bestellformular.html" class="btn btn-primary">
+          <span class="material-icons">shopping_cart</span>
+          Jetzt kaufen
+        </a>
+        <a href="#was-dich-erwartet" class="btn btn-outline">Was dich erwartet</a>
+        <a href="#preise" class="btn btn-outline">Preise und Verfügbarkeit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="main-content">
     
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>babixGO Premium Accounts</h1>
-        <p>Premium Monopoly GO Accounts mit hohem Level, vollständigen Sammlungen und vielen Ressourcen. Sofort spielbereit und optimal vorbereitet für alle Events.</p>
-        <a href="#pricing" class="btn-primary">Accounts durchstöbern</a>
+    <!-- Hero Image Section -->
+    <section class="split" style="margin-bottom: 3rem;">
+      <div>
+        <img src="attached_assets/02.01_Blogkategorie_Accounts_1754825948952.jpg" alt="Monopoly GO Account mit Würfeln" class="accounts-hero-image">
+      </div>
+      <div>
+        <div class="info-box">
+          <h3>💎 Premium Accounts verfügbar</h3>
+          <p>Hochwertige Accounts mit 25.000 - 75.000 Würfeln, professionell aufgebaut und sicher übertragen.</p>
+        </div>
+      </div>
     </section>
 
-    <!-- Navigation -->
-    <nav class="sticky">
-        <div class="wrap">
-            <a href="#product">Produkt</a>
-            <a href="#description">Beschreibung</a>
-            <a href="#rewards">Vorteile</a>
-            <a href="#pricing">Preise</a>
-            <a href="#faq">FAQ</a>
+    <!-- Was dich erwartet Section -->
+    <section id="was-dich-erwartet">
+      <h2>Was dich erwartet</h2>
+      <div class="card">
+        <p>Alle Accounts werden über mehrere Wochen langsam hochgespielt und werden dadurch völlig unbescholten übergeben.</p>
+        
+        <p>Sie können auf einen freien Facebook oder Google Account eurer Wahl gesichert werden. Habt ihr keinen zur Verfügung ist das kein Problem - wir kümmern uns dann um einen.</p>
+        
+        <p>Zusätzlich erhaltet ihr Informationen dazu, wie ihr den Account neben euren Hauptaccount / einen weiteren Account auf dem selben Gerät spielen könnt und natürlich könnt ihr uns bei Fragen immer gerne schreiben.</p>
+        
+        <div class="info-box">
+          <strong>💡 Info:</strong> Von uns erworbene Accounts können in Zukunft mit einem plus an Sicherheit geboostet werden!
         </div>
-    </nav>
+      </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="product-section">
-        <!-- Product Overview -->
-        <section id="product" class="split" style="margin-bottom: 3rem;">
-            <div>
-                <h2 class="babix-info-header">Premium Account Features</h2>
-                <p>Unsere sorgfältig ausgewählten Premium Accounts bieten dir:</p>
-                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
-                    <li>⭐ Level 50+ mit allen Grundfunktionen</li>
-                    <li>📚 Mehrere vervollständigte Sticker-Alben</li>
-                    <li>💰 Große Ressourcen-Reserven (Geld, Würfel)</li>
-                    <li>🏰 Fortgeschrittene Stadt-Entwicklung</li>
-                    <li>🎯 Event-optimierte Einstellungen</li>
-                </ul>
-                <div class="info-box">
-                    <strong>🛡️ Sicherheit garantiert:</strong> Alle Accounts sind legal erstellt und vollständig verifiziert. Keine Risiken für Account-Sperren!
-                </div>
+    <!-- Preise & Verfügbarkeit Section -->
+    <section id="preise">
+      <h2>Preise & Verfügbarkeit</h2>
+      <div class="card">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+          <div>
+            <h3 style="color: #0A3A68; margin-bottom: 1rem;">📦 Verfügbarkeit</h3>
+            <p>Accounts sind in Größen von <strong>25.000 - 75.000 Würfeln</strong> dauerhaft verfügbar.</p>
+            <p>Solltet ihr mehr oder weniger wollen, schreibt uns doch einfach an!</p>
+          </div>
+          <div>
+            <h3 style="color: #FF4C00; margin-bottom: 1rem;">💰 Preis</h3>
+            <p><strong>Pro 1000 Würfel zwischen 1,50 bis 2 Euro.</strong></p>
+            <div class="info-box">
+              <p><strong>Beispiel:</strong> Ein Account mit 50.000 Würfeln kostet zwischen 75€ - 100€</p>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1556075798-4825dfaaf498?q=80&w=600&auto=format&fit=crop" alt="Monopoly GO Premium Account" style="width: 100%; border-radius: 1rem;">
-            </div>
-        </section>
+          </div>
+        </div>
+        
+        <div class="warning-box" style="margin-top: 2rem;">
+          <h4>📞 Individuelle Beratung</h4>
+          <p>Jeder Account ist einzigartig! Kontaktiere uns für ein persönliches Angebot basierend auf deinen Wünschen.</p>
+          <div style="display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap;">
+            <a href="https://wa.me/4915223842897" target="_blank" class="btn btn-primary">
+              <span class="material-icons">message</span>
+              WhatsApp
+            </a>
+            <a href="https://m.me/494670617055790" target="_blank" class="btn btn-outline">
+              <span class="material-icons">facebook</span>
+              Messenger
+            </a>
+            <a href="mailto:support@babixgo-mail.de" class="btn btn-outline">
+              <span class="material-icons">mail</span>
+              E-Mail
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Description -->
-        <section id="description" style="margin-bottom: 3rem;">
-            <h2 class="babix-info-header">Account-Transfer und Setup</h2>
-            <div class="card">
-                <div class="info-box">
-                    <h3 class="babix-info-header">🔄 Einfacher Account-Transfer</h3>
-                    <ol style="margin: 1rem 0; padding-left: 1.5rem;">
-                        <li>Wähle deinen gewünschten Account-Typ</li>
-                        <li>Bezahle sicher über PayPal</li>
-                        <li>Wir senden dir die Account-Daten sicher zu</li>
-                        <li>Du meldest dich an und änderst alle Passwörter</li>
-                        <li>Sofort loslegen und alle Vorteile nutzen!</li>
-                    </ol>
-                </div>
-                
-                <p>Alle unsere Premium Accounts sind <span class="highlight">komplett legal und sicher erstellt</span>. Du erhältst vollständigen Zugang zu allen Account-Funktionen und kannst sofort mit dem Spielen beginnen.</p>
-                
-                <div class="warning-box">
-                    <strong>⚠️ Wichtig:</strong> Nach dem Account-Transfer musst du sofort alle Passwörter und E-Mail-Adressen ändern. Wir unterstützen dich dabei mit einer detaillierten Anleitung.
-                </div>
-            </div>
-        </section>
+    <!-- Vorteile Section -->
+    <section style="margin-top: 3rem;">
+      <h2>Warum unsere Accounts?</h2>
+      <div class="card">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+          <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
+            <h3 style="color: #FF4C00; margin-bottom: 0.5rem;">🛡️ Sicher</h3>
+            <p>Langsam und natürlich aufgebaut über mehrere Wochen für maximale Sicherheit.</p>
+          </div>
+          <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
+            <h3 style="color: #00CFFF; margin-bottom: 0.5rem;">🔄 Flexibel</h3>
+            <p>Sichere Übertragung auf deinen eigenen Facebook oder Google Account.</p>
+          </div>
+          <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
+            <h3 style="color: #0A3A68; margin-bottom: 0.5rem;">🎯 Sofort einsatzbereit</h3>
+            <p>Prallgefüllt mit Würfeln und bereit für alle Events und Challenges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Rewards Section -->
-        <section id="rewards" style="margin-bottom: 3rem;">
-            <h2 class="babix-info-header">Vorteile eines Premium Accounts</h2>
-            <div class="card">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #FF4C00; margin-bottom: 0.5rem;">⚡ Sofortstart</h3>
-                        <p>Keine langen Aufbauzeiten - steige direkt mit hohem Level und vielen Ressourcen ein.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #00CFFF; margin-bottom: 0.5rem;">📈 Event-Vorteil</h3>
-                        <p>Mit vervollständigten Alben und hohem Level hast du bei allen Events bessere Chancen.</p>
-                    </div>
-                    <div style="text-align: center; padding: 1rem; background: #f8f9fa; border-radius: 0.5rem;">
-                        <h3 style="color: #0A3A68; margin-bottom: 0.5rem;">💎 Sammlungen</h3>
-                        <p>Bereits vervollständigte Sticker-Alben und seltene Gegenstände inklusive.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  </div>
 
-        <!-- Pricing -->
-        <section id="pricing" class="pricing-table">
-            <h2 class="babix-info-header">Verfügbare Premium Accounts</h2>
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Account Typ</th>
-                            <th>Level</th>
-                            <th>Besonderheiten</th>
-                            <th>Preis</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>🌟 Starter Premium</strong></td>
-                            <td>Level 55-65</td>
-                            <td>2-3 komplette Alben, 50k+ Würfel</td>
-                            <td><strong>€89.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="ACCOUNT_STARTER_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Premium Account Starter">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Premium%20Account%20Starter&price=89.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/accounts.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>⭐ Advanced Premium</strong></td>
-                            <td>Level 70-85</td>
-                            <td>5+ komplette Alben, 100k+ Würfel</td>
-                            <td><strong>€149.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="ACCOUNT_ADVANCED_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Premium Account Advanced">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Premium%20Account%20Advanced&price=149.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/accounts.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>💎 Elite Premium</strong></td>
-                            <td>Level 90-110</td>
-                            <td>10+ komplette Alben, 200k+ Würfel</td>
-                            <td><strong>€249.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="ACCOUNT_ELITE_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Premium Account Elite">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Premium%20Account%20Elite&price=249.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/accounts.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>👑 Ultimate Premium</strong></td>
-                            <td>Level 120+</td>
-                            <td>Alle Alben, 500k+ Würfel, Extras</td>
-                            <td><strong>€399.99</strong></td>
-                            <td>
-                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                    <input type="hidden" name="cmd" value="_s-xclick">
-                                    <input type="hidden" name="hosted_button_id" value="ACCOUNT_ULTIMATE_BUTTON_ID">
-                                    <input type="hidden" name="custom" value="Premium Account Ultimate">
-                                    <input type="hidden" name="return" value="https://babixgo.de/bestellformular.html?product=Premium%20Account%20Ultimate&price=399.99">
-                                    <input type="hidden" name="cancel_return" value="https://babixgo.de/accounts.html">
-                                    <button type="submit" class="paypal-button">Mit PayPal kaufen</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="info-box" style="margin-top: 1rem;">
-                <strong>📱 Custom Accounts:</strong> Suchst du etwas Spezielles? Kontaktiere uns für maßgeschneiderte Account-Angebote!
-            </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" style="margin-top: 3rem;">
-            <h2 class="section-title">Häufig gestellte Fragen</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question">
-                    Sind die Accounts legal und sicher?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Ja, absolut! Alle unsere Accounts sind legal durch normales Spielen erstellt worden. Es werden keine Cheats, Hacks oder andere risikoreiche Methoden verwendet. Du kannst sicher sein, dass dein Account nicht gesperrt wird.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    Kann ich die Account-Daten nach dem Kauf ändern?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Ja, und das solltest du auch sofort tun! Nach dem Account-Transfer erhältst du eine detaillierte Anleitung, wie du alle Passwörter, E-Mail-Adressen und andere Sicherheitseinstellungen ändern kannst.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    Was ist in den Account-Paketen genau enthalten?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Jeder Account enthält das angegebene Level, vervollständigte Sticker-Alben, große Mengen an Würfeln und Geld, sowie eine fortgeschrittene Stadt. Genaue Details zu jedem Account senden wir dir vor dem Kauf zu.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    Gibt es eine Garantie auf die Accounts?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Ja! Wir bieten 30 Tage Garantie auf alle Accounts. Falls es Probleme mit dem Account gibt (die nicht durch deine eigenen Aktionen verursacht wurden), ersetzen wir ihn kostenlos oder erstatten den Kaufpreis.</p>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    Wie lange dauert die Account-Übergabe?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Die Account-Übergabe erfolgt normalerweise innerhalb von 2-6 Stunden nach der Zahlung. Bei Ultimate Accounts kann es aufgrund der umfangreichen Vorbereitung bis zu 24 Stunden dauern.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <div id="footer-placeholder"></div>
-    <script src="js/main.js"></script>
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js"></script>
 </body>
 </html>
