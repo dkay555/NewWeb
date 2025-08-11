@@ -16,30 +16,17 @@
     
     <style>
         /* Page-specific styles */
-        .contact-hero {
-            background: linear-gradient(135deg, rgba(10, 58, 104, 0.9), rgba(255, 76, 0, 0.8)), url('kontakt-support-hero.png') center/cover;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            position: relative;
+        .hero-logo {
+            max-width: 300px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         
-        .contact-hero-content h1 {
-            font-family: 'Baloo 2', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 0 0 1rem 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .contact-hero-content p {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin: 0;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 250px;
+            }
         }
         
         .contact-section {
@@ -329,10 +316,6 @@
         }
         
         @media (max-width: 768px) {
-            .contact-hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
             .contact-section {
                 padding: 2rem 1rem;
             }
@@ -364,16 +347,33 @@
     <div id="header-placeholder"></div>
 
     <!-- Hero Section -->
-    <section class="contact-hero">
-        <div class="contact-hero-content">
-            <h1>KONTAKT & SUPPORT</h1>
-            <p>Unser Team hilft dir schnell und kompetent weiter</p>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="kontakt-support-hero.png" alt="Kontakt & Support" class="hero-logo">
+            </div>
+            <div class="welcome-box">
+                <h1 class="welcome-title">KONTAKT & SUPPORT</h1>
+                <p class="welcome-subtitle">Unser Team hilft dir schnell und kompetent weiter</p>
+            </div>
+            <div class="nav-buttons">
+                <div class="button-row-2">
+                    <a href="#contact-methods" class="button button-orange">
+                        <span class="material-icons">chat</span>
+                        <span>Chat</span>
+                    </a>
+                    <a href="#contact-form" class="button button-cyan">
+                        <span class="material-icons">contact_mail</span>
+                        <span>Kontaktformular</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
     
     <section class="contact-section">
         <div class="contact-grid">
-            <div class="contact-methods">
+            <div id="contact-methods" class="contact-methods">
                 <div class="contact-card">
                     <div class="contact-card-inner">
                         <div class="contact-icon whatsapp-icon">
@@ -419,7 +419,7 @@
                 </div>
             </div>
             
-            <div class="contact-form">
+            <div id="contact-form" class="contact-form">
                 <h3>Kontaktformular</h3>
                 <form id="contactForm">
                     <div class="form-group">
@@ -478,6 +478,24 @@
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script>
+        // Smooth scroll for navigation buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('a[href^="#"]');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
     <script>
         // Google Apps Script URL (nach der Bereitstellung ersetzen)
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEXAMPLE/exec";
