@@ -80,5 +80,11 @@ The architecture includes active integrations for:
   - Services Section (2-column grid): Würfelboost, Partnerevent, Sticker, Accounts  
   - Bestellungen Section (single column): Bestellungen
   - Improved mobile navigation experience with logical grouping and enhanced usability
+- **Kontakt & Support Page Creation (10. August 2025)**: Created comprehensive contact page replacing bestellformular.html:
+  - Custom hero section with kontakt-support-hero.png background
+  - Integrated babixGO design system (colors, fonts, styling)
+  - WhatsApp, Facebook Messenger, and Email contact options
+  - Functional contact form with reCAPTCHA integration
+  - Material Icons throughout for consistency with mobile menu
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
