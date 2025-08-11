@@ -68,79 +68,96 @@
         
         .contact-card {
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            padding: 2.5rem 2rem;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            border: 1px solid #f0f0f0;
+            text-align: center;
         }
         
         .contact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            border-color: #00CFFF;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
         
         .contact-card-inner {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .contact-icon {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             flex-shrink: 0;
+            margin: 0 auto 1rem;
         }
         
         .whatsapp-icon {
-            background: linear-gradient(135deg, #25D366, #128C7E);
+            background-color: rgba(37, 211, 102, 0.1);
         }
         
         .facebook-icon {
-            background: linear-gradient(135deg, #1877F2, #42A5F5);
+            background-color: rgba(24, 119, 242, 0.1);
         }
         
         .email-icon {
-            background: linear-gradient(135deg, #FF4C00, #FF8033);
+            background-color: rgba(255, 76, 0, 0.1);
         }
         
         .contact-icon .material-icons {
-            color: white;
-            font-size: 32px;
+            font-size: 40px;
+        }
+        
+        .whatsapp-icon .material-icons {
+            color: #25D366;
+        }
+        
+        .facebook-icon .material-icons {
+            color: #1877F2;
+        }
+        
+        .email-icon .material-icons {
+            color: #FF4C00;
+        }
+        
+        .contact-content {
+            width: 100%;
         }
         
         .contact-content h4 {
             color: #0A3A68;
-            margin: 0 0 0.5rem;
-            font-size: 1.4rem;
+            margin: 0 0 1rem;
+            font-size: 1.5rem;
             font-family: 'Baloo 2', sans-serif;
             font-weight: 700;
         }
         
         .contact-content p {
-            margin: 0 0 0.5rem;
+            margin: 0 0 1rem;
             color: #6b7b8c;
-            font-weight: 600;
+            font-weight: 400;
+            line-height: 1.5;
         }
         
         .contact-phone {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #0A3A68;
-            font-weight: 700;
-            margin-bottom: 1rem !important;
+            font-weight: 600;
+            margin-bottom: 1.5rem !important;
         }
         
         .contact-btn {
-            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border: none;
             border-radius: 8px;
-            padding: 12px 20px;
+            padding: 14px 24px;
             font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
@@ -149,17 +166,24 @@
             font-family: 'Nunito Sans', sans-serif;
         }
         
-        .contact-btn:hover {
+        .whatsapp-btn {
+            background-color: #25D366;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #22C55E;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
         }
         
         .facebook-btn {
-            background: linear-gradient(135deg, #1877F2, #42A5F5);
+            background-color: #1877F2;
         }
         
         .facebook-btn:hover {
-            box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);
+            background-color: #1565C0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(24, 119, 242, 0.3);
         }
         
         .contact-form {
@@ -309,18 +333,29 @@
                 font-size: 2.5rem;
             }
             
-            .contact-card-inner {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-            }
-            
             .contact-section {
                 padding: 2rem 1rem;
             }
             
             .contact-form {
                 padding: 1.5rem;
+            }
+            
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .contact-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .contact-icon .material-icons {
+                font-size: 36px;
+            }
+            
+            .contact-content h4 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -348,7 +383,7 @@
                             <h4>WhatsApp Support</h4>
                             <p>Schnelle Hilfe direkt auf deinem Handy</p>
                             <p class="contact-phone">+49 152 23842897</p>
-                            <button class="contact-btn" onclick="window.open('https://wa.me/4915223842897', '_blank')">
+                            <button class="contact-btn whatsapp-btn" onclick="window.open('https://wa.me/4915223842897', '_blank')">
                                 WhatsApp öffnen
                             </button>
                         </div>
@@ -364,7 +399,7 @@
                             <h4>Facebook Community</h4>
                             <p>Tausche dich mit anderen Spielern aus</p>
                             <button class="contact-btn facebook-btn" onclick="window.open('https://m.me/494670617055790', '_blank')">
-                                Messenger öffnen
+                                Facebook besuchen
                             </button>
                         </div>
                     </div>
