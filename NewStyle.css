@@ -1,0 +1,1341 @@
+/* babixGO Website Styles - Unified NewStyle.css */
+/* Consolidated from existing styles.css and inline styles for better maintainability */
+
+/* =============================================================================
+   GLOBAL RESET AND VARIABLES
+   ============================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #0A3A68;
+    --accent: #FF4C00;
+    --cyan: #00CFFF;
+    --bg: #e0f7ff;
+    --paper: #ffffff;
+    --text: #0A3A68;
+    --muted: #6b7b8c;
+    --line: #e5eef5;
+    --shadow: 0 8px 24px rgba(10,58,104,.12);
+    --radius: 16px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+}
+
+/* =============================================================================
+   LAYOUT UTILITIES - Consolidating inline styles into reusable classes
+   ============================================================================= */
+
+.main {
+    flex-grow: 1;
+}
+
+/* Margin utilities */
+.margin-top-xs { margin-top: 8px; }
+.margin-top-sm { margin-top: 10px; }
+.margin-top-md { margin-top: 16px; }
+.margin-top-lg { margin-top: 1rem; }
+.margin-top-xl { margin-top: 2rem; }
+.margin-top-xxl { margin-top: 3rem; }
+
+.margin-bottom-xs { margin-bottom: 0.25rem; }
+.margin-bottom-sm { margin-bottom: 0.5rem; }
+.margin-bottom-md { margin-bottom: 1rem; }
+.margin-bottom-lg { margin-bottom: 1.5rem; }
+.margin-bottom-xl { margin-bottom: 2rem; }
+.margin-bottom-xxl { margin-bottom: 3rem; }
+
+/* Container utilities */
+.container-centered {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.container-wide {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.container-narrow {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Grid utilities */
+.grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-auto-fit-sm {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.grid-auto-fit-lg {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid-two-col {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+/* Display utilities */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-gap-sm {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+/* =============================================================================
+   HERO SECTION DESIGN RULES - Konsistente Regeln für einheitliches Design
+   ============================================================================= */
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    /* Regel 1: Hero Background muss immer relative positioniert sein */
+    /* Regel 2: Mindesthöhe von 10vh für mobile Geräte */
+    /* Regel 3: Flex-Layout für vertikale Zentrierung */
+}
+
+.hero-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, #78c6f7 0%, #5ba3d9 50%, #e0f7ff 100%);
+    z-index: 0;
+    /* Regel 4: Background immer mit z-index: 0 */
+    /* Regel 5: Standard-Gradient für konsistentes Design */
+}
+
+.hero-content {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    /* Regel 6: Content immer mit z-index: 10 über Background */
+    /* Regel 7: Max-width 32rem für optimale Lesbarkeit */
+    /* Regel 8: Standard-Padding 1rem für mobile Geräte */
+}
+
+/* Logo Container Rules */
+.logo-container {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto 0.75rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* Regel 9: Logo immer zentriert mit festem Abstand */
+}
+
+.logo-image {
+    max-width: 100%; 
+    height: auto;
+    /* Regel 10: Mobile Logo-Größe 8rem x 8rem */
+}
+
+.logo-image-rounded {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+@media (min-width: 768px) {
+    .logo-image {
+        width: 10rem;
+        height: 10rem;
+        /* Regel 11: Desktop Logo-Größe 10rem x 10rem */
+    }
+}
+
+/* Welcome Box Rules */
+.welcome-box {
+    background: rgba(176, 214, 245, 0.9);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow);
+    padding: 1rem 1rem 0.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    backdrop-filter: blur(10px);
+    /* Regel 12: Welcome Box mit transparentem Hintergrund und Blur-Effekt */
+    /* Regel 13: Standard-Schatten für Tiefe */
+}
+
+@media (min-width: 640px) {
+    .welcome-box {
+        padding: 1rem 1.5rem 0.5rem;
+        margin-bottom: 2rem;
+        /* Regel 14: Responsive Padding für Tablets */
+    }
+}
+
+@media (min-width: 768px) {
+    .welcome-box {
+        padding: 1rem 2rem 0.5rem;
+        /* Regel 15: Erweiterte Padding für Desktop */
+    }
+}
+
+/* Welcome Title Rules */
+.welcome-title {
+    color: var(--accent);
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem;
+    /* Regel 16: Titel immer in Accent-Farbe mit Baloo 2 Font */
+}
+
+@media (min-width: 640px) {
+    .welcome-title {
+        font-size: 1.875rem;
+        /* Regel 17: Responsive Schriftgrößen für bessere Lesbarkeit */
+    }
+}
+
+@media (min-width: 768px) {
+    .welcome-title {
+        font-size: 2.25rem;
+    }
+}
+
+/* Welcome Subtitle Rules */
+.welcome-subtitle {
+    color: var(--text);
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+    /* Regel 18: Subtitle in Text-Farbe mit medium Gewicht */
+}
+
+@media (min-width: 640px) {
+    .welcome-subtitle {
+        font-size: 1.125rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .welcome-subtitle {
+        font-size: 1.25rem;
+    }
+}
+
+/* =============================================================================
+   NAVIGATION BUTTON RULES - Teil des Hero Section Designs
+   ============================================================================= */
+
+.nav-buttons {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto 1.25rem;
+    /* Regel 24: Navigation Buttons haben gleiche Max-Width wie Logo Container */
+}
+
+.button-row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    /* Regel 25: 3er-Reihen für Hauptnavigation */
+}
+
+.button-row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    /* Regel 26: 2er-Reihen für sekundäre Aktionen */
+}
+
+.button {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    height: 2.5rem;
+    width: 100%;
+    font-size: 0.875rem;
+    box-shadow: var(--shadow);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif;
+    /* Regel 27: Alle Buttons haben einheitliche Höhe und Stil */
+    /* Regel 28: Hover-Effekt mit translateY(-2px) für alle Button-Typen */
+}
+
+@media (min-width: 640px) {
+    .button {
+        height: 3rem;
+        font-size: 1rem;
+        /* Regel 29: Desktop Buttons sind höher und haben größere Schrift */
+    }
+}
+
+.button-darkblue {
+    background-color: var(--primary);
+    color: white;
+    /* Regel 30: Primäre Aktionen in Primary-Farbe */
+}
+
+.button-darkblue:hover {
+    background-color: #083052;
+    transform: translateY(-2px);
+}
+
+.button-orange {
+    background-color: var(--accent);
+    color: white;
+    /* Regel 31: Wichtige Aktionen in Accent-Farbe */
+}
+
+.button-orange:hover {
+    background-color: #e63e00;
+    transform: translateY(-2px);
+}
+
+.button-cyan {
+    background-color: var(--cyan);
+    color: white;
+    /* Regel 32: Sekundäre Aktionen in Cyan-Farbe */
+}
+
+.button-cyan:hover {
+    background-color: #00b8e6;
+    transform: translateY(-2px);
+}
+
+.material-icons {
+    font-size: 0.875rem;
+    /* Regel 33: Icons konsistent mit Button-Text-Größe */
+}
+
+@media (min-width: 640px) {
+    .material-icons {
+        font-size: 1rem;
+    }
+}
+
+/* =============================================================================
+   HEADER STYLING RULES - H1, H2, H3 mit babix-info-header Klasse
+   ============================================================================= */
+
+h1.babix-info-header,
+h2.babix-info-header,
+h3.babix-info-header {
+    display: inline-block;
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FF4C00;
+    position: relative;
+    padding-bottom: 0.4rem;
+    margin: 0 0 1rem 0;
+    /* Regel 19: Alle Header mit babix-info-header haben einheitliches Styling */
+    /* Regel 20: Orange Farbe (#FF4C00) für Markenidentität */
+    /* Regel 21: Baloo 2 Font für konsistente Typografie */
+}
+
+h1.babix-info-header::after,
+h2.babix-info-header::after,
+h3.babix-info-header::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, var(--cyan), transparent);
+    margin-top: 0.3rem;
+    border-radius: 2px;
+    /* Regel 22: Alle Header bekommen Cyan-Gradient Unterstrich */
+    /* Regel 23: 3px Höhe für optimale Sichtbarkeit */
+}
+
+/* =============================================================================
+   CARDS AND CONTENT SECTIONS
+   ============================================================================= */
+
+.card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card-bordered-cyan {
+    border: 2px solid var(--cyan);
+    position: relative;
+}
+
+.card-bordered-accent {
+    border: 2px solid var(--accent);
+    position: relative;
+}
+
+.card-bordered-primary {
+    border: 2px solid var(--primary);
+    position: relative;
+}
+
+.card-header-cyan {
+    background: var(--cyan);
+    color: var(--primary);
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: -1rem -1rem 1rem -1rem;
+}
+
+.card-header-accent {
+    background: var(--accent);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: -1rem -1rem 1rem -1rem;
+}
+
+.card-header-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin: -1rem -1rem 1rem -1rem;
+}
+
+.card-grid {
+    display: grid;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Hero styles for specific pages */
+.hero {
+    background: var(--primary) url('https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+    color: #fff;
+    padding: 4rem 1rem;
+    text-align: center;
+    position: relative;
+}
+
+.hero-simple {
+    padding: 2rem 1rem;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(10, 58, 104, 0.7);
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+.hero h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: #f26202;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =============================================================================
+   STEP LISTS AND PROCESS INDICATORS
+   ============================================================================= */
+
+.step-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.step-item {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+.step-number {
+    height: 40px;
+    width: 40px;
+    display: grid;
+    place-items: center;
+    background: var(--cyan);
+    color: #06324e;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
+.step-number-accent {
+    background: var(--accent);
+    color: #fff;
+}
+
+.step-number-primary {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* =============================================================================
+   FORM ELEMENTS AND MUSTER SECTIONS
+   ============================================================================= */
+
+.muster-form {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--cyan);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-method-header {
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+/* =============================================================================
+   FEATURE BOXES AND INFO SECTIONS
+   ============================================================================= */
+
+.feature-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid var(--accent);
+}
+
+.feature-box-cyan {
+    border-left-color: var(--cyan);
+}
+
+.feature-box-primary {
+    border-left-color: var(--primary);
+}
+
+.feature-title {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.feature-title-cyan {
+    color: var(--cyan);
+}
+
+.feature-title-primary {
+    color: var(--primary);
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+/* =============================================================================
+   TEXT UTILITIES
+   ============================================================================= */
+
+.text-center {
+    text-align: center;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.text-cyan {
+    color: var(--cyan);
+}
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-muted {
+    color: var(--muted);
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.font-size-lg {
+    font-size: 1.1rem;
+}
+
+.font-size-sm {
+    font-size: 0.9rem;
+}
+
+/* =============================================================================
+   SITEMAP AND NAVIGATION SPECIFIC STYLES
+   ============================================================================= */
+
+.sitemap-link {
+    text-decoration: none;
+    color: var(--primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sitemap-icon {
+    font-size: 1.2rem;
+    color: var(--accent);
+}
+
+.sitemap-icon-cyan {
+    color: var(--cyan);
+}
+
+.sitemap-icon-muted {
+    color: var(--muted);
+}
+
+.sitemap-description {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 0.25rem 0 0 1.7rem;
+}
+
+.sitemap-list {
+    list-style: none;
+    padding: 0;
+}
+
+.sitemap-item {
+    margin-bottom: 0.75rem;
+}
+
+/* =============================================================================
+   NEWS SECTION
+   ============================================================================= */
+
+.news-section {
+    padding: 2rem 0;
+    background: var(--bg);
+}
+
+.news-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.news-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 0.75rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.news-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.news-card-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.news-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    height: auto;
+    white-space: nowrap;
+}
+
+.news-content {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+/* =============================================================================
+   PRODUCTS SECTION
+   ============================================================================= */
+
+.products-section {
+    padding: 2rem 0;
+    scroll-margin-top: 5rem;
+    background: var(--bg);
+}
+
+.products-container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.products-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 80rem;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    text-align: center;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(10,58,104,.18);
+}
+
+.product-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.product-icon-container {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-icon-image {
+    height: 5rem;
+    width: 5rem;
+}
+
+.product-title {
+    color: var(--text);
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+}
+
+.product-description {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.product-button {
+    width: 100%;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+/* =============================================================================
+   ABOUT SECTION
+   ============================================================================= */
+
+.about-section {
+    padding: 3rem 0;
+    background: var(--bg);
+    scroll-margin-top: 5rem;
+}
+
+.about-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-content {
+    background: var(--paper);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.about-intro {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-item h3 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.about-item .material-icons {
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.about-item p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* =============================================================================
+   CONTACT SECTION
+   ============================================================================= */
+
+.contact-section {
+    padding: 3rem 0;
+    background: var(--bg);
+    scroll-margin-top: 5rem;
+}
+
+.contact-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background: var(--paper);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.contact-info h3,
+.contact-form h3 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0,207,255,0.1);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    background: rgba(0,207,255,0.2);
+    transform: translateX(5px);
+}
+
+.contact-method.whatsapp:hover {
+    background: rgba(37,211,102,0.2);
+}
+
+.contact-method.facebook:hover {
+    background: rgba(24,119,243,0.2);
+}
+
+.contact-method.email:hover {
+    background: rgba(255,76,0,0.2);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--line);
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cyan);
+}
+
+/* =============================================================================
+   FAQ STYLES
+   ============================================================================= */
+
+.faq-item {
+    background: #ddf9ff;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    background: #ddf9ff;
+    color: var(--text);
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background: #d0f0f0;
+}
+
+.faq-answer {
+    padding: 0 1rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    color: var(--text);
+}
+
+.faq-answer.active {
+    padding: 1rem;
+    max-height: 200px;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-icon.active {
+    transform: rotate(180deg);
+}
+
+/* =============================================================================
+   PRODUCT SPECIFIC SECTIONS
+   ============================================================================= */
+
+.product-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.75rem;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    height: 4px;
+    width: calc(100% + 24px);
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--cyan), #7be3ff);
+}
+
+.pricing-table {
+    background: #f6fbff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    overflow-x: auto;
+}
+
+.pricing-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pricing-table th,
+.pricing-table td {
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+}
+
+.pricing-table thead th {
+    background: var(--cyan);
+    color: #06324e;
+    font-weight: 800;
+    font-family: 'Baloo 2', cursive;
+}
+
+.pricing-table tbody tr:nth-child(even) {
+    background: #ffffff;
+}
+
+.pricing-table tbody tr:nth-child(odd) {
+    background: #f9fdff;
+}
+
+/* =============================================================================
+   INFO AND WARNING BOXES
+   ============================================================================= */
+
+.info-box,
+.warning-box {
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.info-box {
+    background: #e8f8ff;
+    border: 4px solid #00A8E8;
+}
+
+.warning-box {
+    background: #ffeaea;
+    border: 4px solid #a40000;
+    color: #a40000;
+}
+
+.highlight {
+    background: #fff3a3;
+    padding: 0.12rem 0.35rem;
+    border-radius: 0.3rem;
+}
+
+/* =============================================================================
+   ORDER FORM STYLES
+   ============================================================================= */
+
+.order-form-section {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.order-form-section h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .form-row.two-cols {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.success-message {
+    background: #d4edda;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #c3e6cb;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #f1b0b7;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* =============================================================================
+   PRIMARY BUTTON STYLES
+   ============================================================================= */
+
+.btn-primary {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 700;
+}
+
+.btn-primary:hover {
+    background: #e65500;
+    transform: translateY(-2px);
+}
+
+/* =============================================================================
+   SPACER UTILITIES
+   ============================================================================= */
+
+.spacer {
+    height: 2rem;
+}
+
+.spacer-sm {
+    height: 1rem;
+}
+
+.spacer-lg {
+    height: 3rem;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .about-content,
+    .contact-content {
+        padding: 1.5rem;
+    }
+    
+    .news-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .news-button {
+        margin-top: 0.5rem;
+    }
+    
+    .grid-auto-fit {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =============================================================================
+   SPECIFIC GRID LAYOUT UTILITIES
+   ============================================================================= */
+
+.grid {
+    display: grid;
+}
+
+.col-12 {
+    grid-column: span 12;
+}
+
+.col-4 {
+    grid-column: span 4;
+}
+
+/* WARNING CLASS */
+.warning {
+    background: #ffeaea;
+    border: 4px solid #a40000;
+    color: #a40000;
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+/* Force reload */ Sat Aug  9 03:38:25 PM UTC 2025
