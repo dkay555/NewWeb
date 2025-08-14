@@ -704,6 +704,9 @@ h3.babix-info-header::after {
 .margin-bottom-2rem { margin-bottom: 2rem; }
 
 .margin-1rem-0 { margin: 1rem 0; }
+.margin-0-0-1-5rem { margin: 0 0 1.5rem; }
+.margin-2rem-0 { margin: 2rem 0; }
+.margin-bottom-0-5rem { margin-bottom: 0.5rem; }
 
 /* Display Utilities */
 .display-grid { display: grid; }
@@ -732,6 +735,12 @@ h3.babix-info-header::after {
 /* Text Utilities */
 .text-align-center { text-align: center; }
 .text-align-left { text-align: left; }
+
+/* Color Utilities */
+.muted-text { color: var(--muted); }
+.accent-text { color: var(--accent); font-weight: bold; }
+.primary-text { color: var(--primary); font-weight: bold; }
+.cyan-text { color: var(--cyan); font-weight: bold; }
 
 /* Flex Utilities */
 .flex-wrap { flex-wrap: wrap; }
@@ -884,6 +893,39 @@ h3.babix-info-header::after {
     background: #fff3a3;
     padding: 0.12rem 0.35rem;
     border-radius: 0.3rem;
+}
+
+/* CTA Box */
+.cta-box {
+    background: linear-gradient(90deg, rgba(0,207,255,.25), rgba(255,76,0,.18));
+    border: 1px dashed rgba(10,58,104,.25);
+    border-radius: 1rem;
+    padding: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+/* Typography */
+.baloo-font {
+    font-family: 'Baloo 2', cursive;
+}
+
+/* Feature Cards */
+.feature-card {
+    text-align: center;
+    padding: 1rem;
+    background: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+/* Content Container */
+.content-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* =============================================================================
