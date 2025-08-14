@@ -295,8 +295,325 @@ h3.babix-info-header::after {
 }
 
 /* =============================================================================
+   NEWS SECTION - Einheitliches Styling für alle News-Bereiche
+   ============================================================================= */
+
+.news-section {
+    padding: 2rem 0;
+    background: var(--bg);
+}
+
+.news-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.news-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 0.75rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.news-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.news-card-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.news-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    height: auto;
+    white-space: nowrap;
+}
+
+.news-content {
+    color: var(--muted);
+    margin-bottom: 0;
+}
+
+/* =============================================================================
+   ABOUT SECTION - Einheitliches Styling für alle About-Bereiche
+   ============================================================================= */
+
+.about-section {
+    padding: 3rem 0;
+    background: var(--bg);
+    scroll-margin-top: 5rem;
+}
+
+.about-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.about-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    text-align: center;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-content {
+    background: var(--paper);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.about-intro {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--muted);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .about-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.about-item h3 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.about-item .material-icons {
+    color: var(--accent);
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.about-item p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+/* =============================================================================
    KONTAKT SECTION - Einheitliches Styling für alle Kontaktbereiche
    ============================================================================= */
+
+.contact-section {
+    padding: 3rem 0;
+    background: var(--bg);
+    scroll-margin-top: 5rem;
+}
+
+.contact-container {
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    background: var(--paper);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+@media (min-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.contact-info h3,
+.contact-form h3 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(0,207,255,0.1);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.contact-method:hover {
+    background: rgba(0,207,255,0.2);
+    transform: translateX(5px);
+}
+
+.contact-method.whatsapp:hover {
+    background: rgba(37,211,102,0.2);
+}
+
+.contact-method.facebook:hover {
+    background: rgba(24,119,243,0.2);
+}
+
+.contact-method.email:hover {
+    background: rgba(255,76,0,0.2);
+}
+
+/* =============================================================================
+   KONTAKT ICON CARDS - Spezielle Karten für Kontakt-Support
+   ============================================================================= */
+
+.contact-cards-section {
+    padding: 3rem 0;
+    background: var(--bg);
+}
+
+.contact-cards-container {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.contact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-card {
+    background: var(--paper);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 32px rgba(10,58,104,.18);
+}
+
+.contact-card.whatsapp:hover {
+    border-color: #25D366;
+}
+
+.contact-card.facebook:hover {
+    border-color: #1877F2;
+}
+
+.contact-card.email:hover {
+    border-color: var(--accent);
+}
+
+.contact-card-icon {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg);
+}
+
+.contact-card.whatsapp .contact-card-icon {
+    background: rgba(37, 211, 102, 0.1);
+    color: #25D366;
+}
+
+.contact-card.facebook .contact-card-icon {
+    background: rgba(24, 119, 243, 0.1);
+    color: #1877F2;
+}
+
+.contact-card.email .contact-card-icon {
+    background: rgba(255, 76, 0, 0.1);
+    color: var(--accent);
+}
+
+.contact-card-icon .material-icons {
+    font-size: 2rem;
+}
+
+.contact-card h3 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-card p {
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.contact-card .button {
+    width: 100%;
+    margin-top: 1rem;
+}
 
 .contact-section {
     padding: 3rem 0;
@@ -707,6 +1024,7 @@ h3.babix-info-header::after {
 .margin-0-0-1-5rem { margin: 0 0 1.5rem; }
 .margin-2rem-0 { margin: 2rem 0; }
 .margin-bottom-0-5rem { margin-bottom: 0.5rem; }
+.margin-bottom-1-5rem { margin-bottom: 1.5rem; }
 .margin-top-1rem { margin-top: 1rem; }
 
 /* Display Utilities */
@@ -915,6 +1233,10 @@ h3.babix-info-header::after {
 /* Typography */
 .baloo-font {
     font-family: 'Baloo 2', cursive;
+}
+
+.small-text {
+    font-size: 0.75rem;
 }
 
 /* Feature Cards */
