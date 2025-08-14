@@ -39,10 +39,6 @@
                 <span class="material-icons" style="color: #00CFFF; font-size: 28px; margin-bottom: 6px;">home</span>
                 <span>Home</span>
             </a>
-            <a href="kontakt.html">
-                <span class="material-icons" style="color: #00CFFF; font-size: 28px; margin-bottom: 6px;">contact_phone</span>
-                <span>Kontakt</span>
-            </a>
             <a href="impressum.html">
                 <svg viewBox="0 0 24 24">
                     <path fill="#00CFFF" d="M11,9H13V7H11M12,20C7.59,20 4,16.41 4,12C4,7.59 7.59,4 12,4C16.41,4 20,7.59 20,12C20,16.41 16.41,20 12,20M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M11,17H13V11H11V17Z"/>
@@ -51,8 +47,13 @@
             </a>
         </div>
         
+        <div class="babixgo-mobile-drawer__single">
+            <a href="kontakt-support.html">
+                <span class="material-icons" style="color: #00CFFF; font-size: 28px; margin-bottom: 6px;">local_grocery_store</span>
+                <span>Bestellungen / Kontakt</span>
+            </a>
+        </div>
         <div class="babixgo-mobile-drawer__section-label">SERVICES</div>
-        
         <!-- Services Grid -->
         <div class="babixgo-mobile-drawer__grid">
             <a href="wuerfelshop.html">
@@ -74,17 +75,6 @@
                 <span>Accounts</span>
             </a>
         </div>
-        
-        <div class="babixgo-mobile-drawer__section-label">BESTELLUNGEN</div>
-        
-        <!-- Bestellungen Section -->
-        <div class="babixgo-mobile-drawer__single">
-            <a href="kontakt-support.html">
-                <span class="material-icons" style="color: #00CFFF; font-size: 28px; margin-bottom: 6px;">local_grocery_store</span>
-                <span>Bestellungen</span>
-            </a>
-        </div>
-        
         <div class="babixgo-mobile-drawer__footer">
             &copy; 2025 babixGO<br>Monopoly GO Service
         </div>
@@ -116,7 +106,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.3rem;
     user-select: none;
     font-weight: 700;
     color: #fff;
@@ -186,7 +176,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 100vw;
+    width: 50vw;
     max-width: 280px;
     height: 100vh;
     z-index: 3500;
@@ -226,7 +216,7 @@
 
 .babixgo-mobile-drawer__logo {
     font-family: 'Baloo 2', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: #fff;
     font-weight: bold;
     letter-spacing: 0.01rem;
@@ -358,7 +348,7 @@
     }
     
     .babixgo-mobile-drawer__nav {
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
         gap: 3px !important;
         margin-bottom: 8px !important;
     }

@@ -542,8 +542,8 @@ body {
 }
 
 .logo-image {
-    width: 8rem;
-    height: 8rem;
+    max-width: 100%; 
+    height: auto;
     /* Regel 10: Mobile Logo-Größe 8rem x 8rem */
 }
 

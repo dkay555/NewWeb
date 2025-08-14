@@ -16,19 +16,179 @@
     
     <style>
         /* Page-specific styles */
-        .hero-logo {
-            max-width: 300px;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 10vh;
+            display: flex;
+            align-items: center;
+            /* Regel 1: Hero Background muss immer relative positioniert sein */
+            /* Regel 2: Mindesthöhe von 10vh für mobile Geräte */
+            /* Regel 3: Flex-Layout für vertikale Zentrierung */
         }
-        
-        @media (max-width: 768px) {
-            .hero-logo {
-                max-width: 250px;
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, #78c6f7 0%, #5ba3d9 50%, #e0f7ff 100%);
+            z-index: 0;
+            /* Regel 4: Background immer mit z-index: 0 */
+            /* Regel 5: Standard-Gradient für konsistentes Design */
+        }
+
+        .hero-content {
+            max-width: 32rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            /* Regel 6: Content immer mit z-index: 10 über Background */
+            /* Regel 7: Max-width 32rem für optimale Lesbarkeit */
+            /* Regel 8: Standard-Padding 1rem für mobile Geräte */
+        }
+
+        /* Logo Container Rules */
+        .logo-container {
+            width: 100%;
+            max-width: 28rem;
+            margin: 0 auto 0.75rem;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            /* Regel 9: Logo immer zentriert mit festem Abstand */
+        }
+
+        .logo-image {
+            width: 8rem;
+            height: 8rem;
+            /* Regel 10: Mobile Logo-Größe 8rem x 8rem */
+        }
+
+        @media (min-width: 768px) {
+            .logo-image {
+                width: 10rem;
+                height: 10rem;
+                /* Regel 11: Desktop Logo-Größe 10rem x 10rem */
             }
         }
-        
+
+        /* Welcome Box Rules */
+        .welcome-box {
+            background: rgba(176, 214, 245, 0.9);
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            padding: 1rem 1rem 0.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            /* Regel 12: Welcome Box mit transparentem Hintergrund und Blur-Effekt */
+            /* Regel 13: Standard-Schatten für Tiefe */
+        }
+
+        @media (min-width: 640px) {
+            .welcome-box {
+                padding: 1rem 1.5rem 0.5rem;
+                margin-bottom: 2rem;
+                /* Regel 14: Responsive Padding für Tablets */
+            }
+        }
+
+        @media (min-width: 768px) {
+            .welcome-box {
+                padding: 1rem 2rem 0.5rem;
+                /* Regel 15: Erweiterte Padding für Desktop */
+            }
+        }
+
+        /* Welcome Title Rules */
+        .welcome-title {
+            color: var(--accent);
+            font-family: 'Baloo 2', cursive;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+            /* Regel 16: Titel immer in Accent-Farbe mit Baloo 2 Font */
+        }
+
+        @media (min-width: 640px) {
+            .welcome-title {
+                font-size: 1.875rem;
+                /* Regel 17: Responsive Schriftgrößen für bessere Lesbarkeit */
+            }
+        }
+
+        @media (min-width: 768px) {
+            .welcome-title {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* Welcome Subtitle Rules */
+        .welcome-subtitle {
+            color: var(--text);
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 600;
+            /* Regel 18: Subtitle in Text-Farbe mit medium Gewicht */
+        }
+
+        @media (min-width: 640px) {
+            .welcome-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .welcome-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* =============================================================================
+           HEADER STYLING RULES - H1, H2, H3 mit babix-info-header Klasse
+           ============================================================================= */
+
+        h1.babix-info-header,
+        h2.babix-info-header,
+        h3.babix-info-header {
+            display: inline-block;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FF4C00;
+            position: relative;
+            padding-bottom: 0.4rem;
+            margin: 0 0 1rem 0;
+            /* Regel 19: Alle Header mit babix-info-header haben einheitliches Styling */
+            /* Regel 20: Orange Farbe (#FF4C00) für Markenidentität */
+            /* Regel 21: Baloo 2 Font für konsistente Typografie */
+        }
+
+        h1.babix-info-header::after,
+        h2.babix-info-header::after,
+        h3.babix-info-header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--cyan), transparent);
+            margin-top: 0.3rem;
+            border-radius: 2px;
+            /* Regel 22: Alle Header bekommen Cyan-Gradient Unterstrich */
+            /* Regel 23: 3px Höhe für optimale Sichtbarkeit */
+        }
+
+        /* Section titles use babix-info-header class - see header rules above */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1rem;
+            }
         .contact-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -345,17 +505,19 @@
 </head>
 <body>
     <div id="header-placeholder"></div>
-
-    <!-- Hero Section -->
+    
     <section class="hero-section">
+        <div class="hero-background"></div>
         <div class="hero-content">
             <div class="logo-container">
-                <img src="kontakt-support-hero.png" alt="Kontakt & Support" class="hero-logo">
+                <img src="kontakt-support-hero.png" alt="babixGO - Monopoly GO Services" class="hero-image" style="max-width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
             </div>
+
             <div class="welcome-box">
                 <h1 class="welcome-title">KONTAKT & SUPPORT</h1>
                 <p class="welcome-subtitle">Unser Team hilft dir schnell und kompetent weiter</p>
             </div>
+
             <div class="nav-buttons">
                 <div class="button-row-2">
                     <a href="#contact-methods" class="button button-orange">
@@ -372,18 +534,23 @@
     </section>
     
     <section class="contact-section">
+        <div class="contact-header">
+            <h2>KONTAKT & SUPPORT</h2>
+            <p>Unser Team hilft dir schnell und kompetent weiter</p>
+        </div>
+        
         <div class="contact-grid">
             <div id="contact-methods" class="contact-methods">
                 <div class="contact-card">
                     <div class="contact-card-inner">
                         <div class="contact-icon whatsapp-icon">
-                            <span class="material-icons">phone</span>
+                            <i data-lucide="phone" class="icon-large" style="color: #25D366;"></i>
                         </div>
                         <div class="contact-content">
                             <h4>WhatsApp Support</h4>
                             <p>Schnelle Hilfe direkt auf deinem Handy</p>
-                            <p class="contact-phone">+49 152 23842897</p>
-                            <button class="contact-btn whatsapp-btn" onclick="window.open('https://wa.me/4915223842897', '_blank')">
+                            <p class="small-text">+49 1522 3842897</p>
+                            <button onclick="window.open('https://wa.me/4915223842897', '_blank')" style="background-color: #25D366;">
                                 WhatsApp öffnen
                             </button>
                         </div>
@@ -393,12 +560,12 @@
                 <div class="contact-card">
                     <div class="contact-card-inner">
                         <div class="contact-icon facebook-icon">
-                            <span class="material-icons">facebook</span>
+                            <i data-lucide="facebook" class="icon-large" style="color: #1877F2;"></i>
                         </div>
                         <div class="contact-content">
                             <h4>Facebook Community</h4>
                             <p>Tausche dich mit anderen Spielern aus</p>
-                            <button class="contact-btn facebook-btn" onclick="window.open('https://m.me/494670617055790', '_blank')">
+                            <button onclick="window.open('https://www.facebook.com/babixGO/', '_blank')" style="background-color: #1877F2;">
                                 Facebook besuchen
                             </button>
                         </div>
@@ -408,19 +575,19 @@
                 <div class="contact-card">
                     <div class="contact-card-inner">
                         <div class="contact-icon email-icon">
-                            <span class="material-icons">mail</span>
+                            <i data-lucide="mail" class="icon-large" style="color: #FF4C00;"></i>
                         </div>
                         <div class="contact-content">
                             <h4>E-Mail Support</h4>
                             <p>Ausführliche Anfragen an unser Team</p>
-                            <p class="contact-phone">support@babixgo-mail.de</p>
+                            <p class="small-text">support@babixgo-mail.de</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div id="contact-form" class="contact-form">
-                <h3>Kontaktformular</h3>
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Kontaktformular</h3>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name *</label>
@@ -451,10 +618,10 @@
                     
                     <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
                     
-                    <button type="submit" id="submitBtn" class="submit-btn">Nachricht senden</button>
+                    <button type="submit" id="submitBtn">Nachricht senden</button>
                 </form>
                 
-                <p class="form-note">
+                <p style="font-size: 0.75rem; color: #777; text-align: center; margin-top: 1.5rem;">
                     Wir antworten normalerweise innerhalb von 2-4 Stunden.
                 </p>
             </div>
@@ -465,20 +632,24 @@
     
     <div id="toast" class="toast">
         <div class="toast-content">
-            <div id="toastIcon" class="toast-icon">
-                <span class="material-icons"></span>
-            </div>
+            <div id="toastIcon" class="toast-icon"></div>
             <div>
                 <h4 id="toastTitle" class="toast-title"></h4>
                 <p id="toastMessage" class="toast-text"></p>
             </div>
-            <button onclick="hideToast()" class="toast-close">&times;</button>
+            <button onclick="hideToast()" class="toast-close">
+                <i data-lucide="x"></i>
+            </button>
         </div>
     </div>
 
     <!-- Scripts -->
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
         // Smooth scroll for navigation buttons
         document.addEventListener('DOMContentLoaded', function() {
             const buttons = document.querySelectorAll('a[href^="#"]');
@@ -495,10 +666,9 @@
                 });
             });
         });
-    </script>
-    <script>
+        
         // Google Apps Script URL (nach der Bereitstellung ersetzen)
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzEXAMPLE/exec";
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyevZqeKFx_UvmSAX3ZQz_DvHc0VA7KxkkSIBoWxk1yiBU2HMrh0IIP8LTB1uK8sMc/exec";
         
         // Topic selection handler
         document.getElementById('topic').addEventListener('change', function() {
@@ -583,21 +753,18 @@
             const toast = document.getElementById('toast');
             const toastTitle = document.getElementById('toastTitle');
             const toastMessage = document.getElementById('toastMessage');
-            const toastIcon = document.getElementById('toastIcon').querySelector('.material-icons');
+            const toastIcon = document.getElementById('toastIcon');
             
             toastTitle.textContent = title;
             toastMessage.textContent = message;
             
             // Set icon
-            if (type === 'success') {
-                toastIcon.textContent = 'check_circle';
-                toastIcon.style.color = '#25D366';
-                toast.style.borderLeftColor = '#25D366';
-            } else {
-                toastIcon.textContent = 'error';
-                toastIcon.style.color = '#FF4C00';
-                toast.style.borderLeftColor = '#FF4C00';
-            }
+            toastIcon.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.setAttribute('data-lucide', type === 'success' ? 'check-circle' : 'alert-circle');
+            icon.style.color = type === 'success' ? '#25D366' : '#FF4C00';
+            toastIcon.appendChild(icon);
+            lucide.createIcons();
             
             // Show toast
             toast.style.display = 'block';

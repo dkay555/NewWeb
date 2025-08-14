@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>babixGO - Kontakt & Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        :root {
+            --primary: #FF4C00;
+            --secondary: #0A3A68;
+            --light-bg: #e0f7ff;
+            --white: #ffffff;
+            --text: #333333;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text);
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin: 0;
+        }
+        
+        .tagline {
+            font-size: 1rem;
+            margin: 0.5rem 0 0;
+            opacity: 0.8;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: var(--primary);
+            padding: 0.5rem;
+        }
+        
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 600;
+        }
+        
+        .contact-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .contact-header h2 {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--secondary);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-header p {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-card {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-card-inner {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .contact-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        
+        .whatsapp-icon {
+            background-color: rgba(37, 211, 102, 0.1);
+        }
+        
+        .facebook-icon {
+            background-color: rgba(24, 119, 242, 0.1);
+        }
+        
+        .email-icon {
+            background-color: rgba(255, 76, 0, 0.1);
+        }
+        
+        .contact-content h4 {
+            color: var(--secondary);
+            margin: 0 0 0.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .contact-content p {
+            margin: 0 0 0.5rem;
+            color: var(--text);
+        }
+        
+        .small-text {
+            font-size: 0.875rem;
+            color: #666;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 76, 0, 0.2);
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #e04500;
+        }
+        
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .g-recaptcha {
+            margin: 1.5rem 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            max-width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+        
+        .toast-content {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .toast-icon {
+            margin-right: 0.75rem;
+        }
+        
+        .toast-title {
+            font-weight: 600;
+            margin: 0 0 0.25rem;
+        }
+        
+        .toast-text {
+            font-size: 0.875rem;
+            margin: 0;
+        }
+        
+        .toast-close {
+            margin-left: 0.75rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="logo">babixGO</h1>
+        <p class="tagline">MONOPOLY GO! Support & Community</p>
+    </header>
+    
+    <nav>
+        <a href="#">News</a>
+        <a href="#">Shop</a>
+        <a href="#">Profil</a>
+        <a href="#">Hilfe</a>
+        <a href="#">Kontakt</a>
+    </nav>
+    
+    <section class="contact-section">
+        <div class="contact-header">
+            <h2>KONTAKT & SUPPORT</h2>
+            <p>Unser Team hilft dir schnell und kompetent weiter</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <div class="contact-card-inner">
+                        <div class="contact-icon whatsapp-icon">
+                            <i data-lucide="phone" class="icon-large" style="color: #25D366;"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>WhatsApp Support</h4>
+                            <p>Schnelle Hilfe direkt auf deinem Handy</p>
+                            <p class="small-text">+49 1522 3842897</p>
+                            <button onclick="window.open('https://wa.me/4915223842897', '_blank')" style="background-color: #25D366;">
+                                WhatsApp öffnen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-inner">
+                        <div class="contact-icon facebook-icon">
+                            <i data-lucide="facebook" class="icon-large" style="color: #1877F2;"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>Facebook Community</h4>
+                            <p>Tausche dich mit anderen Spielern aus</p>
+                            <button onclick="window.open('https://www.facebook.com/babixGO/', '_blank')" style="background-color: #1877F2;">
+                                Facebook besuchen
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-card-inner">
+                        <div class="contact-icon email-icon">
+                            <i data-lucide="mail" class="icon-large" style="color: #FF4C00;"></i>
+                        </div>
+                        <div class="contact-content">
+                            <h4>E-Mail Support</h4>
+                            <p>Ausführliche Anfragen an unser Team</p>
+                            <p class="small-text">support@babixgo-mail.de</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Kontaktformular</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input id="name" name="name" type="text" placeholder="Dein Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input id="email" name="email" type="email" placeholder="deine@email.de" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="topic">Thema *</label>
+                        <select id="topic" name="topic" required>
+                            <option value="" disabled selected>Bitte wählen...</option>
+                            <option value="feedback">Feedback / Frage - Allgemein</option>
+                            <option value="order">Bestellung aufgeben</option>
+                            <option value="order-question">Frage zu einer Bestellung</option>
+                            <option value="technical">Technisches Problem</option>
+                            <option value="account">Account-Anfrage</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Nachricht *</label>
+                        <textarea id="message" name="message" placeholder="Deine Nachricht an babixGO..." required></textarea>
+                    </div>
+                    
+                    <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+                    
+                    <button type="submit" id="submitBtn">Nachricht senden</button>
+                </form>
+                
+                <p style="font-size: 0.75rem; color: #777; text-align: center; margin-top: 1.5rem;">
+                    Wir antworten normalerweise innerhalb von 2-4 Stunden.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 babixGO - MONOPOLY GO! Support</p>
+    </footer>
+    
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <div id="toastIcon" class="toast-icon"></div>
+            <div>
+                <h4 id="toastTitle" class="toast-title"></h4>
+                <p id="toastMessage" class="toast-text"></p>
+            </div>
+            <button onclick="hideToast()" class="toast-close">
+                <i data-lucide="x"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Google Apps Script URL (nach der Bereitstellung ersetzen)
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyevZqeKFx_UvmSAX3ZQz_DvHc0VA7KxkkSIBoWxk1yiBU2HMrh0IIP8LTB1uK8sMc/exec";
+        
+        // Topic selection handler
+        document.getElementById('topic').addEventListener('change', function() {
+            const messageField = document.getElementById('message');
+            const selectedTopic = this.value;
+            
+            const templates = {
+                'feedback': "Sehr geehrtes babixGO-Team,\n\nich möchte folgendes Feedback geben bzw. habe eine allgemeine Frage:\n\n",
+                'order': "Sehr geehrtes babixGO-Team,\n\nich möchte folgende Bestellung aufgeben:\n\n• Produkt:\n• Menge:\n• Lieferadresse:\n• Besondere Hinweise:\n\n",
+                'order-question': "Sehr geehrtes babixGO-Team,\n\nich habe eine Frage zu meiner Bestellung (Bestellnummer: ):\n\n",
+                'technical': "Sehr geehrtes babixGO-Team,\n\nich habe ein technisches Problem:\n\n• Gerät: \n• Betriebssystem: \n• Fehlerbeschreibung: \n\n",
+                'account': "Sehr geehrtes babixGO-Team,\n\nich habe eine Frage zu meinem Account:\n\n• Benutzername: \n• E-Mail: \n\n"
+            };
+            
+            if (templates[selectedTopic]) {
+                messageField.value = templates[selectedTopic];
+                setTimeout(() => {
+                    messageField.focus();
+                    messageField.setSelectionRange(messageField.value.length, messageField.value.length);
+                }, 0);
+            }
+        });
+        
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // reCAPTCHA validation
+            const recaptchaToken = grecaptcha.getResponse();
+            if (!recaptchaToken) {
+                showToast('Fehler', 'Bitte bestätige, dass du kein Roboter bist', 'error');
+                return;
+            }
+            
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                topic: document.getElementById('topic').value,
+                message: document.getElementById('message').value,
+                recaptchaToken: recaptchaToken,
+                timestamp: new Date().toISOString()
+            };
+            
+            // Validate form
+            if (!formData.name || !formData.email || !formData.topic || !formData.message) {
+                showToast('Fehler', 'Bitte fülle alle Pflichtfelder aus', 'error');
+                return;
+            }
+            
+            // Disable submit button
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Wird gesendet...';
+            
+                const response = await fetch('form-proxy.php', {  // Proxy-URL statt GOOGLE_SCRIPT_URL
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'  // Header hinzufügen
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    // Reset form
+                    document.getElementById('contactForm').reset();
+                    grecaptcha.reset();
+                    showToast('Erfolg!', 'Deine Nachricht wurde erfolgreich übermittelt.', 'success');
+                } else {
+                    throw new Error(result.error || 'Fehler beim Speichern');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Fehler', error.message || 'Beim Senden ist ein Problem aufgetreten', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Nachricht senden';
+            }
+        });
+        
+        // Toast functions
+        function showToast(title, message, type) {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastIcon = document.getElementById('toastIcon');
+            
+            toastTitle.textContent = title;
+            toastMessage.textContent = message;
+            
+            // Set icon
+            toastIcon.innerHTML = '';
+            const icon = document.createElement('i');
+            icon.setAttribute('data-lucide', type === 'success' ? 'check-circle' : 'alert-circle');
+            icon.style.color = type === 'success' ? '#25D366' : '#FF4C00';
+            toastIcon.appendChild(icon);
+            lucide.createIcons();
+            
+            // Show toast
+            toast.style.display = 'block';
+            
+            // Auto-hide after 5 seconds
+            setTimeout(hideToast, 5000);
+        }
+        
+        function hideToast() {
+            document.getElementById('toast').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
