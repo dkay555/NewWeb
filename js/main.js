@@ -38,10 +38,10 @@ async function loadPartials() {
     }
 }
 
-// Initialize contact form
+// Initialize contact form (contactForm on kontakt-support.html has its own handler)
 function initContactForm() {
     const contactForm = document.getElementById('contact-form');
-    if (!contactForm) return;
+    if (!contactForm) return; // Skip if contactForm (kontakt-support) is being used
     
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
