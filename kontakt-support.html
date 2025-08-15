@@ -5,169 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt & Support - babixGO</title>
     <meta name="description" content="Schneller Support für babixGO - Monopoly GO Services. WhatsApp, E-Mail, Facebook Community und Kontaktformular.">
+    <link rel="icon" type="image/x-icon" href="images/icons/favicon.ico">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <!-- Styles -->
-    <!-- <link rel="stylesheet" href="css/styles.css"> -->
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     
     <style>
-    
-        /* Page-specific styles */
-        .hero-section {
-            position: relative;
-            overflow: hidden;
-            min-height: 10vh;
-            display: flex;
-            align-items: center;
-            /* Regel 1: Hero Background muss immer relative positioniert sein */
-            /* Regel 2: Mindesthöhe von 10vh für mobile Geräte */
-            /* Regel 3: Flex-Layout für vertikale Zentrierung */
-        }
-
-        .hero-background {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, #78c6f7 0%, #5ba3d9 50%, #e0f7ff 100%);
-            z-index: 0;
-            /* Regel 4: Background immer mit z-index: 0 */
-            /* Regel 5: Standard-Gradient für konsistentes Design */
-        }
-
-        .hero-content {
-            max-width: 32rem;
-            margin: 0 auto;
-            padding: 0 1rem;
-            position: relative;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            justify-content: center;
-            /* Regel 6: Content immer mit z-index: 10 über Background */
-            /* Regel 7: Max-width 32rem für optimale Lesbarkeit */
-            /* Regel 8: Standard-Padding 1rem für mobile Geräte */
-        }
-
-        /* Logo Container Rules */
-        .logo-container {
-            width: 100%;
-            max-width: 28rem;
-            margin: 0 auto 0.75rem;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            /* Regel 9: Logo immer zentriert mit festem Abstand */
-        }
-
-        .logo-image {
-            width: 8rem;
-            height: 8rem;
-            /* Regel 10: Mobile Logo-Größe 8rem x 8rem */
-        }
-
-        @media (min-width: 768px) {
-            .logo-image {
-                width: 10rem;
-                height: 10rem;
-                /* Regel 11: Desktop Logo-Größe 10rem x 10rem */
-            }
-        }
-
-        /* Welcome Box Rules */
-        .welcome-box {
-            background: rgba(176, 214, 245, 0.9);
-            border-radius: 0.75rem;
-            box-shadow: var(--shadow);
-            padding: 1rem 1rem 0.5rem;
-            text-align: center;
-            margin-bottom: 1.5rem;
-            backdrop-filter: blur(10px);
-            /* Regel 12: Welcome Box mit transparentem Hintergrund und Blur-Effekt */
-            /* Regel 13: Standard-Schatten für Tiefe */
-        }
-
-        @media (min-width: 640px) {
-            .welcome-box {
-                padding: 1rem 1.5rem 0.5rem;
-                margin-bottom: 2rem;
-                /* Regel 14: Responsive Padding für Tablets */
-            }
-        }
-
-        @media (min-width: 768px) {
-            .welcome-box {
-                padding: 1rem 2rem 0.5rem;
-                /* Regel 15: Erweiterte Padding für Desktop */
-            }
-        }
-
-        /* Welcome Title Rules */
-        .welcome-title {
-            color: var(--accent);
-            font-family: 'Baloo 2', cursive;
-            font-weight: 800;
-            font-size: 1.5rem;
-            margin: 0 0 0.5rem;
-            /* Regel 16: Titel immer in Accent-Farbe mit Baloo 2 Font */
-        }
-
-        @media (min-width: 640px) {
-            .welcome-title {
-                font-size: 1.875rem;
-                /* Regel 17: Responsive Schriftgrößen für bessere Lesbarkeit */
-            }
-        }
-
-        @media (min-width: 768px) {
-            .welcome-title {
-                font-size: 2.25rem;
-            }
-        }
-
-        /* Welcome Subtitle Rules */
-        .welcome-subtitle {
-            color: var(--text);
-            font-size: 1rem;
-            margin: 0;
-            font-weight: 600;
-            /* Regel 18: Subtitle in Text-Farbe mit medium Gewicht */
-        }
-
-        @media (min-width: 640px) {
-            .welcome-subtitle {
-                font-size: 1.125rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .welcome-subtitle {
-                font-size: 1.25rem;
-            }
-        }
-
-        /* =============================================================================
-           HEADER STYLING RULES - H1, H2, H3 mit babix-info-header Klasse
-           ============================================================================= */
-
-        h1.babix-info-header,
-        h2.babix-info-header,
-        h3.babix-info-header {
-            display: inline-block;
-            font-family: 'Baloo 2', cursive;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #FF4C00;
-        
-            color: #25D366;
-        }
-        
-        
-          .toast {
+        /* Page-specific contact styles */
+        .toast {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -180,7 +31,7 @@
             z-index: 1000;
         }
         
-            .contact-section {
+        .contact-section {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
@@ -638,5 +489,8 @@
             document.getElementById('toast').style.display = 'none';
         }
     </script>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
     </body>
     </html>
