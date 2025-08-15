@@ -369,8 +369,8 @@
             }
         });
 
-        // Use proxy-form.php to handle Google Sheets integration
-        const FORM_ENDPOINT = "proxy-form.php";
+        // Use Node.js server endpoint for form submission
+        const FORM_ENDPOINT = "/submit-contact";
 
         // Topic selection handler
         document.getElementById('topic').addEventListener('change', function() {
