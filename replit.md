@@ -73,6 +73,13 @@ The architecture includes active integrations for:
   - Removed page-specific hero CSS styles from individual HTML files
   - Implemented consistent button layouts with service-specific icons and navigation
   - Unified color scheme using established brand colors (orange #FF4C00, cyan #00CFFF, dark blue #0A3A68)
+- **Image Organization & Cleanup (15. August 2025)**: Complete reorganization of project images for better maintainability:
+  - Created structured `/images` directory with subfolders: `/heroes`, `/icons`, `/pages`, `/logos`
+  - Moved all image assets from root directory and attached_assets to organized structure
+  - Updated all HTML file references to use new image paths
+  - Removed duplicate and unused image files from attached_assets directory
+  - Added favicon reference to HTML files using images/icons/favicon.ico
+  - Cleaned up temporary files and old screenshots for improved project structure
   - Each page maintains its unique content while following the same visual structure and user experience patterns
 - **Service Removal (10. August 2025)**: Removed tycoonracers.html and freundschaftsbalken.html pages and updated all documentation references
 - **Mobile Menu Restructuring (10. August 2025)**: Reorganized mobile navigation with user-specified structure:
