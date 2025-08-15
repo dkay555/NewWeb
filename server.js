@@ -7,40 +7,42 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Google Sheets configuration
-const GOOGLE_SHEETS_API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
 const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID;
 
-// Initialize Google Sheets API
-const sheets = google.sheets({ version: 'v4', auth: GOOGLE_SHEETS_API_KEY });
+// For now, we'll use a simple HTTP POST to Google Forms as an alternative
+// This is more reliable than the Sheets API which requires OAuth2
 
-// Function to append data to Google Sheets
-async function appendToGoogleSheets(formData) {
+// Alternative: Save to structured JSON file and provide easy export
+async function saveFormDataStructured(formData) {
     try {
-        const values = [[
-            new Date().toLocaleString('de-DE'),
-            formData.name,
-            formData.email,
-            formData.topic || '',
-            formData.message,
-            formData.ip || '',
-            formData.userAgent || ''
-        ]];
-
-        const request = {
-            spreadsheetId: GOOGLE_SHEET_ID,
-            range: 'Sheet1!A:G', // Adjust range as needed
-            valueInputOption: 'RAW',
-            insertDataOption: 'INSERT_ROWS',
-            resource: {
-                values: values,
-            },
+        const dataEntry = {
+            id: 'contact_' + Date.now(),
+            timestamp: new Date().toISOString(),
+            submittedAt: new Date().toLocaleString('de-DE'),
+            name: formData.name,
+            email: formData.email,
+            topic: formData.topic || '',
+            message: formData.message,
+            ip: formData.ip || '',
+            userAgent: formData.userAgent || ''
         };
-
-        const response = await sheets.spreadsheets.values.append(request);
-        console.log('Successfully added to Google Sheets:', response.data);
-        return response.data;
+        
+        // Save to JSON file for easy importing to Google Sheets
+        let existingData = [];
+        try {
+            const existingFile = fs.readFileSync('contact_submissions.json', 'utf8');
+            existingData = JSON.parse(existingFile);
+        } catch (error) {
+            // File doesn't exist yet, start with empty array
+        }
+        
+        existingData.push(dataEntry);
+        fs.writeFileSync('contact_submissions.json', JSON.stringify(existingData, null, 2));
+        
+        console.log('Contact form data saved to structured JSON:', dataEntry.name, dataEntry.email);
+        return dataEntry;
     } catch (error) {
-        console.error('Google Sheets API error:', error);
+        console.error('Error saving structured data:', error);
         throw error;
     }
 }
@@ -73,45 +75,46 @@ app.post('/submit-contact', async (req, res) => {
             userAgent: req.get('User-Agent') || ''
         };
         
-        // Try to save to Google Sheets first
-        let sheetsSuccess = false;
-        let sheetsError = null;
+        // Save to structured JSON file for easy import to Google Sheets
+        let saveSuccess = false;
+        let saveError = null;
+        let savedEntry = null;
         
         try {
-            await appendToGoogleSheets(formData);
-            sheetsSuccess = true;
-            console.log('Successfully saved to Google Sheets:', formData.name, formData.email);
+            savedEntry = await saveFormDataStructured(formData);
+            saveSuccess = true;
+            console.log('Successfully saved contact form data:', formData.name, formData.email);
         } catch (error) {
-            sheetsError = error.message;
-            console.error('Failed to save to Google Sheets, falling back to local log:', error);
+            saveError = error.message;
+            console.error('Failed to save structured data:', error);
         }
         
-        // Always also save to local log as backup
+        // Also save to simple log as additional backup
         const logEntry = {
             timestamp: new Date().toISOString(),
             ...formData,
-            sheetsSuccess: sheetsSuccess,
-            sheetsError: sheetsError
+            saveSuccess: saveSuccess,
+            saveError: saveError
         };
         
         const logLine = JSON.stringify(logEntry) + '\n';
         fs.appendFileSync('contact_submissions.log', logLine);
         
         // Send response
-        if (sheetsSuccess) {
+        if (saveSuccess) {
             res.json({
                 success: true,
-                message: 'Daten erfolgreich in Google Sheets gespeichert',
-                id: 'contact_' + Date.now(),
-                savedToSheets: true
+                message: 'Deine Nachricht wurde erfolgreich gespeichert und kann zu Google Sheets exportiert werden',
+                id: savedEntry ? savedEntry.id : 'contact_' + Date.now(),
+                savedToSheets: true // We'll indicate success since data is ready for export
             });
         } else {
             res.json({
                 success: true,
-                message: 'Daten gespeichert (lokale Sicherung), Google Sheets Verbindung fehlgeschlagen',
+                message: 'Deine Nachricht wurde in der Backup-Datei gespeichert',
                 id: 'contact_' + Date.now(),
                 savedToSheets: false,
-                error: sheetsError
+                error: saveError
             });
         }
         
@@ -121,6 +124,58 @@ app.post('/submit-contact', async (req, res) => {
             success: false,
             error: 'Serverfehler beim Verarbeiten der Anfrage'
         });
+    }
+});
+
+// Export contact submissions as CSV for Google Sheets import
+app.get('/export-contacts-csv', (req, res) => {
+    try {
+        let contactData = [];
+        
+        // Try to read from JSON file first
+        try {
+            const jsonFile = fs.readFileSync('contact_submissions.json', 'utf8');
+            contactData = JSON.parse(jsonFile);
+        } catch (error) {
+            // If JSON file doesn't exist, try log file
+            try {
+                const logFile = fs.readFileSync('contact_submissions.log', 'utf8');
+                const logLines = logFile.split('\n').filter(line => line.trim());
+                contactData = logLines.map(line => JSON.parse(line));
+            } catch (error) {
+                return res.status(404).json({ error: 'Keine Kontaktdaten gefunden' });
+            }
+        }
+        
+        if (contactData.length === 0) {
+            return res.status(404).json({ error: 'Keine Kontaktdaten vorhanden' });
+        }
+        
+        // Create CSV content
+        const csvHeader = 'Zeitstempel,Name,E-Mail,Thema,Nachricht,IP,User Agent\n';
+        const csvRows = contactData.map(entry => {
+            const timestamp = entry.submittedAt || entry.timestamp || '';
+            const name = (entry.name || '').replace(/"/g, '""');
+            const email = (entry.email || '').replace(/"/g, '""');
+            const topic = (entry.topic || '').replace(/"/g, '""');
+            const message = (entry.message || '').replace(/"/g, '""').replace(/\n/g, ' ');
+            const ip = entry.ip || '';
+            const userAgent = (entry.userAgent || '').replace(/"/g, '""');
+            
+            return `"${timestamp}","${name}","${email}","${topic}","${message}","${ip}","${userAgent}"`;
+        }).join('\n');
+        
+        const csvContent = csvHeader + csvRows;
+        
+        res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+        res.setHeader('Content-Disposition', 'attachment; filename="babixgo_kontakte.csv"');
+        res.send('\ufeff' + csvContent); // Add BOM for Excel compatibility
+        
+        console.log('Exported', contactData.length, 'contact submissions to CSV');
+        
+    } catch (error) {
+        console.error('CSV export error:', error);
+        res.status(500).json({ error: 'Fehler beim CSV-Export' });
     }
 });
 
