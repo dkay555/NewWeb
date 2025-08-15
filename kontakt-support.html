@@ -439,7 +439,12 @@
                 if (response.ok && result.success !== false) {
                     document.getElementById('contactForm').reset();
                     grecaptcha.reset();
-                    showToast('Erfolg!', 'Deine Nachricht wurde erfolgreich übermittelt und in Google Sheets gespeichert.', 'success');
+                    
+                    if (result.savedToSheets) {
+                        showToast('Erfolg!', 'Deine Nachricht wurde erfolgreich in Google Sheets gespeichert.', 'success');
+                    } else {
+                        showToast('Gespeichert', result.message || 'Deine Nachricht wurde gespeichert.', 'success');
+                    }
                 } else {
                     throw new Error(result.error || 'Unbekannter Fehler');
                 }
