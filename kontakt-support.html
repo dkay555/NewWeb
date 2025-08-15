@@ -253,57 +253,65 @@
             </div>
         </div>
     </section>
-    <section class="contact-section">
-
-        <div class="contact-grid">
-            <div class="contact-methods">
-                <div class="contact-card">
-                    <div class="contact-card-inner">
-                        <div class="contact-icon whatsapp-icon">
-                            <i data-lucide="phone" class="icon-large" style="color: #25D366;"></i>
+    <section class="contact2_section" id="contact-methods">
+        <div class="contact2_header">
+            <h2>Kontakt & Support</h2>
+            <p>Unser Team hilft dir schnell und kompetent weiter</p>
+        </div>
+        
+        <div class="contact2_grid">
+            <div class="contact2_methods">
+                <div class="contact2_card">
+                    <div class="contact2_card_inner">
+                        <div class="contact2_icon whatsapp">
+                            <i data-lucide="phone" style="color: #25D366; width: 32px; height: 32px;"></i>
                         </div>
-                        <div class="contact-content">
+                        <div class="contact2_content">
                             <h4>WhatsApp Support</h4>
                             <p>Schnelle Hilfe direkt auf deinem Handy</p>
-                            <p class="small-text">+49 1522 3842897</p>
-                            <button onclick="window.open('https://wa.me/4915223842897', '_blank')" style="background-color: #25D366;">
+                            <p class="contact2_small_text">+49 152 23842897</p>
+                            <button class="contact2_button whatsapp" onclick="window.open('https://wa.me/4915223842897', '_blank')">
                                 WhatsApp öffnen
                             </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="contact-card">
-                    <div class="contact-card-inner">
-                        <div class="contact-icon facebook-icon">
-                            <i data-lucide="facebook" class="icon-large" style="color: #1877F2;"></i>
+                
+                <div class="contact2_card">
+                    <div class="contact2_card_inner">
+                        <div class="contact2_icon facebook">
+                            <i data-lucide="facebook" style="color: #1877F2; width: 32px; height: 32px;"></i>
                         </div>
-                        <div class="contact-content">
-                            <h4>Facebook Community</h4>
-                            <p>Tausche dich mit anderen Spielern aus</p>
-                            <button onclick="window.open('https://www.facebook.com/babixGO/', '_blank')" style="background-color: #1877F2;">
-                                Facebook besuchen
+                        <div class="contact2_content">
+                            <h4>Facebook Messenger</h4>
+                            <p>Schreib uns direkt über Facebook</p>
+                            <button class="contact2_button facebook" onclick="window.open('https://m.me/494670617055790', '_blank')">
+                                Messenger öffnen
                             </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="contact-card">
-                    <div class="contact-card-inner">
-                        <div class="contact-icon email-icon">
-                            <i data-lucide="mail" class="icon-large" style="color: #FF4C00;"></i>
+                
+                <div class="contact2_card">
+                    <div class="contact2_card_inner">
+                        <div class="contact2_icon email">
+                            <i data-lucide="mail" style="color: #FF4C00; width: 32px; height: 32px;"></i>
                         </div>
-                        <div class="contact-content">
+                        <div class="contact2_content">
                             <h4>E-Mail Support</h4>
-                            <p>Ausführliche Anfragen an unser Team</p>
-                            <p class="small-text">support@babixgo-mail.de</p>
+                            <p>Für ausführliche Anfragen und Feedback</p>
+                            <p class="contact2_small_text">support@babixgo-mail.de</p>
+                            <button class="contact2_button email" onclick="window.open('mailto:support@babixgo-mail.de', '_blank')">
+                                E-Mail schreiben
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="contact-form">
-                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Kontaktformular</h3>
+            <!-- Contact Form Column -->
+            <div class="contact-form" id="contact-form">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Kontaktformular</h3>
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name *</label>

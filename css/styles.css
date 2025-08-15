@@ -378,8 +378,8 @@ body {
 
 .contact-container {
     max-width: 64rem;
-    margin: 0 auto;
-    padding: 0 1rem;
+    margin: 0;
+    padding: 0;
 }
 
 .contact-title {
@@ -400,7 +400,7 @@ body {
     grid-template-columns: 1fr;
     gap: 2rem;
     background: var(--paper);
-    padding: 2rem;
+    padding: 0rem;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
 }
@@ -430,7 +430,7 @@ body {
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    padding: 1.5rem;
+    padding: 3rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -471,19 +471,20 @@ body {
     font-family: 'Baloo 2', cursive;
     font-weight: 700;
     color: var(--text);
-    margin-bottom: 0.5rem;
+    margin: 1 0 1 1rem;
     font-size: 1.125rem;
 }
 
 .contact-content p {
     color: var(--muted);
-    margin-bottom: 0.5rem;
+    margin: 0 1.5rem;
     font-size: 0.95rem;
 }
 
 .contact-content .small-text {
     font-size: 0.875rem;
     font-weight: 600;
+    margin: 0 1.5rem;
     color: var(--text);
 }
 
@@ -495,7 +496,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
     font-family: inherit;
 }
 
@@ -507,8 +508,8 @@ body {
 .contact-method {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem;
+    gap: 1rem;
+    padding: 0rem;
     background: rgba(0,207,255,0.1);
     border-radius: 0.5rem;
     text-decoration: none;
@@ -754,7 +755,7 @@ h3.babix-info-header::after {
     
     .about-content,
     .contact-content {
-        padding: 1.5rem;
+        padding: 0 1.5rem;
     }
     
     .news-header {
@@ -1011,4 +1012,153 @@ h3.babix-info-header::after {
     margin-bottom: 1rem;
     text-align: center;
 }
+/* Contact Card Layout (contact2_) - Based on blue.html design */
+.contact2_section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.contact2_header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact2_header h2 {
+    font-family: 'Baloo 2', cursive;
+    color: var(--primary);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact2_header p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.contact2_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .contact2_grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.contact2_methods {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact2_card {
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.contact2_card:hover {
+    transform: translateY(-5px);
+}
+
+.contact2_card_inner {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.contact2_icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.contact2_icon.whatsapp {
+    background-color: rgba(37, 211, 102, 0.1);
+}
+
+.contact2_icon.facebook {
+    background-color: rgba(24, 119, 242, 0.1);
+}
+
+.contact2_icon.email {
+    background-color: rgba(255, 76, 0, 0.1);
+}
+
+.contact2_content h4 {
+    color: var(--primary);
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+    font-family: 'Baloo 2', cursive;
+}
+
+.contact2_content p {
+    margin: 0 0 0.5rem;
+    color: var(--text-color);
+}
+
+.contact2_small_text {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.contact2_button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 0.5rem;
+    color: white;
+}
+
+.contact2_button.whatsapp {
+    background-color: #25D366;
+}
+
+.contact2_button.whatsapp:hover {
+    background-color: #128C7E;
+}
+
+.contact2_button.facebook {
+    background-color: #1877F2;
+}
+
+.contact2_button.facebook:hover {
+    background-color: #166FE5;
+}
+
+.contact2_button.email {
+    background-color: var(--accent);
+}
+
+.contact2_button.email:hover {
+    background-color: #e04500;
+}
+
+/* Responsive adjustments for contact cards */
+@media (max-width: 768px) {
+    .contact2_card_inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .contact2_content {
+        width: 100%;
+    }
+}
+
 /* Force reload */ Sat Aug  9 03:38:25 PM UTC 2025
