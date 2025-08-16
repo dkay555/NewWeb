@@ -17,7 +17,7 @@ const sheets = google.sheets({ version: 'v4', auth: GOOGLE_SHEETS_API_KEY });
 async function saveToGoogleSheets(formData) {
     try {
         // Use Google Apps Script Web App URL (more reliable than direct API)
-        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1zOTRXgimRgFcSZSShHzMBF1nUOOot0HzdQVC_6MLeS6SA7hmCidTVj4R4EE8XjJx/exec";
+        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec";
         
         const payload = {
             timestamp: new Date().toISOString(),

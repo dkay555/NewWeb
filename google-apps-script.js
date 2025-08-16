@@ -7,7 +7,7 @@ function doPost(e) {
     const data = JSON.parse(e.postData.contents);
     
     // Get the active spreadsheet (create one if needed)
-    const spreadsheet = SpreadsheetApp.openById('1ogJ1CY2zmljmUot6bXEKzqSEhpRXCz83Cp6WvkBbuyY'); // Replace with your Sheet ID
+    const spreadsheet = SpreadsheetApp.openById(process.env.GOOGLE_SHEET_ID || '1ogJ1CY2zmljmUot6bXEKzqSEhpRXCz83Cp6WvkBbuyY'); // Uses environment variable
     let sheet = spreadsheet.getSheetByName('Kontaktformular');
     
     // Create the sheet if it doesn't exist

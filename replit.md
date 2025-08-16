@@ -93,14 +93,15 @@ The architecture includes active integrations for:
   - WhatsApp, Facebook Messenger, and Email contact options
   - Functional contact form with reCAPTCHA integration
   - Material Icons throughout for consistency with mobile menu
-- **Contact Form Partial Implementation (16. August 2025)**: Implemented professional contact form as reusable partial component:
-  - Created partials/contact-form.html with comprehensive form fields and validation
-  - Added contact2_ CSS classes for improved card-based contact layout from blue.html design
-  - Developed js/contact-form.js with advanced validation, reCAPTCHA integration, and Node.js server submission
-  - Enhanced main.js to automatically load contact form partial on kontakt-support.html
-  - Replaced old contact form with modern partial-based architecture for better maintainability
-  - Form includes name, email, phone, subject dropdown, message, data consent checkbox, and reCAPTCHA
-  - Real-time validation with visual feedback (error/valid states) and comprehensive error handling
+- **Contact Form Implementation & Google Sheets Integration (16. August 2025)**: Complete contact form system with Google Apps Script integration:
+  - Direct embedding of contact form in kontakt-support.html (resolved partial loading issues)
+  - Comprehensive form fields: name, email, phone, subject dropdown, message, data consent checkbox
+  - Advanced JavaScript validation with real-time feedback and error states
+  - reCAPTCHA integration for spam protection
+  - Google Apps Script Web App integration for direct Google Sheets data storage
+  - Local JSON backup system as fallback for data integrity
   - Professional styling with loading states, toast notifications, and responsive design
+  - Form successfully captures and stores all submissions with proper error handling
+  - Updated Google Apps Script URL: https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
