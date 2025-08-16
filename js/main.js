@@ -37,15 +37,27 @@ async function loadPartials() {
         // Load contact form partial if placeholder exists
         const contactFormPlaceholder = document.getElementById('contact-form-placeholder');
         if (contactFormPlaceholder) {
+            console.log('Loading contact form partial...');
             const contactFormResponse = await fetch('partials/contact-form.html');
+            console.log('Contact form response status:', contactFormResponse.status);
+            
             if (contactFormResponse.ok) {
                 const contactFormHTML = await contactFormResponse.text();
                 contactFormPlaceholder.innerHTML = contactFormHTML;
+                console.log('Contact form HTML loaded successfully');
                 
-                // Load contact form script
-                const script = document.createElement('script');
-                script.src = 'js/contact-form.js';
-                document.head.appendChild(script);
+                // Load contact form script after a brief delay
+                setTimeout(() => {
+                    const script = document.createElement('script');
+                    script.src = 'js/contact-form.js';
+                    script.onload = () => console.log('Contact form script loaded');
+                    script.onerror = (e) => console.error('Error loading contact form script:', e);
+                    document.head.appendChild(script);
+                }, 100);
+            } else {
+                console.error('Failed to load contact form partial:', contactFormResponse.status, contactFormResponse.statusText);
+                // Fallback: show a simple message
+                contactFormPlaceholder.innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">Kontaktformular wird geladen...</p>';
             }
         }
     } catch (error) {
