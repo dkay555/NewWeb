@@ -13,35 +13,39 @@ const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID;
 // Initialize Google Sheets API
 const sheets = google.sheets({ version: 'v4', auth: GOOGLE_SHEETS_API_KEY });
 
-// Function to save data directly to Google Sheets
+// Function to save data to Google Sheets via Apps Script Web App
 async function saveToGoogleSheets(formData) {
     try {
-        const values = [
-            [
-                new Date().toISOString(),
-                formData.name,
-                formData.email,
-                formData.phone || '',
-                formData.subject || '',
-                formData.message,
-                formData.consent ? 'Ja' : 'Nein',
-                formData.ip || '',
-                formData.userAgent || ''
-            ]
-        ];
-
-        const request = {
-            spreadsheetId: GOOGLE_SHEET_ID,
-            range: 'Kontaktformular!A:I', // Assuming sheet name is "Kontaktformular"
-            valueInputOption: 'USER_ENTERED',
-            resource: {
-                values: values
-            }
+        // Use Google Apps Script Web App URL (more reliable than direct API)
+        const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1zOTRXgimRgFcSZSShHzMBF1nUOOot0HzdQVC_6MLeS6SA7hmCidTVj4R4EE8XjJx/exec";
+        
+        const payload = {
+            timestamp: new Date().toISOString(),
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || '',
+            subject: formData.subject || '',
+            message: formData.message,
+            consent: formData.consent ? 'Ja' : 'Nein',
+            ip: formData.ip || '',
+            userAgent: formData.userAgent || ''
         };
 
-        const response = await sheets.spreadsheets.values.append(request);
-        console.log('Data successfully saved to Google Sheets:', response.data);
-        return true;
+        const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        console.log('Data successfully saved to Google Sheets via Apps Script:', result);
+        return result;
     } catch (error) {
         console.error('Error saving to Google Sheets:', error);
         throw error;

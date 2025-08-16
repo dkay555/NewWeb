@@ -91,8 +91,13 @@ class ContactForm {
             const response = await this.submitToServer(data);
             
             if (response.success) {
-                this.showStatus('success', 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze bei Ihnen melden.');
+                if (response.savedToSheets) {
+                    this.showStatus('success', 'Vielen Dank! Ihre Nachricht wurde erfolgreich in Google Sheets gespeichert. Wir werden uns in Kürze bei Ihnen melden.');
+                } else {
+                    this.showStatus('success', 'Vielen Dank! Ihre Nachricht wurde gespeichert. Wir werden uns in Kürze bei Ihnen melden.');
+                }
                 this.resetForm();
+                grecaptcha.reset(); // Reset reCAPTCHA after successful submission
             } else {
                 throw new Error(response.error || 'Unbekannter Fehler');
             }
