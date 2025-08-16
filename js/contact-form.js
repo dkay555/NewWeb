@@ -111,12 +111,21 @@ class ContactForm {
 
     async submitToServer(data) {
         try {
-            const response = await fetch(this.submitEndpoint, {
+            // Submit directly to Google Apps Script using form data format
+            const formData = new FormData();
+            formData.append('name', data.name);
+            formData.append('email', data.email);
+            formData.append('phone', data.phone);
+            formData.append('subject', data.subject);
+            formData.append('message', data.message);
+            formData.append('consent', data.consent.toString());
+            formData.append('userAgent', data.userAgent);
+            formData.append('language', data.language);
+            formData.append('g-recaptcha-response', data.recaptchaToken);
+            
+            const response = await fetch('https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+                body: formData
             });
             
             if (!response.ok) {

@@ -1,27 +1,30 @@
-# Schnelle Setup-Anleitung für Google Apps Script
+# Google Apps Script Setup - Finale Version
 
-## Sofortige Schritte zur Behebung der reCAPTCHA-Fehler:
+## Das Kontaktformular ist jetzt vollständig konfiguriert!
 
-### Schritt 1: Kopieren Sie den aktualisierten Code
-1. Öffnen Sie: https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec
-2. Gehen Sie zu Ihrem Apps Script Editor
-3. Ersetzen Sie den gesamten Code mit dem Code aus `google-apps-script.js`
-4. Speichern Sie (Strg+S)
+### Verwendung des bereitgestellten Google Apps Script Codes:
 
-### Schritt 2: reCAPTCHA Secret Key konfigurieren
-1. Im Apps Script Editor: Klicken Sie auf das Zahnrad-Symbol ⚙️ (Projekteinstellungen)
-2. Scrollen Sie nach unten zu **Script-Eigenschaften**
-3. Klicken Sie auf **Script-Eigenschaft hinzufügen**
-4. Geben Sie ein:
-   - **Eigenschaft**: `RECAPTCHA_SECRET`
-   - **Wert**: `6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K`
-5. Klicken Sie auf **Script-Eigenschaft speichern**
+Der vollständige Google Apps Script Code ist in der Datei `google-apps-script.js` enthalten mit:
 
-### Schritt 3: Neue Version bereitstellen
-1. Klicken Sie auf **Bereitstellen** → **Bereitstellungen verwalten**
-2. Klicken Sie auf das Stift-Symbol ✏️ neben Ihrer aktuellen Bereitstellung
-3. Ändern Sie die **Version** auf "Neue Version"
-4. Klicken Sie auf **Bereitstellen**
+✅ **Vollständig konfigurierte CONFIG-Sektion:**
+- Sheet ID: `1ogJ1CY2zmljmUot6bXEKzqSEhpRXCz83Cp6WvkBbuyY`
+- Admin Email: `admin@babixgo.de`
+- reCAPTCHA Secret: `6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K`
+- Company Name: `babixGO`
+- Reply Email: `support@babixgo-mail.de`
+
+✅ **Vollständige Funktionalität:**
+- reCAPTCHA Verifikation
+- Formularvalidierung  
+- Google Sheets Speicherung
+- E-Mail-Benachrichtigungen (Admin & Benutzer)
+- Professionelle Fehlerbehandlung
+
+### Einfache Bereitstellung:
+1. Kopieren Sie den gesamten Code aus `google-apps-script.js`
+2. Fügen Sie ihn in Ihren Google Apps Script Editor ein
+3. Klicken Sie auf "Bereitstellen" → "Neue Bereitstellung"
+4. Fertig!
 
 ### Schritt 4: Testen
 Das Kontaktformular sollte jetzt funktionieren und Daten in Google Sheets speichern.
