@@ -6,6 +6,19 @@ function doPost(e) {
     // Parse the incoming data
     const data = JSON.parse(e.postData.contents);
     
+    // Validate reCAPTCHA if token is provided
+    if (data.recaptchaToken) {
+      const recaptchaValid = verifyRecaptcha(data.recaptchaToken);
+      if (!recaptchaValid) {
+        return ContentService
+          .createTextOutput(JSON.stringify({
+            success: false,
+            message: 'reCAPTCHA-Verifizierung fehlgeschlagen'
+          }))
+          .setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    
     // Get the active spreadsheet (create one if needed)
     const spreadsheet = SpreadsheetApp.openById(process.env.GOOGLE_SHEET_ID || '1ogJ1CY2zmljmUot6bXEKzqSEhpRXCz83Cp6WvkBbuyY'); // Uses environment variable
     let sheet = spreadsheet.getSheetByName('Kontaktformular');
@@ -16,7 +29,7 @@ function doPost(e) {
       // Add headers
       const headers = [
         'Zeitstempel', 'Name', 'E-Mail', 'Telefon', 'Betreff', 
-        'Nachricht', 'Datenschutz zugestimmt', 'IP-Adresse', 'User Agent'
+        'Nachricht', 'Datenschutz zugestimmt', 'reCAPTCHA Token', 'IP-Adresse', 'User Agent'
       ];
       sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
       
@@ -37,6 +50,7 @@ function doPost(e) {
       data.subject || '',
       data.message || '',
       data.consent || 'Nein',
+      data.recaptchaToken ? 'Verifiziert' : 'Nicht verifiziert',
       data.ip || '',
       data.userAgent || ''
     ];
@@ -72,6 +86,32 @@ function doPost(e) {
         message: 'Fehler beim Speichern in Google Sheets'
       }))
       .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+function verifyRecaptcha(token) {
+  try {
+    // reCAPTCHA Secret Key (add this to your Apps Script properties)
+    const RECAPTCHA_SECRET = PropertiesService.getScriptProperties().getProperty('RECAPTCHA_SECRET');
+    
+    if (!RECAPTCHA_SECRET) {
+      console.log('reCAPTCHA secret not configured, skipping validation');
+      return true; // Skip validation if secret is not configured
+    }
+    
+    const response = UrlFetchApp.fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      payload: {
+        secret: RECAPTCHA_SECRET,
+        response: token
+      }
+    });
+    
+    const result = JSON.parse(response.getContentText());
+    return result.success === true;
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return true; // Allow submission if verification fails
   }
 }
 

@@ -27,6 +27,7 @@ async function saveToGoogleSheets(formData) {
             subject: formData.subject || '',
             message: formData.message,
             consent: formData.consent ? 'Ja' : 'Nein',
+            recaptchaToken: formData.recaptchaToken || '',
             ip: formData.ip || '',
             userAgent: formData.userAgent || ''
         };
@@ -115,6 +116,7 @@ app.post('/submit-contact', async (req, res) => {
             subject: subject || '',
             message: message,
             consent: consent || false,
+            recaptchaToken: recaptchaToken || '',
             ip: req.ip,
             userAgent: req.get('User-Agent') || ''
         };
