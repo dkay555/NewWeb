@@ -74,10 +74,21 @@ class ContactForm {
         this.setSubmittingState(true);
 
         try {
-            const formData = this.getFormData();
-            formData.append('g-recaptcha-response', recaptchaResponse);
+            // Collect form data manually to avoid FormData constructor issues
+            const data = {
+                name: document.getElementById('name')?.value?.trim() || '',
+                email: document.getElementById('email')?.value?.trim() || '',
+                phone: document.getElementById('phone')?.value?.trim() || '',
+                subject: document.getElementById('subject')?.value || '',
+                message: document.getElementById('message')?.value?.trim() || '',
+                consent: document.getElementById('consent')?.checked || false,
+                recaptchaToken: recaptchaResponse,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                language: navigator.language
+            };
             
-            const response = await this.submitToServer(formData);
+            const response = await this.submitToServer(data);
             
             if (response.success) {
                 this.showStatus('success', 'Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet. Wir werden uns in Kürze bei Ihnen melden.');
@@ -93,11 +104,14 @@ class ContactForm {
         }
     }
 
-    async submitToServer(formData) {
+    async submitToServer(data) {
         try {
             const response = await fetch(this.submitEndpoint, {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
             });
             
             if (!response.ok) {

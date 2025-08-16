@@ -469,13 +469,19 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="js/main.js"></script>
     <script src="js/contact-form.js"></script>
     <script>
-        // Initialize Lucide icons after DOM is loaded
+        // Initialize Lucide icons and contact form after DOM is loaded
         document.addEventListener('DOMContentLoaded', function() {
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
+            }
+            
+            // Initialize contact form
+            if (typeof ContactForm !== 'undefined') {
+                new ContactForm();
             }
         });
     </script>

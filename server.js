@@ -55,7 +55,7 @@ app.use(express.static('.'));
 // Contact form submission endpoint
 app.post('/submit-contact', async (req, res) => {
     try {
-        const { name, email, topic, message, recaptchaToken, timestamp } = req.body;
+        const { name, email, phone, subject, message, consent, recaptchaToken, timestamp } = req.body;
         
         // Validate required fields
         if (!name || !email || !message) {
@@ -69,8 +69,10 @@ app.post('/submit-contact', async (req, res) => {
         const formData = {
             name: name,
             email: email,
-            topic: topic || '',
+            phone: phone || '',
+            subject: subject || '',
             message: message,
+            consent: consent || false,
             ip: req.ip,
             userAgent: req.get('User-Agent') || ''
         };
