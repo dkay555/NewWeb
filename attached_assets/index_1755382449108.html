@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt - Professionelle Anfrage</title>
+    <meta name="description" content="Kontaktieren Sie uns für Ihre Anfragen, Bestellungen oder Feedback. Professioneller Kundenservice.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;500;600;700&family=Baloo+2:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Kontaktformular</h1>
+            <p>Dein Zug! 🏆<br>
+            Sag uns, wie wir dir helfen können, was dir gefällt oder wo wir besser werden können.<br>
+            Wir sind gespannt auf deine Nachricht.</p>
+        </header>
+
+        <main class="main-content">
+            <form id="contactForm" class="contact-form" novalidate>
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">
+                        Name <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        class="form-input" 
+                        placeholder="Ihr vollständiger Name"
+                        required
+                        aria-describedby="name-error"
+                    >
+                    <div id="name-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        E-Mail-Adresse <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="ihre.email@beispiel.de"
+                        required
+                        aria-describedby="email-error"
+                    >
+                    <div id="email-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="form-group">
+                    <label for="phone" class="form-label">
+                        Telefonnummer
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        class="form-input" 
+                        placeholder="+49 123 456789"
+                        aria-describedby="phone-error"
+                    >
+                    <div id="phone-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Subject Field -->
+                <div class="form-group">
+                    <label for="subject" class="form-label">
+                        Betreff <span class="required">*</span>
+                    </label>
+                    <select 
+                        id="subject" 
+                        name="subject" 
+                        class="form-select" 
+                        required
+                        aria-describedby="subject-error"
+                    >
+                        <option value="">Bitte wähle einen Betreff:</option>
+                        <option value="Neue Bestellung">Neue Bestellung</option>
+                        <option value="Frage zu einer Bestellung">Frage zu einer Bestellung</option>
+                        <option value="Frage zu einem Service">Frage zu einem Service</option>
+                        <option value="Lob/Verbesserungsvorschläge">Lob/Verbesserungsvorschläge</option>
+                        <option value="Sonstiges">Sonstiges</option>
+                    </select>
+                    <div id="subject-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message" class="form-label">
+                        Nachricht <span class="required">*</span>
+                    </label>
+                    <textarea 
+                        id="message" 
+                        name="message" 
+                        class="form-textarea" 
+                        placeholder="Beschreiben deine Anfrage ausführlich..."
+                        rows="6"
+                        required
+                        aria-describedby="message-error"
+                    ></textarea>
+                    <div id="message-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Data Consent -->
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input 
+                            type="checkbox" 
+                            id="consent" 
+                            name="consent" 
+                            class="form-checkbox" 
+                            required
+                            aria-describedby="consent-error"
+                        >
+                        <span class="checkmark"></span>
+                        <span class="checkbox-text">
+                            Ich stimme der Verarbeitung meiner Daten gemäß der 
+                            <a href="#" class="privacy-link">Datenschutzerklärung</a> zu. <span class="required">*</span>
+                        </span>
+                    </label>
+                    <div id="consent-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- reCAPTCHA -->
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LfwTagrAAAAADZWmwZSlKOF_Dui_zbBuvcGpFSZ"></div>
+                    <div id="recaptcha-error" class="error-message" role="alert"></div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <button type="submit" class="submit-button" id="submitButton">
+                        <span class="button-text">Nachricht senden</span>
+                        <div class="loading-spinner" style="display: none;"></div>
+                    </button>
+                </div>
+
+                <!-- Status Messages -->
+                <div id="form-status" class="form-status" style="display: none;" role="alert">
+                    <div class="status-content">
+                        <div class="status-icon"></div>
+                        <div class="status-text"></div>
+                    </div>
+                </div>
+            </form>
+        </main>
+
+        <footer class="footer">
+            <p>Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.</p>
+        </footer>
+    </div>
+
+    <!-- Configuration for Google Apps Script URL -->
+    <script>
+        // babixGO Google Apps Script URL - CONFIGURED AND ACTIVE
+        window.GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec';
+    </script>
+    
+    <script src="script.js"></script>
+</body>
+</html>

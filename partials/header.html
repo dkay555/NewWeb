@@ -47,12 +47,16 @@
             </a>
         </div>
         
-        <div class="babixgo-mobile-drawer__single">
-            <a href="kontakt-support.html">
-                <span class="material-icons" style="color: #00CFFF; font-size: 28px; margin-bottom: 6px;">local_grocery_store</span>
-                <span>Bestellungen / Kontakt</span>
-            </a>
-        </div>
+       <div class="babixgo-mobile-drawer__single">
+  <a href="kontakt-support.html" class="drawer-link">
+    <span class="icon-row">
+      <span class="material-icons" aria-hidden="true">local_grocery_store</span>
+      <span class="material-icons" aria-hidden="true">phone</span>
+    </span>
+    <span class="drawer-label">Support / Bestellungen / Kontakt</span>
+  </a>
+</div>
+
         <div class="babixgo-mobile-drawer__section-label">SERVICES</div>
         <!-- Services Grid -->
         <div class="babixgo-mobile-drawer__grid">
@@ -176,8 +180,8 @@
     position: fixed;
     left: 0;
     top: 0;
-    width: 50vw;
-    max-width: 280px;
+    width: 50%;
+    max-width: 50%;
     height: 100vh;
     z-index: 3500;
     box-shadow: 4px 0 26px 0 rgba(0,0,0,0.18);
@@ -254,7 +258,7 @@
     align-items: center;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
-    margin: 0 auto 16px auto;
+    margin: 16px 16px 16px auto;
     width: 100%;
 }
 
@@ -318,6 +322,25 @@
     word-break: break-word;
     hyphens: auto;
 }
+    .babixgo-mobile-drawer__single .drawer-link{
+      display:flex;
+      flex-direction:column;      /* Label unter der Icon-Zeile */
+      align-items:center;
+      text-decoration:none;
+      gap:6px;                    /* Abstand Iconzeile <-> Label */
+    }
+
+    .babixgo-mobile-drawer__single .icon-row{
+      display:flex;               /* -> Icons nebeneinander */
+      align-items:center;
+      gap:8px;                    /* Abstand zwischen den Icons */
+    }
+
+    .babixgo-mobile-drawer__single .material-icons{
+      color:#00CFFF;
+      font-size:28px;
+      line-height:1;
+    }
 
 .babixgo-mobile-drawer__section-label {
     text-align: left;

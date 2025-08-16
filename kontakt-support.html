@@ -47,20 +47,21 @@
             gap: 2rem;
         }
         
-        @media (min-width: 992px) {
+        /*@media (min-width: 992px) {
             .contact-grid {
                 grid-template-columns: 1fr 1fr;
             }
-        }
+        }*/
         
         .contact-methods {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             gap: 1.5rem;
         }
         
         .contact-card {
-            background: var(--white);
+            background: #e5eef5;
+            flex-direction: row;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             padding: 0.5rem;
@@ -117,7 +118,7 @@
         .contact-form {
             background: var(--white);
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 5px 10px 15px 1px rgba(0, 66, 107, 0.56);
             padding: 1.5rem;
         }
         
@@ -135,7 +136,7 @@
         input, textarea, select {
             width: 100%;
             padding: 0.75rem;
-            border: 1px solid #ddd;
+            border: 1px solid var(--accent);
             border-radius: 5px;
             font-size: 1rem;
             box-sizing: border-box;
@@ -151,6 +152,7 @@
         textarea {
             min-height: 150px;
             resize: vertical;
+            border: 1px solid var(--accent);
         }
         
         button[type="submit"], #submitBtn {
@@ -254,10 +256,6 @@
         </div>
     </section>
     <section class="contact2_section" id="contact-methods">
-        <div class="contact2_header">
-            <h2>Kontakt & Support</h2>
-            <p>Unser Team hilft dir schnell und kompetent weiter</p>
-        </div>
         
         <div class="contact2_grid">
             <div class="contact2_methods">
@@ -269,7 +267,7 @@
                         <div class="contact2_content">
                             <h4>WhatsApp Support</h4>
                             <p>Schnelle Hilfe direkt auf deinem Handy</p>
-                            <p class="contact2_small_text">+49 152 23842897</p>
+                        
                             <button class="contact2_button whatsapp" onclick="window.open('https://wa.me/4915223842897', '_blank')">
                                 WhatsApp öffnen
                             </button>
@@ -312,41 +310,15 @@
             <!-- Contact Form Column -->
             <div class="contact-form" id="contact-form">
                 <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Kontaktformular</h3>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input id="name" name="name" type="text" placeholder="Dein Name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">E-Mail *</label>
-                        <input id="email" name="email" type="email" placeholder="deine@email.de" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="topic">Thema *</label>
-                        <select id="topic" name="topic" required>
-                            <option value="" disabled selected>Bitte wählen...</option>
-                            <option value="feedback">Feedback / Frage - Allgemein</option>
-                            <option value="order">Bestellung aufgeben</option>
-                            <option value="order-question">Frage zu einer Bestellung</option>
-                            <option value="technical">Technisches Problem</option>
-                            <option value="account">Account-Anfrage</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Nachricht *</label>
-                        <textarea id="message" name="message" placeholder="Deine Nachricht an babixGO..." required></textarea>
-                    </div>
-
-                    <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-
-                    <button type="submit" id="submitBtn">Nachricht senden</button>
-                </form>
-
-                <p style="font-size: 0.75rem; color: #777; text-align: center; margin-top: 1.5rem;">
-                    Wir antworten normalerweise innerhalb von 2-4 Stunden.
+                <p style="margin-bottom: 1.5rem; color: var(--text-color);">
+                    Oder schreib uns direkt hier eine Nachricht:
+                </p>
+                <div id="contact-form-placeholder">
+                    <!-- Contact form will be loaded here -->
+                </div>
+                <p style="font-size: 0.875rem; color: #777; text-align: center; margin-top: 1.5rem;">
+                    Wir antworten normalerweise innerhalb von 2-4 Stunden.<br>
+                    Ihre Daten werden vertraulich behandelt und nicht an Dritte weitergegeben.
                 </p>
             </div>
         </div>
@@ -374,129 +346,6 @@
                 lucide.createIcons();
             }
         });
-
-        // Use Node.js server endpoint for form submission
-        const FORM_ENDPOINT = "/submit-contact";
-
-        // Topic selection handler
-        document.getElementById('topic').addEventListener('change', function() {
-            const messageField = document.getElementById('message');
-            const selectedTopic = this.value;
-
-            const templates = {
-                'feedback': "Sehr geehrtes babixGO-Team,\n\nich möchte folgendes Feedback geben bzw. habe eine allgemeine Frage:\n\n",
-                'order': "Sehr geehrtes babixGO-Team,\n\nich möchte folgende Bestellung aufgeben:\n\n• Produkt:\n• Menge:\n• Lieferadresse:\n• Besondere Hinweise:\n\n",
-                'order-question': "Sehr geehrtes babixGO-Team,\n\nich habe eine Frage zu meiner Bestellung (Bestellnummer: ):\n\n",
-                'technical': "Sehr geehrtes babixGO-Team,\n\nich habe ein technisches Problem:\n\n• Gerät: \n• Betriebssystem: \n• Fehlerbeschreibung: \n\n",
-                'account': "Sehr geehrtes babixGO-Team,\n\nich habe eine Frage zu meinem Account:\n\n• Benutzername: \n• E-Mail: \n\n"
-            };
-
-            if (templates[selectedTopic]) {
-                messageField.value = templates[selectedTopic];
-                setTimeout(() => {
-                    messageField.focus();
-                    messageField.setSelectionRange(messageField.value.length, messageField.value.length);
-                }, 0);
-            }
-        });
-
-        // Form submission handler
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            // reCAPTCHA validation
-            const recaptchaToken = grecaptcha.getResponse();
-            if (!recaptchaToken) {
-                showToast('Fehler', 'Bitte bestätige, dass du kein Roboter bist', 'error');
-                return;
-            }
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                topic: document.getElementById('topic').value,
-                message: document.getElementById('message').value,
-                recaptchaToken: recaptchaToken,
-                timestamp: new Date().toISOString()
-            };
-
-            // Validate form
-            if (!formData.name || !formData.email || !formData.topic || !formData.message) {
-                showToast('Fehler', 'Bitte fülle alle Pflichtfelder aus', 'error');
-                return;
-            }
-
-            // Disable submit button
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Wird gesendet...';
-
-            try {
-                const response = await fetch(FORM_ENDPOINT, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(formData)
-                });
-
-                const result = await response.json();
-                
-                if (response.ok && result.success !== false) {
-                    document.getElementById('contactForm').reset();
-                    grecaptcha.reset();
-                    
-                    if (result.savedToSheets) {
-                        showToast('Erfolg!', 'Deine Nachricht wurde erfolgreich in Google Sheets gespeichert.', 'success');
-                    } else {
-                        showToast('Gespeichert', result.message || 'Deine Nachricht wurde gespeichert.', 'success');
-                    }
-                } else {
-                    throw new Error(result.error || 'Unbekannter Fehler');
-                }
-                
-            } catch (error) {
-                console.error('Error:', error);
-                showToast('Fehler', `Beim Senden ist ein Problem aufgetreten: ${error.message}. Bitte kontaktiere uns direkt über WhatsApp.`, 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Nachricht senden';
-            }
-        });
-
-        // Toast functions
-        function showToast(title, message, type) {
-            const toast = document.getElementById('toast');
-            const toastTitle = document.getElementById('toastTitle');
-            const toastMessage = document.getElementById('toastMessage');
-            const toastIcon = document.getElementById('toastIcon');
-
-            toastTitle.textContent = title;
-            toastMessage.textContent = message;
-
-            // Set icon
-            toastIcon.innerHTML = '';
-            const icon = document.createElement('i');
-            icon.setAttribute('data-lucide', type === 'success' ? 'check-circle' : 'alert-circle');
-            icon.style.color = type === 'success' ? '#25D366' : '#FF4C00';
-            toastIcon.appendChild(icon);
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            // Show toast
-            toast.style.display = 'block';
-
-            // Auto-hide after 5 seconds
-            setTimeout(hideToast, 5000);
-        }
-
-        function hideToast() {
-            document.getElementById('toast').style.display = 'none';
-        }
     </script>
-
-    <!-- Main JavaScript -->
-    <script src="js/main.js"></script>
     </body>
     </html>

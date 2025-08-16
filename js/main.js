@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initMobileMenu, 500);
 });
 
-// Load header and footer partials
+// Load header, footer, and contact form partials
 async function loadPartials() {
     try {
         // Load header
@@ -32,6 +32,21 @@ async function loadPartials() {
         if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
             document.getElementById('footer-placeholder').innerHTML = footerHTML;
+        }
+        
+        // Load contact form partial if placeholder exists
+        const contactFormPlaceholder = document.getElementById('contact-form-placeholder');
+        if (contactFormPlaceholder) {
+            const contactFormResponse = await fetch('partials/contact-form.html');
+            if (contactFormResponse.ok) {
+                const contactFormHTML = await contactFormResponse.text();
+                contactFormPlaceholder.innerHTML = contactFormHTML;
+                
+                // Load contact form script
+                const script = document.createElement('script');
+                script.src = 'js/contact-form.js';
+                document.head.appendChild(script);
+            }
         }
     } catch (error) {
         console.error('Error loading partials:', error);
