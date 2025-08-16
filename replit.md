@@ -102,6 +102,8 @@ The architecture includes active integrations for:
   - Local JSON backup system as fallback for data integrity
   - Professional styling with loading states, toast notifications, and responsive design
   - Form successfully captures and stores all submissions with proper error handling
-  - Updated Google Apps Script URL: https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec
+  - Google Apps Script Web App URL: https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec
+  - reCAPTCHA configuration: Site Key (6LfwTagrAAAAADZWmwZSlKOF_Dui_zbBuvcGpFSZ) and Secret Key (6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K)
+  - Complete setup documentation provided in GOOGLE_APPS_SCRIPT_SETUP.md
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.

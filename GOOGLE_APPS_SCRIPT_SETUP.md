@@ -13,7 +13,7 @@
 2. Klicken Sie auf **Script-Eigenschaften**
 3. Fügen Sie eine neue Eigenschaft hinzu:
    - **Eigenschaft**: `RECAPTCHA_SECRET`
-   - **Wert**: Ihr reCAPTCHA Secret Key (der Partner zum Site Key `6LfwTagrAAAAADZWmwZSlKOF_Dui_zbBuvcGpFSZ`)
+   - **Wert**: `6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K`
 
 ## Schritt 3: Als Web App bereitstellen
 
@@ -42,6 +42,7 @@
 ## Aktuelle Konfiguration
 
 - **Site Key**: `6LfwTagrAAAAADZWmwZSlKOF_Dui_zbBuvcGpFSZ`
+- **Secret Key**: `6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K`
 - **Apps Script URL**: `https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec`
 
 ## Test der Funktionalität
