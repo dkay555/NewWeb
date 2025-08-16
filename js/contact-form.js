@@ -125,21 +125,19 @@ class ContactForm {
         }
     }
 
+    // This method is no longer used - keeping for compatibility
     getFormData() {
-        const formData = new FormData();
-        
-        // Add form fields
-        formData.append('name', document.getElementById('name').value.trim());
-        formData.append('email', document.getElementById('email').value.trim());
-        formData.append('phone', document.getElementById('phone').value.trim());
-        formData.append('subject', document.getElementById('subject').value);
-        formData.append('message', document.getElementById('message').value.trim());
-        formData.append('consent', document.getElementById('consent').checked);
-        formData.append('timestamp', new Date().toISOString());
-        formData.append('userAgent', navigator.userAgent);
-        formData.append('language', navigator.language);
-        
-        return formData;
+        return {
+            name: document.getElementById('name')?.value?.trim() || '',
+            email: document.getElementById('email')?.value?.trim() || '',
+            phone: document.getElementById('phone')?.value?.trim() || '',
+            subject: document.getElementById('subject')?.value || '',
+            message: document.getElementById('message')?.value?.trim() || '',
+            consent: document.getElementById('consent')?.checked || false,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            language: navigator.language
+        };
     }
 
     validateForm() {

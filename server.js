@@ -7,10 +7,46 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Google Sheets configuration
+const GOOGLE_SHEETS_API_KEY = process.env.GOOGLE_SHEETS_API_KEY;
 const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID;
 
-// For now, we'll use a simple HTTP POST to Google Forms as an alternative
-// This is more reliable than the Sheets API which requires OAuth2
+// Initialize Google Sheets API
+const sheets = google.sheets({ version: 'v4', auth: GOOGLE_SHEETS_API_KEY });
+
+// Function to save data directly to Google Sheets
+async function saveToGoogleSheets(formData) {
+    try {
+        const values = [
+            [
+                new Date().toISOString(),
+                formData.name,
+                formData.email,
+                formData.phone || '',
+                formData.subject || '',
+                formData.message,
+                formData.consent ? 'Ja' : 'Nein',
+                formData.ip || '',
+                formData.userAgent || ''
+            ]
+        ];
+
+        const request = {
+            spreadsheetId: GOOGLE_SHEET_ID,
+            range: 'Kontaktformular!A:I', // Assuming sheet name is "Kontaktformular"
+            valueInputOption: 'USER_ENTERED',
+            resource: {
+                values: values
+            }
+        };
+
+        const response = await sheets.spreadsheets.values.append(request);
+        console.log('Data successfully saved to Google Sheets:', response.data);
+        return true;
+    } catch (error) {
+        console.error('Error saving to Google Sheets:', error);
+        throw error;
+    }
+}
 
 // Alternative: Save to structured JSON file and provide easy export
 async function saveFormDataStructured(formData) {
@@ -21,7 +57,9 @@ async function saveFormDataStructured(formData) {
             submittedAt: new Date().toLocaleString('de-DE'),
             name: formData.name,
             email: formData.email,
-            topic: formData.topic || '',
+            subject: formData.subject || '',
+            phone: formData.phone || '',
+            consent: formData.consent || false,
             message: formData.message,
             ip: formData.ip || '',
             userAgent: formData.userAgent || ''
@@ -77,38 +115,57 @@ app.post('/submit-contact', async (req, res) => {
             userAgent: req.get('User-Agent') || ''
         };
         
-        // Save to structured JSON file for easy import to Google Sheets
-        let saveSuccess = false;
-        let saveError = null;
+        // Try to save directly to Google Sheets first
+        let sheetsSuccess = false;
+        let sheetsError = null;
         let savedEntry = null;
         
         try {
-            savedEntry = await saveFormDataStructured(formData);
-            saveSuccess = true;
-            console.log('Successfully saved contact form data:', formData.name, formData.email);
+            await saveToGoogleSheets(formData);
+            sheetsSuccess = true;
+            console.log('Successfully saved to Google Sheets:', formData.name, formData.email);
         } catch (error) {
-            saveError = error.message;
-            console.error('Failed to save structured data:', error);
+            sheetsError = error.message;
+            console.error('Failed to save to Google Sheets, trying local backup:', error);
+        }
+        
+        // Always save to local backup as well
+        let localSaveSuccess = false;
+        try {
+            savedEntry = await saveFormDataStructured(formData);
+            localSaveSuccess = true;
+            console.log('Successfully saved contact form data locally:', formData.name, formData.email);
+        } catch (error) {
+            console.error('Failed to save locally:', error);
         }
         
         // Also save to simple log as additional backup
         const logEntry = {
             timestamp: new Date().toISOString(),
             ...formData,
-            saveSuccess: saveSuccess,
-            saveError: saveError
+            sheetsSuccess: sheetsSuccess,
+            localSaveSuccess: localSaveSuccess,
+            sheetsError: sheetsError
         };
         
         const logLine = JSON.stringify(logEntry) + '\n';
         fs.appendFileSync('contact_submissions.log', logLine);
         
         // Send response
-        if (saveSuccess) {
+        if (sheetsSuccess) {
             res.json({
                 success: true,
-                message: 'Deine Nachricht wurde erfolgreich gespeichert und kann zu Google Sheets exportiert werden',
+                message: 'Deine Nachricht wurde erfolgreich in Google Sheets gespeichert!',
                 id: savedEntry ? savedEntry.id : 'contact_' + Date.now(),
-                savedToSheets: true // We'll indicate success since data is ready for export
+                savedToSheets: true
+            });
+        } else if (localSaveSuccess) {
+            res.json({
+                success: true,
+                message: 'Deine Nachricht wurde lokal gespeichert. Google Sheets-Integration temporär nicht verfügbar.',
+                id: savedEntry ? savedEntry.id : 'contact_' + Date.now(),
+                savedToSheets: false,
+                error: sheetsError
             });
         } else {
             res.json({
@@ -116,7 +173,7 @@ app.post('/submit-contact', async (req, res) => {
                 message: 'Deine Nachricht wurde in der Backup-Datei gespeichert',
                 id: 'contact_' + Date.now(),
                 savedToSheets: false,
-                error: saveError
+                error: sheetsError
             });
         }
         
