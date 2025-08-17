@@ -51,16 +51,16 @@
             font-size: 1.25rem;
         }
 
-        /* Category Headers */
+        /* Category Headers - kompakter */
         .category-header {
             display: inline-block;
             font-family: 'Baloo 2', cursive;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             font-weight: bold;
             color: var(--accent);
             position: relative;
-            padding-bottom: 0.4rem;
-            margin: 2rem 0 1rem 0;
+            padding-bottom: 0.3rem;
+            margin: 0 0 1rem 0;
         }
 
         .category-header::after {
@@ -73,11 +73,11 @@
             border-radius: 2px;
         }
 
-        /* FAQ Items */
+        /* FAQ Items - kompakter */
         .faq-grid {
             display: grid;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 0.75rem;
+            margin-bottom: 0rem;
         }
 
         .faq-item {
@@ -95,13 +95,13 @@
 
         .faq-question {
             width: 100%;
-            padding: 1.5rem;
+            padding: 1.25rem;
             background: none;
             border: none;
             text-align: left;
             cursor: pointer;
             font-family: 'Baloo 2', cursive;
-            font-size: 1.125rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--text);
             display: flex;
@@ -141,7 +141,7 @@
 
         .faq-answer.active {
             max-height: 500px;
-            padding: 0 1.5rem 1.5rem;
+            padding: 0 1.25rem 1.25rem;
         }
 
         .faq-answer-content {
@@ -168,13 +168,18 @@
             font-weight: 700;
         }
 
-        /* Category Sections */
+        /* Category Sections - styled like kontakt-support contact2_card */
         .category-section {
-            background: var(--paper);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            margin-bottom: 2rem;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 5px 10px 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .category-section:hover {
+            transform: translateY(-5px);
         }
 
         @media (min-width: 768px) {
@@ -202,7 +207,8 @@
                 
                 <div class="welcome-box">
                     <h1 class="welcome-title">Häufig gestellte Fragen</h1>
-                    <p class="welcome-subtitle">Alles was Sie über babixGO wissen möchten</p>
+                    <p class="welcome-subtitle" style="color: red; font-weight: 900;">Aktuell noch im Aufbau!<br></p>
+<p class="welcome-subtitle">Hier findest Du Antworten auf die häufigsten Fragen zu unseren Monopoly GO Services. Falls du keine passende Antwort auf deine Frage findest zögere nicht uns zu schreiben: Kontakt</p>
                 </div>
 
                 <div class="nav-buttons">
@@ -236,11 +242,7 @@
 
         <!-- FAQ Section -->
         <section class="section">
-            <div class="container">
-                <div class="info-intro">
-                    <p>Hier finden Sie Antworten auf die häufigsten Fragen zu unseren Monopoly GO Services. Falls Sie Ihre Antwort nicht finden, kontaktieren Sie uns gerne direkt.</p>
-                </div>
-
+            <div class="container" style="gap: 2rem">
                 <!-- Search Box -->
                 <div class="search-container">
                     <span class="material-icons search-icon">search</span>
@@ -248,7 +250,7 @@
                 </div>
 
                 <!-- Allgemeine Fragen -->
-                <div id="allgemein" class="category-section">
+                <div id="allgemein" class="category-section" style="background: var(--cyan); width: 90% align-items: center">
                     <h2 class="category-header">Allgemeine Fragen</h2>
                     <div class="faq-grid" data-category="allgemein">
                     <div class="faq-item" data-keywords="babixgo unternehmen firma wer monopoly go services">
