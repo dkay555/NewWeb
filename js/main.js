@@ -1,4 +1,16 @@
 // Main JavaScript for babixGO Website
+// Load Analytics and SEO scripts
+function loadScript(src) {
+    const script = document.createElement('script');
+    script.src = src.startsWith('http') ? src : (window.location.pathname.includes('/') && !window.location.pathname.endsWith('/') ? '../' : '') + src;
+    script.async = true;
+    document.head.appendChild(script);
+}
+
+// Load analytics and SEO enhancement scripts
+loadScript('js/analytics.js');
+loadScript('js/seo-enhancements.js');
+loadScript('js/performance-optimizations.js');
 
 document.addEventListener('DOMContentLoaded', function() {
     // Load header and footer partials
