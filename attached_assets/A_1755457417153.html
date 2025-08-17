@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>babixGO FAQ</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0A3A68;
+            --accent: #FF4C00;
+            --cyan: #00CFFF;
+            --bg: #d7f4fe;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Suchleiste */
+        .search-container {
+            position: relative;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 12px 20px 12px 45px;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            font-size: 1rem;
+            color: var(--primary);
+            background-color: white;
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: var(--cyan);
+            box-shadow: 0 0 0 3px rgba(0, 207, 255, 0.2);
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+        
+        /* Kategorien */
+        .category-section {
+            margin-bottom: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(10, 58, 104, 0.1);
+        }
+        
+        .category-header {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent);
+            position: relative;
+        }
+        
+        .category-header::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--cyan);
+        }
+        
+        /* FAQ Grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        /* FAQ Items */
+        .faq-item {
+            border: 1px solid rgba(10, 58, 104, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 4px 8px rgba(0, 207, 255, 0.1);
+        }
+        
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--bg);
+        }
+        
+        .faq-question span:first-child {
+            flex-grow: 1;
+        }
+        
+        .faq-icon {
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+        
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            background-color: white;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--primary);
+            line-height: 1.6;
+        }
+        
+        .faq-answer p, .faq-answer ul {
+            margin-bottom: 1rem;
+        }
+        
+        .faq-answer ul {
+            padding-left: 1.5rem;
+        }
+        
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        .faq-answer li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .faq-answer strong {
+            color: var(--accent);
+        }
+        
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .category-header {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <div class="container" style="gap: 2rem">
+            <!-- Search Box -->
+            <div class="search-container">
+                <span class="material-icons search-icon">search</span>
+                <input type="text" class="search-box" placeholder="FAQ durchsuchen..." id="searchBox">
+            </div>
+
+            <!-- Allgemeine Fragen -->
+            <div id="allgemein" class="category-section">
+                <h2 class="category-header">Allgemeine Fragen</h2>
+                <div class="faq-grid" data-category="allgemein">
+                <div class="faq-item" data-keywords="babixgo unternehmen firma wer monopoly go services">
+                    <button class="faq-question">
+                        <span>Was ist babixGO?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>babixGO ist Ihr verlässlicher Partner für alle Monopoly GO Services. Wir bieten professionelle Unterstützung für Würfelboosts, Partnerevent-Teilnahmen, Sticker-Sammlungen und Premium-Account-Services.</p>
+                            <p>Unser Fokus liegt auf <strong>schnellem, zuverlässigem Service</strong> und fairen Preisen für alle Monopoly GO Spieler.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="kontakt erreichbar support hilfe">
+                    <button class="faq-question">
+                        <span>Wie kann ich Sie kontaktieren?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Sie erreichen uns über verschiedene Kanäle:</p>
+                            <ul>
+                                <li><strong>WhatsApp:</strong> +49 152 23842897 (bevorzugt)</li>
+                                <li><strong>Facebook Messenger:</strong> m.me/494670617055790</li>
+                                <li><strong>E-Mail:</strong> support@babixgo-mail.de</li>
+                            </ul>
+                            <p>WhatsApp ist unser schnellster Kommunikationsweg - wir antworten meist innerhalb weniger Minuten.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="arbeitszeiten öffnungszeiten erreichbar support zeit">
+                    <button class="faq-question">
+                        <span>Wann sind Sie erreichbar?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Hauptgeschäftszeiten:</strong> Täglich 9:00 - 22:00 Uhr</p>
+                            <p><strong>WhatsApp Support:</strong> Erweiterte Zeiten bei dringenden Anfragen</p>
+                            <p><strong>Partnerevent-Support:</strong> Während Events oft 24/7 verfügbar</p>
+                            <p>Außerhalb der Geschäftszeiten erreichen Sie uns per WhatsApp oder E-Mail - wir melden uns schnellstmöglich zurück.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Services & Preise -->
+            <div id="services" class="category-section">
+                <h2 class="category-header">Services & Preise</h2>
+                <div class="faq-grid" data-category="services">
+                <div class="faq-item" data-keywords="würfel würfelboost dice roll boost monopoly go">
+                    <button class="faq-question">
+                        <span>Wie funktioniert der Würfelboost-Service?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Unser Würfelboost-Service hilft Ihnen dabei, mehr Würfel für Ihr Monopoly GO Spiel zu erhalten:</p>
+                            <ul>
+                                <li><strong>Verschiedene Pakete:</strong> Von 1.000 bis 50.000+ Würfel</li>
+                                <li><strong>Schnelle Lieferung:</strong> Meist innerhalb von 30 Minuten</li>
+                                <li><strong>Sichere Methoden:</strong> Alle Würfel werden sicher übertragen</li>
+                                <li><strong>Faire Preise:</strong> Transparente Preisgestaltung ohne versteckte Kosten</li>
+                            </ul>
+                            <p>Kontaktieren Sie uns für aktuelle Preise und verfügbare Pakete.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="partnerevent event teilnahme partner monopoly go">
+                    <button class="faq-question">
+                        <span>Was sind Partnerevent-Services?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Partnerevents sind spezielle Monopoly GO Events, die Sie mit anderen Spielern gemeinsam absolvieren:</p>
+                            <ul>
+                                <li><strong>Event-Teilnahme:</strong> Wir vermitteln Sie zu aktiven Event-Gruppen</li>
+                                <li><strong>Koordination:</strong> Optimale Punkteverteilung für maximale Belohnungen</li>
+                                <li><strong>Kommunikation:</strong> WhatsApp-Gruppen für echte Teamarbeit</li>
+                                <li><strong>Erfolgsgarantie:</strong> Wir sorgen für erfolgreiche Event-Abschlüsse</li>
+                            </ul>
+                            <p>Perfekt für Spieler, die die besten Event-Belohnungen erhalten möchten!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="sticker sammlung album monopoly go karten">
+                    <button class="faq-question">
+                        <span>Wie funktioniert der Sticker-Service?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Unser Sticker-Service hilft beim Komplettieren Ihrer Sammlungen:</p>
+                            <ul>
+                                <li><strong>Fehlende Sticker:</strong> Wir beschaffen schwer findbare Sticker</li>
+                                <li><strong>Album-Komplettierung:</strong> Komplette Sets für maximale Belohnungen</li>
+                                <li><strong>Tauschbörse:</strong> Zugang zu unserem großen Sticker-Netzwerk</li>
+                                <li><strong>Faire Preise:</strong> Marktgerechte Preise für alle Sticker-Raritäten</li>
+                            </ul>
+                            <p>Teilen Sie uns mit, welche Sticker Sie benötigen - wir finden sie für Sie!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="accounts premium dienst monopoly go">
+                    <button class="faq-question">
+                        <span>Was beinhaltet der Account-Service?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Unser Account-Service bietet umfassende Unterstützung für Ihr Monopoly GO Erlebnis:</p>
+                            <ul>
+                                <li><strong>Account-Optimierung:</strong> Maximaler Fortschritt bei Events und Challenges</li>
+                                <li><strong>Ressourcen-Management:</strong> Optimaler Einsatz von Würfeln und Items</li>
+                                <li><strong>Event-Betreuung:</strong> Professionelle Teilnahme an zeitkritischen Events</li>
+                                <li><strong>Sichere Betreuung:</strong> Ihre Account-Daten bleiben jederzeit geschützt</li>
+                            </ul>
+                            <p>Ideal für vielbeschäftigte Spieler, die trotzdem alle Belohnungen erhalten möchten.</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Bestellung & Bezahlung -->
+            <div id="bestellung" class="category-section">
+                <h2 class="category-header">Bestellung & Bezahlung</h2>
+                <div class="faq-grid" data-category="bestellung">
+                <div class="faq-item" data-keywords="bestellen order bestellung aufgeben wie">
+                    <button class="faq-question">
+                        <span>Wie kann ich eine Bestellung aufgeben?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Die Bestellung ist ganz einfach:</p>
+                            <ul>
+                                <li><strong>WhatsApp:</strong> Schreiben Sie uns direkt - wir beraten Sie persönlich</li>
+                                <li><strong>Facebook:</strong> Kontaktieren Sie uns über Messenger</li>
+                                <li><strong>Website:</strong> Nutzen Sie unser Kontaktformular für detaillierte Anfragen</li>
+                            </ul>
+                            <p>Teilen Sie uns einfach mit, welchen Service Sie benötigen - wir erstellen Ihnen ein individuelles Angebot.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="bezahlung payment zahlung geld preise kosten">
+                    <button class="faq-question">
+                        <span>Welche Zahlungsmethoden akzeptieren Sie?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Wir bieten verschiedene sichere Zahlungsoptionen:</p>
+                            <ul>
+                                <li><strong>Banküberweisung:</strong> Klassisch und sicher</li>
+                                <li><strong>PayPal:</strong> Schnell und käuferschutzversichert</li>
+                                <li><strong>Weitere Methoden:</strong> Nach Absprache möglich</li>
+                            </ul>
+                            <p>Die Zahlung erfolgt erst nach Bestätigung des Service-Umfangs. Keine Vorauszahlung ohne klare Vereinbarung!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="lieferzeit dauer schnell wann wie lange">
+                    <button class="faq-question">
+                        <span>Wie schnell erhalte ich meinen Service?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Die Lieferzeiten variieren je nach Service:</p>
+                            <ul>
+                                <li><strong>Würfelboost:</strong> 15-30 Minuten nach Zahlungseingang</li>
+                                <li><strong>Partnerevent:</strong> Sofort bei verfügbaren Events</li>
+                                <li><strong>Sticker:</strong> 1-24 Stunden je nach Verfügbarkeit</li>
+                                <li><strong>Account-Service:</strong> Beginn innerhalb von 2 Stunden</li>
+                            </ul>
+                            <p>Bei zeitkritischen Events arbeiten wir auch außerhalb der Geschäftszeiten!</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Sicherheit & Vertrauen -->
+            <div id="sicherheit" class="category-section">
+                <h2 class="category-header">Sicherheit & Vertrauen</h2>
+                <div class="faq-grid" data-category="sicherheit">
+                <div class="faq-item" data-keywords="sicher sicherheit account daten schutz">
+                    <button class="faq-question">
+                        <span>Ist mein Account bei Ihnen sicher?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Ihre Account-Sicherheit hat höchste Priorität:</p>
+                            <ul>
+                                <li><strong>Keine Passwort-Änderungen:</strong> Wir ändern nie Ihre Login-Daten</li>
+                                <li><strong>Sichere Übertragung:</strong> Alle Services erfolgen über sichere Methoden</li>
+                                <li><strong>Datenschutz:</strong> Ihre Daten werden nicht weitergegeben</li>
+                                <li><strong>Erfahrung:</strong> Über 1000 zufriedene Kunden ohne Zwischenfälle</li>
+                            </ul>
+                            <p>Bei Account-Services erhalten Sie regelmäßige Updates über alle durchgeführten Aktionen.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="legal erlaubt monopoly go terms service">
+                    <button class="faq-question">
+                        <span>Ist die Nutzung Ihrer Services erlaubt?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Wir arbeiten ausschließlich innerhalb der Spielregeln:</p>
+                            <ul>
+                                <li><strong>Faire Methoden:</strong> Alle Services nutzen legitime Spiel-Mechanismen</li>
+                                <li><strong>Keine Hacks:</strong> Wir verwenden keine manipulativen Software</li>
+                                <li><strong>Community-Service:</strong> Wir unterstützen das Spiel-Erlebnis, statt es zu zerstören</li>
+                                <li><strong>Transparenz:</strong> Alle Methoden sind nachvollziehbar und fair</li>
+                            </ul>
+                            <p>Bei Fragen zu unseren Methoden beraten wir Sie gerne ausführlich.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-keywords="probleme fehler rückerstattung garantie">
+                    <button class="faq-question">
+                        <span>Was passiert bei Problemen mit dem Service?</span>
+                        <span class="material-icons faq-icon">expand_more</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Unser Kundenservice steht immer für Sie bereit:</p>
+                            <ul>
+                                <li><strong>24/7 Support:</strong> Bei Problemen erreichen Sie uns jederzeit</li>
+                                <li><strong>Nachbesserung:</strong> Nicht zufriedenstellende Services werden korrigiert</li>
+                                <li><strong>Rückerstattung:</strong> Bei unlösbaren Problemen erhalten Sie Ihr Geld zurück</li>
+                                <li><strong>Kulanz:</strong> Wir finden immer eine faire Lösung</li>
+                            </ul>
+                            <p>Ihre Zufriedenheit ist unser oberstes Ziel - sprechen Sie uns bei Problemen sofort an!</p>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Suchfunktionalität
+        document.getElementById('searchBox').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const keywords = item.getAttribute('data-keywords').toLowerCase();
+                const question = item.querySelector('.faq-question span:first-child').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (keywords.includes(searchTerm) || question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Akkordeon-Funktionalität
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.setAttribute('aria-expanded', 'false');
+            
+            button.addEventListener('click', () => {
+                const faqItem = button.closest('.faq-item');
+                const answer = faqItem.querySelector('.faq-answer');
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                
+                // Schließe alle anderen offenen Items
+                if (!isExpanded) {
+                    document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(openBtn => {
+                        const openItem = openBtn.closest('.faq-item');
+                        if (openItem !== faqItem) {
+                            openBtn.setAttribute('aria-expanded', 'false');
+                            openItem.querySelector('.faq-answer').style.maxHeight = '0';
+                        }
+                    });
+                }
+                
+                // Toggle aktuelles Item
+                button.setAttribute('aria-expanded', !isExpanded);
+                answer.style.maxHeight = !isExpanded ? answer.scrollHeight + 'px' : '0';
+            });
+        });
+    </script>
+</body>
+</html>

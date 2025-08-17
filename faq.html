@@ -96,7 +96,7 @@
         .faq-question {
             width: 100%;
             padding: 1.25rem;
-            background: none;
+            background-color: var(--paper);
             border: none;
             text-align: left;
             cursor: pointer;
@@ -170,12 +170,13 @@
 
         /* Category Sections - styled like kontakt-support contact2_card */
         .category-section {
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 5px 10px 15px 1px rgba(0, 0, 0, 0.4);
-            padding: 1.5rem;
+            background: rgba(176, 214, 245, 0.9);
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            padding: 1rem 1rem 0.5rem;
+            text-align: center;
             margin-bottom: 1.5rem;
-            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
         }
 
         .category-section:hover {
@@ -250,7 +251,7 @@
                 </div>
 
                 <!-- Allgemeine Fragen -->
-                <div id="allgemein" class="category-section" style="background: var(--cyan); width: 90% align-items: center">
+                <div id="allgemein" class="category-section">
                     <h2 class="category-header">Allgemeine Fragen</h2>
                     <div class="faq-grid" data-category="allgemein">
                     <div class="faq-item" data-keywords="babixgo unternehmen firma wer monopoly go services">
@@ -522,41 +523,43 @@
             const searchBox = document.getElementById('searchBox');
             const faqItems = document.querySelectorAll('.faq-item');
 
-            // Toggle FAQ answers
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const answer = this.nextElementSibling;
-                    const isActive = this.classList.contains('active');
-
-                    // Close all other FAQs
-                    faqQuestions.forEach(q => {
-                        q.classList.remove('active');
-                        q.nextElementSibling.classList.remove('active');
-                    });
-
-                    // Toggle current FAQ
-                    if (!isActive) {
-                        this.classList.add('active');
-                        answer.classList.add('active');
+            // Initialize FAQ questions with aria-expanded
+            faqQuestions.forEach(button => {
+                button.setAttribute('aria-expanded', 'false');
+                
+                button.addEventListener('click', () => {
+                    const faqItem = button.closest('.faq-item');
+                    const answer = faqItem.querySelector('.faq-answer');
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    
+                    // Close all other open items
+                    if (!isExpanded) {
+                        document.querySelectorAll('.faq-question[aria-expanded="true"]').forEach(openBtn => {
+                            const openItem = openBtn.closest('.faq-item');
+                            if (openItem !== faqItem) {
+                                openBtn.setAttribute('aria-expanded', 'false');
+                                openItem.querySelector('.faq-answer').style.maxHeight = '0';
+                            }
+                        });
                     }
+                    
+                    // Toggle current item
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    answer.style.maxHeight = !isExpanded ? answer.scrollHeight + 'px' : '0';
                 });
             });
 
             // Search functionality
             if (searchBox) {
-                searchBox.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
+                searchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
                     
                     faqItems.forEach(item => {
-                        const keywords = item.dataset.keywords || '';
-                        const questionText = item.querySelector('.faq-question span').textContent.toLowerCase();
-                        const answerText = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                        const keywords = item.getAttribute('data-keywords').toLowerCase();
+                        const question = item.querySelector('.faq-question span:first-child').textContent.toLowerCase();
+                        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
                         
-                        const matchesSearch = keywords.includes(searchTerm) || 
-                                            questionText.includes(searchTerm) || 
-                                            answerText.includes(searchTerm);
-                        
-                        if (searchTerm === '' || matchesSearch) {
+                        if (keywords.includes(searchTerm) || question.includes(searchTerm) || answer.includes(searchTerm)) {
                             item.style.display = 'block';
                         } else {
                             item.style.display = 'none';
