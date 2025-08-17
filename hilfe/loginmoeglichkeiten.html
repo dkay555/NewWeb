@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Methoden für Würfelboosts | babixGO</title>
+    <meta name="description" content="Verfügbare Login-Methoden für Würfelboosts bei babixGO - Facebook, Authtoken und Google Play Games">
+    <link rel="icon" type="image/x-icon" href="../images/icons/favicon.ico">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Nunito Sans & Baloo 2 Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="../images/heroes/login-hero.png" alt="Login-Methoden für Würfelboosts" class="hero-image" style="max-width: 100%; height: auto; border-radius: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+            </div>
+            
+            <div class="welcome-box">
+                <h1 class="welcome-title">Login-Methoden für Würfelboosts</h1>
+                <p class="welcome-subtitle">Alle verfügbaren Methoden für den Zugriff auf deinen Monopoly GO Account</p>
+            </div>
+
+            <div class="nav-buttons">
+                <div class="button-row-2">
+                    <a href="../hilfe" class="button button-darkblue">
+                        <span class="material-icons">arrow_back</span>
+                        <span>Zurück zur Hilfe</span>
+                    </a>
+                    <a href="../kontakt.html" class="button button-cyan">
+                        <span class="material-icons">contact_support</span>
+                        <span>Support</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container narrow">
+            <p class="lead-text">
+                Für den Würfelboost benötigen wir Zugriff auf deinen Monopoly&nbsp;GO Account.
+                Hier erklären wir dir die verschiedenen Methoden, wie wir uns in deinen Account einloggen können.
+            </p>
+
+            <div class="info-box mb-8">
+                <h3 class="info-box-title">💡 Wichtiger Hinweis</h3>
+                <p>Wir verstehen, dass es für manche ein sensibles Thema ist und garantieren, dass wir den Login nur nutzen, um die nötigen Spieldaten zu erhalten. In aller Regel kann das Passwort wenige Minuten nach dem Login von dir geändert werden.</p>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Login-Methoden im Überblick</h2>
+
+                <!-- Methode 1 -->
+                <div class="card mb-8">
+                    <div class="card-head">
+                        <span class="material-icons card-icon">login</span>
+                        <span>Methode 1: Facebook – Zugangsdaten</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Login mit deinen Zugangsdaten</strong></p>
+                        <p>Was wir von dir benötigen:</p>
+                        <ul class="list">
+                            <li>Die hinterlegte E-Mail-Adresse oder Handynummer</li>
+                            <li>Dein Passwort</li>
+                        </ul>
+
+                        <p><strong>Für Käufe über den Shop:</strong></p>
+                        <p>Wenn du eine 2-Faktor-Authentifizierung nutzt, benötigen wir außerdem noch:</p>
+                        <ul class="list">
+                            <li>2&nbsp;Wiederherstellungscodes</li>
+                        </ul>
+
+                        <p>Die Wiederherstellungscodes benötigen wir, um die 2-Faktor-Authentifizierung zu umgehen.</p>
+
+                        <p>
+                            Wie du die Codes erhältst, ob deine 2FA überhaupt aktiv ist und weitere Informationen dazu findest du direkt bei Facebook unter folgendem Link:
+                            <a href="https://m.facebook.com/help/148104135383285/?locale=de_DE" target="_blank" rel="noopener noreferrer" class="link">https://m.facebook.com/help/148104135383285/?locale=de_DE</a>
+                        </p>
+
+                        <p>Alternativ zu den Codes kannst du den Login auch selbst bestätigen. Dafür muss man im Moment des Logins in Kontakt stehen; daher nutzen wir diese Möglichkeit nur bei Käufen über WhatsApp oder den Messenger.</p>
+                    </div>
+                </div>
+
+                <!-- Methode 2 -->
+                <div class="card mb-8">
+                    <div class="card-head">
+                        <span class="material-icons card-icon">token</span>
+                        <span>Methode 2: Facebook – Authtoken (empfohlen)</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Login mit dem Authtoken</strong></p>
+                        <p>Dieser Token wird nach deinem Anmeldevorgang generiert. Monopoly schickt diesen an Facebook als Beweis dafür, dass du die erforderlichen Berechtigungen erteilt hast. Er ist nur für Monopoly&nbsp;GO gültig!</p>
+
+                        <p>Was wir von dir benötigen:</p>
+                        <ul class="list">
+                            <li>Deinen Authtoken</li>
+                        </ul>
+
+                        <p><strong>So erhältst du den Token:</strong></p>
+                        <div class="hint">
+                            <p>Wir haben ein Tool bereitgestellt, mit welchem ihr diesen ganz einfach erhaltet:</p>
+                            <a href="/tools/authtoken" class="link-button">Zum Auth-Token-Tool</a>
+                        </div>
+
+                        <p><strong>Alternative:</strong></p>
+                        <div class="steps">
+                            <div class="step">
+                                <img src="../images/auth-token/step1.webp" alt="Schritt 1: Den Link im Messenger verschicken & anklicken" />
+                                <p>1. Den Link im Messenger verschicken & anklicken</p>
+                            </div>
+                            <div class="step">
+                                <img src="../images/auth-token/step2.webp" alt="Schritt 2: Fortfahren" />
+                                <p>2. Fortfahren</p>
+                            </div>
+                            <div class="step">
+                                <img src="../images/auth-token/step3.webp" alt="Schritt 3: Weiße Seite → oben rechts auf die 3 Punkte" />
+                                <p>3. Weiße Seite → oben rechts auf die 3 Punkte</p>
+                            </div>
+                            <div class="step">
+                                <img src="../images/auth-token/step4.webp" alt="Schritt 4: Link kopieren & zuschicken" />
+                                <p>4. „Link kopieren" wählen & uns schicken</p>
+                            </div>
+                        </div>
+
+                        <p>Der Link, den ihr erhaltet, hat dieses Format:</p>
+                        <code class="code-block">https://m.facebook.com/dialog/return/arbiter?protocol=https&amp;response=%7B%22access_token%22%3A%22EAAEDOsLhrQsBOzRy2O1iBmrfaTY9jvAk2Vk4mUlKiogi4XZCWjfqndrLXUfhfghcdvxfvfXIFow1dnrMnbfnRDrCKHPm3qFGcGlFXMnHrZAcqlJXZghgggfgh......</code>
+                    </div>
+                </div>
+
+                <!-- Methode 3 -->
+                <div class="card mb-8">
+                    <div class="card-head">
+                        <span class="material-icons card-icon">phone_android</span>
+                        <span>Methode 3: Google Play Games – Zugangsdaten</span>
+                    </div>
+                    <div class="card-body">
+                        <p><strong>Google Play Games</strong></p>
+                        <p>Sollte dein Account mit Google Play Games verknüpft sein, schreibe uns bitte über WhatsApp oder über Facebook.</p>
+
+                        <p>Was wir von dir benötigen:</p>
+                        <ul class="list">
+                            <li>Deine Gmail-Adresse</li>
+                            <li>Dein Google-Konto-Passwort</li>
+                        </ul>
+
+                        <p>Du musst den Login unter Umständen auf deinem Gerät bestätigen.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h3 class="cta-title">Hast du noch Fragen?</h3>
+                    <p>Falls du Hilfe benötigst oder noch Fragen zu dem Thema hast, zögere nicht, uns anzuschreiben.</p>
+                    <a class="button button-orange" href="../kontakt.html">
+                        <span class="material-icons">contact_support</span>
+                        Kontakt aufnehmen
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Main JavaScript -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
