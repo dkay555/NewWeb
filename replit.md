@@ -93,6 +93,15 @@ The architecture includes active integrations for:
   - WhatsApp, Facebook Messenger, and Email contact options
   - Functional contact form with reCAPTCHA integration
   - Material Icons throughout for consistency with mobile menu
+- **FAQ Section Implementation (17. August 2025)**: Complete FAQ page with babixGO design integration:
+  - Custom FAQ.html page with responsive design and search functionality
+  - Integration with babixGO color scheme, fonts, and design patterns
+  - Interactive accordion-style FAQ items with smooth animations
+  - Real-time search through FAQ content with keyword matching
+  - Categorized questions covering services, pricing, security, and support
+  - Contact CTA section with WhatsApp, Messenger, and Support links
+  - Mobile-responsive design with optimized user experience
+  - JavaScript functionality for FAQ toggling and search filtering
 - **Contact Form Implementation & Google Sheets Integration (16. August 2025)**: Complete contact form system with Google Apps Script integration:
   - Direct embedding of contact form in kontakt-support.html (resolved partial loading issues)
   - Comprehensive form fields: name, email, phone, subject dropdown, message, data consent checkbox

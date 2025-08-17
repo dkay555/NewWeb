@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - babixGO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* babixGO Website Styles */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0A3A68;
+            --accent: #FF4C00;
+            --cyan: #00CFFF;
+            --bg: #d7f4fe;
+            --paper: #ffffff;
+            --text: #0A3A68;
+            --muted: #6b7b8c;
+            --line: #e5eef5;
+            --white: #ffffff;
+            --shadow: 5px 10px 15px 1px rgba(0, 66, 107, 0.56);
+            --radius: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        .main {
+            flex-grow: 1;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 10vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-background {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, #78c6f7 0%, #5ba3d9 50%, #e0f7ff 100%);
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 32rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            justify-content: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .welcome-box {
+            background: rgba(176, 214, 245, 0.9);
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow);
+            padding: 1rem 1rem 0.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .welcome-title {
+            color: var(--accent);
+            font-family: 'Baloo 2', cursive;
+            font-weight: 800;
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .welcome-subtitle {
+            color: var(--text);
+            font-size: 1rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        @media (min-width: 640px) {
+            .hero-content {
+                padding: 3rem 1rem;
+            }
+            
+            .welcome-box {
+                padding: 1rem 1.5rem 0.5rem;
+                margin-bottom: 2rem;
+            }
+            
+            .welcome-title {
+                font-size: 1.875rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .welcome-box {
+                padding: 1rem 2rem 0.5rem;
+            }
+            
+            .welcome-title {
+                font-size: 2.25rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Back Button */
+        .back-button {
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            height: 2.5rem;
+            padding: 0 1rem;
+            font-size: 0.875rem;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Nunito Sans', sans-serif;
+            background-color: var(--primary);
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            background-color: #083052;
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 3rem 0;
+            background: var(--bg);
+        }
+
+        .faq-container {
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .faq-title {
+            font-family: 'Baloo 2', cursive;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text);
+            text-align: center;
+            margin: 0 auto 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .faq-intro {
+            text-align: center;
+            color: var(--muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            background: var(--paper);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        /* Category Headers */
+        .category-header {
+            display: inline-block;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 0.4rem;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .category-header::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--cyan), transparent);
+            margin-top: 0.3rem;
+            border-radius: 2px;
+        }
+
+        /* FAQ Items */
+        .faq-grid {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .faq-item {
+            background: var(--paper);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(10,58,104,.18);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--accent);
+        }
+
+        .faq-question.active {
+            color: var(--accent);
+            background: rgba(255, 76, 0, 0.05);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--cyan);
+            transition: transform 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            background: rgba(0, 207, 255, 0.02);
+        }
+
+        .faq-answer.active {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .faq-answer-content {
+            color: var(--muted);
+            line-height: 1.6;
+            padding-top: 0.5rem;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 1rem;
+        }
+
+        .faq-answer-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer-content strong {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: var(--paper);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-cta h3 {
+            font-family: 'Baloo 2', cursive;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-cta p {
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-button {
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.25rem;
+            height: 3rem;
+            padding: 0 1.5rem;
+            font-size: 1rem;
+            box-shadow: var(--shadow);
+            text-decoration: none;
+            border-radius: 0.375rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+
+        .contact-button.whatsapp {
+            background-color: #25d366;
+            color: white;
+        }
+
+        .contact-button.whatsapp:hover {
+            background-color: #20b954;
+            transform: translateY(-2px);
+        }
+
+        .contact-button.email {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .contact-button.email:hover {
+            background-color: #e63e00;
+            transform: translateY(-2px);
+        }
+
+        /* Search Box */
+        .search-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid var(--line);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--paper);
+            box-shadow: var(--shadow);
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--cyan);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            font-size: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-buttons {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-background"></div>
+            <div class="hero-content">
+                <a href="#" class="back-button">
+                    <span class="material-icons">arrow_back</span>
+                    Zurück zur Startseite
+                </a>
+                
+                <div class="welcome-box">
+                    <h1 class="welcome-title">Häufig gestellte Fragen</h1>
+                    <p class="welcome-subtitle">Alles was Sie über babixGO wissen möchten</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="faq-container">
+                <div class="faq-intro">
+                    <p>Hier finden Sie Antworten auf die häufigsten Fragen zu unseren Produkten und Services. Falls Sie Ihre Antwort nicht finden, kontaktieren Sie uns gerne direkt.</p>
+                </div>
+
+                <!-- Search Box -->
+                <div class="search-container">
+                    <span class="material-icons search-icon">search</span>
+                    <input type="text" class="search-box" placeholder="FAQ durchsuchen..." id="searchBox">
+                </div>
+
+                <!-- Allgemeine Fragen -->
+                <h2 class="category-header">Allgemeine Fragen</h2>
+                <div class="faq-grid" data-category="allgemein">
+                    <div class="faq-item" data-keywords="babixgo unternehmen firma wer">
+                        <button class="faq-question">
+                            <span>Was ist babixGO?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>babixGO ist Ihr verlässlicher Partner für innovative Software-Lösungen und digitale Transformation. Wir entwickeln maßgeschneiderte Anwendungen und bieten umfassende IT-Services für Unternehmen jeder Größe.</p>
+                                <p>Unser Fokus liegt auf <strong>benutzerfreundlichen Lösungen</strong>, die echten Mehrwert schaffen und Ihre Geschäftsprozesse optimieren.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="standort adresse büro wo">
+                        <button class="faq-question">
+                            <span>Wo befinden Sie sich?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Unser Hauptsitz befindet sich in Deutschland. Wir arbeiten sowohl vor Ort als auch remote und betreuen Kunden deutschlandweit sowie international.</p>
+                                <p>Für spezifische Termine oder Besuche kontaktieren Sie uns bitte vorab über unsere Kontaktkanäle.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="arbeitszeiten öffnungszeiten erreichbar support">
+                        <button class="faq-question">
+                            <span>Wie sind Ihre Arbeitszeiten?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p><strong>Bürozeiten:</strong> Montag bis Freitag, 9:00 - 18:00 Uhr</p>
+                                <p><strong>Support:</strong> Erweiterte Zeiten je nach Service-Level</p>
+                                <p><strong>Notfall-Support:</strong> Für kritische Systeme 24/7 verfügbar</p>
+                                <p>Außerhalb der Geschäftszeiten erreichen Sie uns per E-Mail oder WhatsApp - wir melden uns schnellstmöglich zurück.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produkte & Services -->
+                <h2 class="category-header">Produkte & Services</h2>
+                <div class="faq-grid" data-category="produkte">
+                    <div class="faq-item" data-keywords="dienstleistungen services angebot portfolio">
+                        <button class="faq-question">
+                            <span>Welche Services bieten Sie an?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Unsere Kernbereiche umfassen:</p>
+                                <ul>
+                                    <li><strong>Software-Entwicklung:</strong> Webanwendungen, Mobile Apps, Desktop-Software</li>
+                                    <li><strong>IT-Beratung:</strong> Digitalisierungsstrategien und Technologie-Auswahl</li>
+                                    <li><strong>Cloud-Services:</strong> Migration, Hosting und Management</li>
+                                    <li><strong>Wartung & Support:</strong> Kontinuierliche Betreuung Ihrer Systeme</li>
+                                    <li><strong>Automatisierung:</strong> Prozessoptimierung und Workflow-Automatisierung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="kosten preise kostenvoranschlag angebot budget">
+                        <button class="faq-question">
+                            <span>Wie viel kosten Ihre Services?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Die Kosten variieren je nach Projektumfang und Anforderungen. Wir bieten:</p>
+                                <ul>
+                                    <li><strong>Kostenlose Erstberatung</strong> zur Bedarfsanalyse</li>
+                                    <li><strong>Transparente Festpreise</strong> für definierte Projekte</li>
+                                    <li><strong>Flexible Stundensätze</strong> für laufende Betreuung</li>
+                                    <li><strong>Paketlösungen</strong> für Standardanforderungen</li>
+                                </ul>
+                                <p>Kontaktieren Sie uns für ein <strong>individuelles Angebot</strong> - wir finden gemeinsam die beste Lösung für Ihr Budget.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="technologien programmiersprachen frameworks stack">
+                        <button class="faq-question">
+                            <span>Welche Technologien verwenden Sie?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Wir arbeiten mit modernen, bewährten Technologien:</p>
+                                <ul>
+                                    <li><strong>Frontend:</strong> React, Vue.js, Angular, HTML5, CSS3, JavaScript</li>
+                                    <li><strong>Backend:</strong> Node.js, Python, PHP, Java, .NET</li>
+                                    <li><strong>Mobile:</strong> React Native, Flutter, native iOS/Android</li>
+                                    <li><strong>Datenbanken:</strong> MySQL, PostgreSQL, MongoDB, Redis</li>
+                                    <li><strong>Cloud:</strong> AWS, Azure, Google Cloud</li>
+                                </ul>
+                                <p>Die Technologie-Wahl erfolgt immer projektspezifisch und orientiert sich an Ihren Anforderungen.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Projektablauf -->
+                <h2 class="category-header">Projektablauf</h2>
+                <div class="faq-grid" data-category="projekt">
+                    <div class="faq-item" data-keywords="ablauf prozess vorgehen schritte">
+                        <button class="faq-question">
+                            <span>Wie läuft ein Projekt bei Ihnen ab?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Unser strukturierter Projektablauf:</p>
+                                <ul>
+                                    <li><strong>1. Beratungsgespräch:</strong> Kostenlose Analyse Ihrer Anforderungen</li>
+                                    <li><strong>2. Konzeptentwicklung:</strong> Detaillierte Planung und Angebot</li>
+                                    <li><strong>3. Umsetzung:</strong> Agile Entwicklung mit regelmäßigen Updates</li>
+                                    <li><strong>4. Testing:</strong> Umfassende Qualitätssicherung</li>
+                                    <li><strong>5. Deployment:</strong> Go-Live und Schulung</li>
+                                    <li><strong>6. Support:</strong> Nachbetreuung und Wartung</li>
+                                </ul>
+                                <p>Sie erhalten regelmäßige Updates und können jederzeit Feedback geben.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="dauer zeitraum entwicklung wie lange">
+                        <button class="faq-question">
+                            <span>Wie lange dauert ein typisches Projekt?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Die Projektdauer hängt vom Umfang ab:</p>
+                                <ul>
+                                    <li><strong>Kleine Projekte:</strong> 2-4 Wochen (z.B. Landing Pages)</li>
+                                    <li><strong>Mittlere Projekte:</strong> 2-3 Monate (z.B. Business-Apps)</li>
+                                    <li><strong>Große Projekte:</strong> 3-12 Monate (z.B. Enterprise-Software)</li>
+                                    <li><strong>Wartung/Updates:</strong> Laufend nach Bedarf</li>
+                                </ul>
+                                <p>In der Planungsphase erhalten Sie eine <strong>realistische Zeitschätzung</strong> mit Meilensteinen.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="änderungen anpassungen feedback revision">
+                        <button class="faq-question">
+                            <span>Kann ich während der Entwicklung Änderungen vornehmen?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Ja, Flexibilität ist uns wichtig! Änderungen sind möglich:</p>
+                                <ul>
+                                    <li><strong>Kleinere Anpassungen</strong> sind oft im Projektumfang enthalten</li>
+                                    <li><strong>Größere Änderungen</strong> werden transparent bewertet und angepasst</li>
+                                    <li><strong>Regelmäßige Reviews</strong> helfen, frühzeitig zu korrigieren</li>
+                                    <li><strong>Agile Methoden</strong> ermöglichen flexible Anpassungen</li>
+                                </ul>
+                                <p>Wir besprechen alle Änderungen vorab mit Ihnen - keine Überraschungen!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Support & Wartung -->
+                <h2 class="category-header">Support & Wartung</h2>
+                <div class="faq-grid" data-category="support">
+                    <div class="faq-item" data-keywords="support hilfe betreuung wartung">
+                        <button class="faq-question">
+                            <span>Welchen Support bieten Sie nach Projektende?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Unser umfassender Support umfasst:</p>
+                                <ul>
+                                    <li><strong>Garantieleistungen:</strong> Behebung von Fehlern kostenfrei</li>
+                                    <li><strong>Wartungsverträge:</strong> Regelmäßige Updates und Backups</li>
+                                    <li><strong>Hotline-Support:</strong> Schnelle Hilfe bei Problemen</li>
+                                    <li><strong>Schulungen:</strong> Training für Ihr Team</li>
+                                    <li><strong>Dokumentation:</strong> Umfassende Anleitungen</li>
+                                </ul>
+                                <p>Sie wählen das Support-Level, das zu Ihren Bedürfnissen passt.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-keywords="notfall kritisch ausfall 24/7">
+                        <button class="faq-question">
+                            <span>Was passiert bei kritischen Ausfällen?</span>
+                            <span class="material-icons faq-icon">expand_more</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Für kritische Systeme bieten wir:</p>
+                                <ul>
+                                    <li><strong>24/7 Monitoring:</strong> Automatische Überwachung Ihrer Systeme</li>
+                                    <li><strong>Notfall-Hotline:</strong> Direkter Kontakt zu unseren Experten</li>
+                                    <li><strong>Sofortmaßnahmen:</strong> Schnelle Fehlerbehebung und Wiederherstellung</li>
+                                    <li><strong>Backup-Systeme:</strong> Automatische Datensicherung</li>
+                                </ul>
+                                <p>Unser Ziel: <strong>Minimale Ausfallzeiten</strong> und schnelle Wiederherstellung.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="contact-cta">
+                    <h3>Haben Sie weitere Fragen?</h3>
+                    <p>Unser Team steht Ihnen gerne zur Verfügung. Kontaktieren Sie uns über Ihren bevorzugten Kanal.</p>
+                    <div class="contact-buttons">
+                        <a href="#" class="contact-button whatsapp">
+                            <span class="material-icons">chat</span>
+                            WhatsApp
+                        </a>
+                        <a href="mailto:info@babixgo.com" class="contact-button email">
+                            <span class="material-icons">email</span>
+                            E-Mail senden
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // FAQ Accordion Funktionalität
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            const searchBox = document.getElementById('searchBox');
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            // Accordion Toggle
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    // Close all other open FAQs
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ if it wasn't active
+                    if (!isActive) {
+                        this.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
+
+            // Search Funktionalität
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                faqItems.forEach(item => {
+                    const keywords = item.getAttribute('data-keywords') || '';
+                    const question = item.querySelector('.faq-question span').textContent;
+                    const answer = item.querySelector('.faq-answer-content').textContent;
+                    
+                    const searchContent = (keywords + ' ' + question + ' ' + answer).toLowerCase();
+                    
+                    if (searchTerm === '' || searchContent.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        // Highlight search term if found
+                        if (searchTerm !== '') {
+                            highlightSearchTerm(item, searchTerm);
+                        } else {
+                            removeHighlight(item);
+                        }
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide category headers based on visible items
+                const categoryHeaders = document.querySelectorAll('.category-header');
+                categoryHeaders.forEach(header => {
+                    const nextGrid = header.nextElementSibling;
+                    const visibleItems = nextGrid.querySelectorAll('.faq-item[style="display: block"], .faq-item:not([style*="display: none"])');
+                    
+                    if (searchTerm === '' || visibleItems.length > 0) {
+                        header.style.display = 'block';
+                        nextGrid.style.display = 'grid';
+                    } else {
+                        header.style.display = 'none';
+                        nextGrid.style.display = 'none';
+                    }
+                });
+            });
+
+            // Highlight search terms
+            function highlightSearchTerm(item, term) {
+                const question = item.querySelector('.faq-question span');
+                const answer = item.querySelector('.faq-answer-content');
+                
+                // Remove previous highlights
+                removeHighlight(item);
+                
+                // Highlight in question
+                if (question.textContent.toLowerCase().includes(term)) {
+                    question.innerHTML = question.textContent.replace(
+                        new RegExp(term, 'gi'),
+                        '<mark style="background: rgba(255, 76, 0, 0.3); padding: 2px 4px; border-radius: 4px;">$&</mark>'
+                    );
+                }
+                
+                // Highlight in answer
+                const originalAnswerHTML = answer.innerHTML;
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = originalAnswerHTML;
+                
+                const walker = document.createTreeWalker(
+                    tempDiv,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+                
+                const textNodes = [];
+                let node;
+                while (node = walker.nextNode()) {
+                    if (node.textContent.toLowerCase().includes(term)) {
+                        textNodes.push(node);
+                    }
+                }
+                
+                textNodes.forEach(textNode => {
+                    const highlightedText = textNode.textContent.replace(
+                        new RegExp(term, 'gi'),
+                        '<mark style="background: rgba(255, 76, 0, 0.3); padding: 2px 4px; border-radius: 4px;">$&</mark>'
+                    );
+                    const wrapper = document.createElement('span');
+                    wrapper.innerHTML = highlightedText;
+                    textNode.parentNode.replaceChild(wrapper, textNode);
+                });
+                
+                answer.innerHTML = tempDiv.innerHTML;
+            }
+
+            // Remove highlights
+            function removeHighlight(item) {
+                const marks = item.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                    parent.normalize();
+                });
+            }
+
+            // Smooth scrolling for back button
+            document.querySelector('.back-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // In einer echten Anwendung würden Sie hier zur Startseite navigieren
+                // window.location.href = 'index.html';
+            });
+
+            // Auto-expand FAQ if directly linked
+            const urlParams = new URLSearchParams(window.location.search);
+            const expandFaq = urlParams.get('expand');
+            if (expandFaq) {
+                setTimeout(() => {
+                    const targetItem = document.querySelector(`.faq-item[data-keywords*="${expandFaq}"]`);
+                    if (targetItem) {
+                        const question = targetItem.querySelector('.faq-question');
+                        question.click();
+                        targetItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 500);
+            }
+
+            // Add keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                // ESC key closes all open FAQs
+                if (e.key === 'Escape') {
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.nextElementSibling.classList.remove('active');
+                    });
+                    searchBox.value = '';
+                    searchBox.dispatchEvent(new Event('input'));
+                }
+                
+                // Ctrl+F focuses search
+                if (e.ctrlKey && e.key === 'f') {
+                    e.preventDefault();
+                    searchBox.focus();
+                }
+            });
+
+            // Add loading animation
+            const faqSection = document.querySelector('.faq-section');
+            faqSection.style.opacity = '0';
+            faqSection.style.transform = 'translateY(20px)';
+            faqSection.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                faqSection.style.opacity = '1';
+                faqSection.style.transform = 'translateY(0)';
+            }, 100);
+
+            // Add intersection observer for animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe FAQ items for staggered animation
+            faqItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(30px)';
+                item.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                observer.observe(item);
+            });
+
+            // Add analytics tracking (placeholder)
+            function trackFAQInteraction(action, question) {
+                // In einer echten Anwendung würden Sie hier Analytics-Events senden
+                console.log(`FAQ ${action}:`, question);
+                
+                // Beispiel für Google Analytics 4
+                // gtag('event', 'faq_interaction', {
+                //     'action': action,
+                //     'question': question,
+                //     'category': 'FAQ'
+                // });
+            }
+
+            // Track FAQ opens
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const questionText = this.querySelector('span').textContent;
+                    trackFAQInteraction('open', questionText);
+                });
+            });
+
+            // Track searches
+            let searchTimeout;
+            searchBox.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    if (this.value.trim().length > 2) {
+                        trackFAQInteraction('search', this.value.trim());
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
