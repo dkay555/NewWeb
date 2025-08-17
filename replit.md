@@ -11,7 +11,11 @@ Preferred communication style: Simple, everyday language.
 ## Frontend Architecture
 The website is built using vanilla HTML, CSS, and JavaScript with no frameworks or build tools. Key architectural decisions include:
 
-- **Static Multi-Page Structure**: Each service has its own dedicated HTML page (wuerfelshop.html, sticker.html, partnerevent.html, etc.) for clear content organization
+- **Organized Directory Structure**: Pages organized into logical directories:
+  - `/shop/`: E-commerce pages (wuerfelshop.html, sticker.html, accounts.html, bestellformular.html)
+  - `/service/`: Service pages (partnerevent.html, kontakt-support.html)
+  - `/hilfe/`: Help and support pages (index.html, faq.html, loginmoeglichkeiten.html)
+  - `/recht/`: Legal pages (impressum.html, datenschutz.html, agb.html, widerruf.html)
 - **Component-Based Partials**: Header and footer are separated into reusable partial files loaded via JavaScript for consistency across pages
 - **Mobile-First Responsive Design**: CSS uses modern techniques like CSS Grid and Flexbox with media queries for responsive behavior
 - **Progressive Enhancement**: Core functionality works without JavaScript, with JavaScript enhancing user experience
@@ -114,5 +118,20 @@ The architecture includes active integrations for:
   - Google Apps Script Web App URL: https://script.google.com/macros/s/AKfycbyDT5dMhCP5kBnfKQssNI_RJPq47974VSX7WbtOMFc7ldcJaS5gIBIcBY-7C3gQyt6e/exec
   - reCAPTCHA configuration: Site Key (6LfwTagrAAAAADZWmwZSlKOF_Dui_zbBuvcGpFSZ) and Secret Key (6LfwTagrAAAAAK1BeAchqigAdSt-UZktgVul9S4K)
   - Complete setup documentation provided in GOOGLE_APPS_SCRIPT_SETUP.md
+- **Website Reorganization (17. August 2025)**: Complete restructuring of pages into organized directories:
+  - Moved all pages into logical directory structure: /shop/, /service/, /hilfe/, /recht/
+  - Updated all internal links and navigation paths to reflect new structure
+  - Fixed header and footer navigation to point to correct new locations
+  - Updated sitemap.html to reflect new directory organization
+  - All asset paths (CSS, JS, images) updated with proper relative paths for subdirectories
+  - Maintained functionality while improving maintainability and organization
+- **Login Methods Help Page (17. August 2025)**: Comprehensive help page for account access methods:
+  - Created /hilfe/loginmoeglichkeiten.html with three login methods for Würfelboost service
+  - Facebook credentials login with 2FA support and recovery codes
+  - Facebook Authtoken method (recommended) with step-by-step visual guide
+  - Google Play Games login method with Gmail credentials
+  - Integrated step-by-step screenshots for Authtoken extraction process
+  - Professional hero image matching website design consistency
+  - Complete CSS styling for cards, steps, code blocks, and responsive design
 
 The site is designed for easy maintenance and updates while providing a professional service experience for Monopoly GO players seeking game enhancement services.
