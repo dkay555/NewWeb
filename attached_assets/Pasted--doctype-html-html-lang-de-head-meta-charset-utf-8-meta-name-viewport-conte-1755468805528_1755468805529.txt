@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login-Methoden für Würfelboosts | babixGO</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    :root{
+      --cyan:#00CFFF;
+      --blue:#0A3A68;
+      --orange:#FF4C00;
+      --text:#374151;      /* grau-700 */
+      --muted:#6b7280;     /* grau-500 */
+      --line:#e5e7eb;      /* grau-200 */
+      --bg:#f9fafb;        /* grau-50 */
+      --info-bg:#E6F7FF;   /* helles cyan */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Nunito Sans",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:#fff;
+      line-height:1.6;
+    }
+    h1,h2,h3{font-family:"Baloo 2",system-ui,Arial,sans-serif; color:var(--blue); margin:0 0 .5rem}
+    .container{max-width:1100px; margin:0 auto; padding:2rem 1rem}
+    .top-block{display:flex; flex-direction:column; align-items:center; margin-bottom:2rem}
+    .back-link{
+      align-self:flex-start;
+      display:inline-flex; align-items:center; gap:.35rem;
+      color:var(--blue); text-decoration:none; margin-bottom:1rem;
+      transition:color .2s ease;
+    }
+    .back-link:hover{color:var(--orange)}
+    .lead{margin:.5rem 0 1.25rem}
+    .narrow{max-width:800px; margin:0 auto}
+    .info-box{background:var(--info-bg); border-left:4px solid var(--cyan); padding:1rem; border-radius:.5rem}
+    .babix-info-box{background:var(--info-bg); border-left:4px solid var(--cyan); padding:1rem; border-radius:.5rem} /* alias */
+    .babix-box-title{margin:0 0 .25rem; font-size:1.05rem}
+    .section{margin:2rem 0}
+    .card{
+      border:1px solid var(--line); border-radius:.75rem; overflow:hidden; background:#fff;
+    }
+    .card-head{
+      background:var(--bg); padding:1rem; font-weight:700; color:var(--blue);
+      display:flex; align-items:center; gap:.5rem;
+    }
+    .card-body{padding:1rem; border-top:1px solid var(--line)}
+    .card-body p{margin:.25rem 0 .9rem}
+    .list{padding-left:1.25rem; margin:.25rem 0 1rem}
+    .list li{margin:.35rem 0}
+    .hint{background:var(--info-bg); padding:.75rem 1rem; border-radius:.5rem; margin:.75rem 0}
+    .steps{display:grid; grid-template-columns:1fr; gap:1rem; margin:1rem 0}
+    @media(min-width:992px){ .steps{grid-template-columns:repeat(2,1fr)} }
+    .step{border:1px solid var(--line); border-radius:.5rem; padding:.5rem}
+    .step img{width:100%; height:auto; display:block; border-radius:.25rem}
+    .step p{margin:.35rem 0 0; font-size:.9rem; text-align:center; color:var(--muted)}
+    .code-block{
+      display:block; background:#f3f4f6; color:#111827;
+      padding:.75rem 1rem; border-radius:.5rem; overflow-x:auto; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; font-size:.9rem;
+    }
+    .cta{
+      background:var(--info-bg); border-left:4px solid var(--cyan);
+      padding:1rem; border-radius:.5rem; margin:2rem 0;
+    }
+    .cta .title{font-weight:800; color:var(--blue); padding-bottom:.25rem; border-bottom:2px solid var(--cyan); display:inline-block; margin-bottom:.5rem}
+    .btn{
+      display:inline-flex; align-items:center; gap:.35rem;
+      background:var(--blue); color:#fff; border:0; border-radius:.5rem;
+      padding:.6rem 1rem; cursor:pointer; text-decoration:none; font-weight:700;
+      transition:background .2s ease, transform .02s ease;
+    }
+    .btn:hover{background:var(--cyan)}
+    .btn:active{transform:translateY(1px)}
+    /* Utilities */
+    .mb-8{margin-bottom:2rem}
+    .mb-4{margin-bottom:1rem}
+    .text-center{text-align:center}
+  </style>
+</head>
+<body>
+
+  <div class="container" id="top">
+    <div class="top-block">
+      <a href="/hilfe" class="back-link">
+        <span class="material-icons">arrow_back</span>
+        Zurück zur Hilfe
+      </a>
+      <h1 class="text-center mb-8">Verfügbare Login-Methoden für Würfelboosts</h1>
+    </div>
+
+    <div class="narrow">
+      <p class="lead">
+        Für den Würfelboost benötigen wir Zugriff auf deinen Monopoly&nbsp;GO Account.
+        Hier erklären wir dir die verschiedenen Methoden, wie wir uns in deinen Account einloggen können.
+      </p>
+
+      <div class="info-box mb-8">
+        <h3 class="babix-box-title">💡 Wichtiger Hinweis</h3>
+        <p>Wir verstehen, dass es für manche ein sensibles Thema ist und garantieren, dass wir den Login nur nutzen, um die nötigen Spieldaten zu erhalten. In aller Regel kann das Passwort wenige Minuten nach dem Login von dir geändert werden.</p>
+      </div>
+
+      <div class="section">
+        <h2 class="mb-4">Login-Methoden im Überblick</h2>
+
+        <!-- Methode 1 -->
+        <div class="card mb-8">
+          <div class="card-head">
+            <span class="material-icons" style="color:var(--cyan)">login</span>
+            <span>Methode 1: Facebook – Zugangsdaten</span>
+          </div>
+          <div class="card-body">
+            <p><strong>Login mit deinen Zugangsdaten</strong></p>
+            <p>Was wir von dir benötigen:</p>
+            <ul class="list">
+              <li>Die hinterlegte E-Mail-Adresse oder Handynummer</li>
+              <li>Dein Passwort</li>
+            </ul>
+
+            <p><strong>Für Käufe über den Shop:</strong></p>
+            <p>Wenn du eine 2-Faktor-Authentifizierung nutzt, benötigen wir außerdem noch:</p>
+            <ul class="list">
+              <li>2&nbsp;Wiederherstellungscodes</li>
+            </ul>
+
+            <p>Die Wiederherstellungscodes benötigen wir, um die 2-Faktor-Authentifizierung zu umgehen.</p>
+
+            <p>
+              Wie du die Codes erhältst, ob deine 2FA überhaupt aktiv ist und weitere Informationen dazu findest du direkt bei Facebook unter folgendem Link:
+              <a href="https://m.facebook.com/help/148104135383285/?locale=de_DE" target="_blank" rel="noopener noreferrer" style="color:var(--cyan); text-decoration:underline">https://m.facebook.com/help/148104135383285/?locale=de_DE</a>
+            </p>
+
+            <p>Alternativ zu den Codes kannst du den Login auch selbst bestätigen. Dafür muss man im Moment des Logins in Kontakt stehen; daher nutzen wir diese Möglichkeit nur bei Käufen über WhatsApp oder den Messenger.</p>
+          </div>
+        </div>
+
+        <!-- Methode 2 -->
+        <div class="card mb-8">
+          <div class="card-head">
+            <span class="material-icons" style="color:var(--cyan)">token</span>
+            <span>Methode 2: Facebook – Authtoken (empfohlen)</span>
+          </div>
+          <div class="card-body">
+            <p><strong>Login mit dem Authtoken</strong></p>
+            <p>Dieser Token wird nach deinem Anmeldevorgang generiert. Monopoly schickt diesen an Facebook als Beweis dafür, dass du die erforderlichen Berechtigungen erteilt hast. Er ist nur für Monopoly&nbsp;GO gültig!</p>
+
+            <p>Was wir von dir benötigen:</p>
+            <ul class="list">
+              <li>Deinen Authtoken</li>
+            </ul>
+
+            <p><strong>So erhältst du den Token:</strong></p>
+            <div class="hint">
+              <p>Wir haben ein Tool bereitgestellt, mit welchem ihr diesen ganz einfach erhaltet:</p>
+              <a href="/tools/authtoken" style="color:var(--cyan); font-weight:800; text-decoration:underline">Zum Auth-Token-Tool</a>
+            </div>
+
+            <p><strong>Alternative:</strong></p>
+            <div class="steps">
+              <div class="step">
+                <img src="/images/auth-token/step1.webp" alt="Schritt 1: Den Link im Messenger verschicken & anklicken" />
+                <p>1. Den Link im Messenger verschicken & anklicken</p>
+              </div>
+              <div class="step">
+                <img src="/images/auth-token/step2.webp" alt="Schritt 2: Fortfahren" />
+                <p>2. Fortfahren</p>
+              </div>
+              <div class="step">
+                <img src="/images/auth-token/step3.webp" alt="Schritt 3: Weiße Seite → oben rechts auf die 3 Punkte" />
+                <p>3. Weiße Seite → oben rechts auf die 3 Punkte</p>
+              </div>
+              <div class="step">
+                <img src="/images/auth-token/step4.webp" alt="Schritt 4: Link kopieren & zuschicken" />
+                <p>4. „Link kopieren“ wählen & uns schicken</p>
+              </div>
+            </div>
+
+            <p>Der Link, den ihr erhaltet, hat dieses Format:</p>
+            <code class="code-block">https://m.facebook.com/dialog/return/arbiter?protocol=https&amp;response=%7B%22access_token%22%3A%22EAAEDOsLhrQsBOzRy2O1iBmrfaTY9jvAk2Vk4mUlKiogi4XZCWjfqndrLXUfhfghcdvxfvfXIFow1dnrMnbfnRDrCKHPm3qFGcGlFXMnHrZAcqlJXZghgggfgh......</code>
+          </div>
+        </div>
+
+        <!-- Methode 3 -->
+        <div class="card mb-8">
+          <div class="card-head">
+            <span class="material-icons" style="color:var(--cyan)">phone_android</span>
+            <span>Methode 3: Google Play Games – Zugangsdaten</span>
+          </div>
+          <div class="card-body">
+            <p><strong>Google Play Games</strong></p>
+            <p>Sollte dein Account mit Google Play Games verknüpft sein, schreibe uns bitte über WhatsApp oder über Facebook.</p>
+
+            <p>Was wir von dir benötigen:</p>
+            <ul class="list">
+              <li>Deine Gmail-Adresse</li>
+              <li>Dein Google-Konto-Passwort</li>
+            </ul>
+
+            <p>Du musst den Login unter Umständen auf deinem Gerät bestätigen.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <span class="title">Hast du noch Fragen?</span>
+        <p>Falls du Hilfe benötigst oder noch Fragen zu dem Thema hast, zögere nicht, uns anzuschreiben.</p>
+        <a class="btn" href="/kontakt">
+          <span class="material-icons">contact_support</span>
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
