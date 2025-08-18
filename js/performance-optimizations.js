@@ -120,26 +120,18 @@ function initPerformanceOptimizations() {
     preloadResources();
 }
 
-// Service Worker registration for caching
+// Service Worker registration for caching (disabled - no sw.js file)
 function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
-                .then(registration => {
-                    console.log('SW registered: ', registration);
-                })
-                .catch(registrationError => {
-                    console.log('SW registration failed: ', registrationError);
-                });
-        });
-    }
+    // Service worker disabled - would require sw.js file implementation
+    // Can be enabled later when sw.js is created
+    return;
 }
 
 // Initialize immediately
 initPerformanceOptimizations();
 
-// Register service worker for caching
-registerServiceWorker();
+// Service worker registration disabled for now
+// registerServiceWorker();
 
 // Export functions
 window.optimizeImages = optimizeImages;
