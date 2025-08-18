@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize smooth scrolling
     initSmoothScrolling();
     
-    // Initialize mobile menu if header is loaded
-    setTimeout(initMobileMenu, 500);
+    // Mobile menu is already initialized in header.html
 });
 
 // Load header, footer, and contact form partials
@@ -264,52 +263,4 @@ function initPage() {
 document.addEventListener('DOMContentLoaded', function() {
     initPage();
 });
-document.addEventListener('DOMContentLoaded', function() {
-    const mobileMenuBtn = document.getElementById('babixgo-menu-btn');
-    const mobileMenu = document.getElementById('babixgo-mobile-menu');
-    const closeMenuBtn = document.getElementById('babixgo-menu-close');
-
-    function toggleMenu() {
-        if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        }
-    }
-
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', toggleMenu);
-    }
-    
-    if (closeMenuBtn) {
-        closeMenuBtn.addEventListener('click', toggleMenu);
-    }
-
-    // Close menu when clicking outside
-    if (mobileMenu) {
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
-                toggleMenu();
-            }
-        });
-    }
-
-    // Bottom navigation active state
-    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
-    const currentPage = window.location.pathname;
-    
-    bottomNavItems.forEach(item => {
-        const href = item.getAttribute('href');
-        if (href && currentPage.includes(href)) {
-            bottomNavItems.forEach(nav => nav.classList.remove('active'));
-            item.classList.add('active');
-        }
-        
-        item.addEventListener('click', (e) => {
-            // Lass den normalen Link funktionieren
-            // Remove active from all items and add to clicked
-            bottomNavItems.forEach(nav => nav.classList.remove('active'));
-            item.classList.add('active');
-        });
-    });
-});
+// Mobile menu functionality is now handled in header.html
