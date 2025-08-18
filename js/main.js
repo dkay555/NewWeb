@@ -178,7 +178,6 @@ function initSmoothScrolling() {
     });
 }
 
-
 // Order form functionality
 function initOrderForm() {
     const orderForm = document.getElementById('order-form');
