@@ -2,7 +2,12 @@
 // Load Analytics and SEO scripts
 function loadScript(src) {
     const script = document.createElement('script');
-    script.src = src.startsWith('http') ? src : (window.location.pathname.includes('/') && !window.location.pathname.endsWith('/') ? '../' : '') + src;
+    // Determine if we're in a subdirectory
+    const isInSubdirectory = window.location.pathname.includes('/') && 
+                             !window.location.pathname.endsWith('/') && 
+                             window.location.pathname !== '/index.html';
+    const basePath = isInSubdirectory ? '../' : '';
+    script.src = src.startsWith('http') ? src : basePath + src;
     script.async = true;
     document.head.appendChild(script);
 }
@@ -32,25 +37,35 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load header, footer, and contact form partials
 async function loadPartials() {
     try {
+        // Determine the correct path based on current location
+        const isInSubdirectory = window.location.pathname.includes('/') && 
+                                 !window.location.pathname.endsWith('/') && 
+                                 window.location.pathname !== '/index.html';
+        const basePath = isInSubdirectory ? '../' : '';
+        
         // Load header
-        const headerResponse = await fetch('partials/header.html');
+        const headerResponse = await fetch(basePath + 'partials/header.html');
         if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
             document.getElementById('header-placeholder').innerHTML = headerHTML;
+        } else {
+            console.error('Failed to load header:', headerResponse.status);
         }
         
         // Load footer
-        const footerResponse = await fetch('partials/footer.html');
+        const footerResponse = await fetch(basePath + 'partials/footer.html');
         if (footerResponse.ok) {
             const footerHTML = await footerResponse.text();
             document.getElementById('footer-placeholder').innerHTML = footerHTML;
+        } else {
+            console.error('Failed to load footer:', footerResponse.status);
         }
         
         // Load contact form partial if placeholder exists
         const contactFormPlaceholder = document.getElementById('contact-form-placeholder');
         if (contactFormPlaceholder) {
             console.log('Loading contact form partial...');
-            const contactFormResponse = await fetch('partials/contact-form.html');
+            const contactFormResponse = await fetch(basePath + 'partials/contact-form.html');
             console.log('Contact form response status:', contactFormResponse.status);
             
             if (contactFormResponse.ok) {
@@ -61,7 +76,7 @@ async function loadPartials() {
                 // Load contact form script after a brief delay
                 setTimeout(() => {
                     const script = document.createElement('script');
-                    script.src = 'js/contact-form.js';
+                    script.src = basePath + 'js/contact-form.js';
                     script.onload = () => console.log('Contact form script loaded');
                     script.onerror = (e) => console.error('Error loading contact form script:', e);
                     document.head.appendChild(script);
