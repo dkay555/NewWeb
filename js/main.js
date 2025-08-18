@@ -256,10 +256,13 @@ function initPage() {
         
         initOrderForm();
     }
+    
+    // Mobile menu is handled in header.html - no initMobileMenu() call needed
 }
 
 // Initialize page when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initPage();
 });
+
 // Mobile menu functionality is now handled in header.html
