@@ -47,6 +47,11 @@ async function loadPartials() {
         if (headerResponse.ok) {
             const headerHTML = await headerResponse.text();
             document.getElementById('header-placeholder').innerHTML = headerHTML;
+            
+            // Initialize mobile menu after header is loaded
+            setTimeout(() => {
+                initMobileMenuFromHeader();
+            }, 100);
         } else {
             console.error('Failed to load header:', headerResponse.status);
         }
@@ -176,6 +181,88 @@ function initSmoothScrolling() {
             }
         });
     });
+}
+
+// Mobile menu functionality - initialized after header loads
+function initMobileMenuFromHeader() {
+    console.log('Initializing mobile menu...');
+    const mobileMenuBtn = document.getElementById('babixgo-menu-btn');
+    const mobileMenu = document.getElementById('babixgo-mobile-menu');
+    const closeMenuBtn = document.getElementById('babixgo-menu-close');
+
+    function toggleMenu() {
+        console.log('Toggle menu called');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+            console.log('Menu toggled, active:', mobileMenu.classList.contains('active'));
+        }
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMenu);
+        console.log('Mobile menu button initialized successfully');
+    } else {
+        console.error('Mobile menu button not found');
+    }
+
+    if (closeMenuBtn) {
+        closeMenuBtn.addEventListener('click', toggleMenu);
+        console.log('Close menu button initialized');
+    }
+
+    // Close menu when clicking outside
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                toggleMenu();
+            }
+        });
+    }
+
+    // Bottom navigation active state
+    const bottomNavItems = document.querySelectorAll('.bottom-nav-item');
+    const currentPage = window.location.pathname;
+
+    bottomNavItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href && currentPage.includes(href.replace('.html', ''))) {
+            bottomNavItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
+        }
+
+        item.addEventListener('click', () => {
+            bottomNavItems.forEach(nav => nav.classList.remove('active'));
+            item.classList.add('active');
+        });
+    });
+
+    // Smooth animations for service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        card.style.animation = 'slideInUp 0.6s ease forwards';
+    });
+
+    // Add CSS animation
+    if (!document.querySelector('#slideInUpAnimation')) {
+        const style = document.createElement('style');
+        style.id = 'slideInUpAnimation';
+        style.textContent = `
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 // Order form functionality
